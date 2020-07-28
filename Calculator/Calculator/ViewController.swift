@@ -21,7 +21,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func hamburgerClick(_ sender: Any) {
+        if !menuOut {
+            trailing.constant = -150
+            leading.constant = 150
+            menuOut = true
+        } else {
+            trailing.constant = 0
+            leading.constant = 0
+            menuOut = false
+        }
         
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { self.view.layoutIfNeeded() }) {
+            (animationComolete) in
+            print("Animation completed")
+        }
     }
     
 }
