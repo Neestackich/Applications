@@ -21,7 +21,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func hamburgerClick(_ sender: Any) {
-        
+        if !menuOut {
+            trailing.constant = 150
+            menuOut = true
+        } else {
+            trailing.constant = 0
+            menuOut = false
+        }
     }
     
 }
