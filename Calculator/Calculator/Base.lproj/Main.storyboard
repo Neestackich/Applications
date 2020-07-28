@@ -68,6 +68,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="leading" destination="gu9-i8-02T" id="LOr-O6-j39"/>
+                        <outlet property="trailing" destination="fZX-PE-1vu" id="Xnc-Tf-WOg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
