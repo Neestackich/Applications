@@ -15,9 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var expression: UILabel!
     
     var menuOut: Bool = false
-    var bracket: Bool = false
-    
-    var result: Double = 0;
+//    var bracket: Bool = false
+//    
+//    var result: Double = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
