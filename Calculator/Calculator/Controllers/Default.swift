@@ -15,13 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var expression: UILabel!
     
     var menuOut: Bool = false
-//    var bracket: Bool = false
-//    
-//    var result: Double = 0;
+    var bracket: Bool = false
+    
+    var result: Double = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     @IBAction func hamburgerClick(_ sender: Any) {
@@ -41,26 +40,26 @@ class ViewController: UIViewController {
         }
     }
     
-//    @IBAction func sevenClick(_ sender: Any) {
-//        expression.text! += "7"
-//    }
-//
-//    @IBAction func clearClick(_ sender: Any) {
-//        expression.text! = ""
-//    }
-//
-//    @IBAction func bracketsClick(_ sender: Any) {
-//        if !bracket {
-//            expression.text! += "("
-//        } else {
-//            expression.text! += ")"
-//        }
-//    }
-//
-//    @IBAction func divisionClick(_ sender: Any) {
-//        expression.text! += "/"
-//
-//        bracket = true
-//    }
+    @IBAction func sevenClick(_ sender: Any) {
+        expression.text! += "7"
+    }
+
+    @IBAction func clearClick(_ sender: Any) {
+        expression.text! = ""
+    }
+
+    @IBAction func bracketsClick(_ sender: Any) {
+        if !bracket {
+            expression.text! += "("
+        } else {
+            expression.text! += ")"
+        }
+    }
+
+    @IBAction func divisionClick(_ sender: Any) {
+        expression.text! += "/"
+
+        bracket = true
+    }
 }
 

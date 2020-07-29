@@ -292,8 +292,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="expression" destination="Ik2-ml-RgM" id="eSF-V7-CHT"/>
                         <outlet property="leading" destination="gu9-i8-02T" id="LOr-O6-j39"/>
-                        <outlet property="result" destination="Ik2-ml-RgM" id="pg1-tI-80p"/>
                         <outlet property="trailing" destination="fZX-PE-1vu" id="Xnc-Tf-WOg"/>
                     </connections>
                 </viewController>
