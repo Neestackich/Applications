@@ -36,7 +36,10 @@ class ViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { self.view.layoutIfNeeded() }) {
             (animationComolete) in
+<<<<<<< HEAD:Calculator/Calculator/ViewController.swift
             print("Animation completed")
+=======
+>>>>>>> development:Calculator/Calculator/Controllers/Default.swift
         }
     }
     
