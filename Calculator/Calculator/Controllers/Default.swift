@@ -41,24 +41,26 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func sevenClick(_ sender: Any) {
-        expression.text! += "7"
-    }
-    
-    @IBAction func clearClick(_ sender: Any) {
-        expression.text! = ""
-    }
-    
-    @IBAction func bracketsClick(_ sender: Any) {
-        if !bracket {
-            expression.text! += "("
-        }
-    }
-    
-    @IBAction func divisionClick(_ sender: Any) {
-        expression.text! += "/"
-        
-        bracket = true
-    }
+//    @IBAction func sevenClick(_ sender: Any) {
+//        expression.text! += "7"
+//    }
+//
+//    @IBAction func clearClick(_ sender: Any) {
+//        expression.text! = ""
+//    }
+//
+//    @IBAction func bracketsClick(_ sender: Any) {
+//        if !bracket {
+//            expression.text! += "("
+//        } else {
+//            expression.text! += ")"
+//        }
+//    }
+//
+//    @IBAction func divisionClick(_ sender: Any) {
+//        expression.text! += "/"
+//
+//        bracket = true
+//    }
 }
 
