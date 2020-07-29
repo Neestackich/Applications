@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Default-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Default" customClass="ViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,6 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhV-Tc-cFg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-<<<<<<< HEAD
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wpZ-a6-z7Y">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="41"/>
@@ -251,9 +250,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.099073024611398997" green="0.094280117512644479" blue="0.09484289396207056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-=======
-                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
->>>>>>> 1ee505973522313a04023333e60bf1b72227b6e2
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -282,10 +278,10 @@
             </objects>
             <point key="canvasLocation" x="347.82608695652175" y="-96.428571428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Bookkeepers-->
         <scene sceneID="24w-zo-e5q">
             <objects>
-                <viewController id="Owk-0Y-7ao" sceneMemberID="viewController">
+                <viewController id="Owk-0Y-7ao" userLabel="Bookkeepers" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDB-ya-H6E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FME-cm-cm8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="-96"/>
+            <point key="canvasLocation" x="1085.5072463768117" y="-96.428571428571431"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IuK-7C-IBv">
@@ -332,13 +328,22 @@
             </objects>
             <point key="canvasLocation" x="1086" y="1244"/>
         </scene>
-        <!--View Controller-->
+        <!--Engineer-->
         <scene sceneID="9GQ-KZ-064">
             <objects>
-                <viewController id="ej4-OW-Eta" sceneMemberID="viewController">
+                <viewController id="ej4-OW-Eta" userLabel="Engineer" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LTO-hv-7uT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eD-AI-SZH">
+                                <rect key="frame" x="204" y="194" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.10360335783018641" green="0.10291136204577993" blue="0.10494251943005184" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="HCZ-ZK-vFN"/>
                     </view>
