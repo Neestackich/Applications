@@ -49,10 +49,38 @@ class ViewController: UIViewController {
     }
     
     @IBAction func nineClick(_ sender: Any) {
+        expression.text! += "9"
+    }
+    
+    @IBAction func fourClick(_ sender: Any) {
+        expression.text! += "4"
+    }
+    
+    @IBAction func fiveClick(_ sender: Any) {
+        expression.text! += "5"
+    }
+    
+    @IBAction func sixClick(_ sender: Any) {
+        expression.text! += "6"
+    }
+    
+    @IBAction func oneClick(_ sender: Any) {
+        expression.text! += "1"
+    }
+    
+    @IBAction func twoClick(_ sender: Any) {
+        expression.text! += "2"
+    }
+    
+    @IBAction func threeClick(_ sender: Any) {
+        expression.text! += "3"
     }
     
     @IBAction func clearClick(_ sender: Any) {
         expression.text! = ""
+    }
+    @IBAction func multiplyClick(_ sender: Any) {
+        expression.text! += "x"
     }
     
     @IBAction func bracketsClick(_ sender: Any) {
