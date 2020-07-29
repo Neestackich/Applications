@@ -48,9 +48,8 @@ class ViewController: UIViewController {
         expression.text! += "7"
     }
 
-    @IBAction func eightClick(_ sender: Any) {
-        expression.text! += "8"
-    }
+    
+    
     
     @IBAction func nineClick(_ sender: Any) {
         expression.text! += "9"
