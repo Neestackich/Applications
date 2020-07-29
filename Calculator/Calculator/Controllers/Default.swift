@@ -44,10 +44,17 @@ class ViewController: UIViewController {
         expression.text! += "7"
     }
 
+    @IBAction func eightClick(_ sender: Any) {
+        expression.text! += "8"
+    }
+    
+    @IBAction func nineClick(_ sender: Any) {
+    }
+    
     @IBAction func clearClick(_ sender: Any) {
         expression.text! = ""
     }
-
+    
     @IBAction func bracketsClick(_ sender: Any) {
         if !bracket {
             expression.text! += "("
