@@ -17,9 +17,10 @@ class Default: UIViewController {
     var operation: String!
     
     var menuOut: Bool = false
-    var bracket: Bool = false
+    var bracketExists: Bool = false
     
     var result: Double = 0
+    var bracketsQuantity: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,17 +86,23 @@ class Default: UIViewController {
     }
     
     @IBAction func bracketsClick(_ sender: Any) {
-        if !bracket {
+        if !bracketExists {
             expression.text! += "("
+            bracketsQuantity += 1
         } else {
-            expression.text! += ")"
+            if bracketsQuantity != 0 {
+                expression.text! += ")"
+                bracketsQuantity -= 1
+            } else {
+                expression.text! += "("
+                bracketExists = false
+            }
         }
     }
     
     @IBAction func divisionClick(_ sender: Any) {
         expression.text! += "/"
 
-        bracket = true
+        bracketExists = true
     }
 }
-
