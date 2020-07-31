@@ -63,7 +63,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.64888277202072531" green="0.48314234383502447" blue="0.46940148348726585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="C">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -76,9 +75,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="7">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <state key="normal" title="7"/>
                                         <connections>
                                             <action selector="sevenClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aRB-7X-UQi"/>
                                         </connections>
@@ -108,13 +105,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-<<<<<<< HEAD
-                                        <state key="normal" title="x">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-=======
                                         <state key="normal" title="4"/>
->>>>>>> development
                                         <connections>
                                             <action selector="fourClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CCh-Qu-5fp"/>
                                         </connections>
@@ -154,9 +145,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="-">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <state key="normal" title="-"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-fz-LP8">
                                         <rect key="frame" x="104" y="224" width="102" height="92"/>
@@ -216,16 +205,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-<<<<<<< HEAD
-                                        <state key="normal" title="+">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-=======
                                         <state key="normal" title="+"/>
                                         <connections>
                                             <action selector="plusClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d0E-3f-3v1"/>
                                         </connections>
->>>>>>> development
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdA-3Q-Vxz">
                                         <rect key="frame" x="0.0" y="600" width="102" height="92"/>
@@ -251,20 +234,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dx-74-NRj">
                                         <rect key="frame" x="312" y="600" width="102" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<<<<<<< HEAD
-                                        <color key="backgroundColor" red="0.6494157590705496" green="0.6494157590705496" blue="0.6494157590705496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="=">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-=======
                                         <color key="backgroundColor" red="0.61332385230725395" green="0.61332385230725395" blue="0.61332385230725395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="="/>
                                         <connections>
                                             <action selector="countClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CzH-3S-PR9"/>
                                         </connections>
->>>>>>> development
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w8-As-bc7">
                                         <rect key="frame" x="104" y="506" width="102" height="92"/>
@@ -274,18 +249,6 @@
                                         <state key="normal" title="2"/>
                                         <connections>
                                             <action selector="twoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="txF-nQ-2KA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4m-t7-fMl">
-                                        <rect key="frame" x="312" y="131" width="102" height="92"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="arrow.left" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backSpaceClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lYa-a8-8jr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -321,11 +284,7 @@
         <!--Bookkeepers-->
         <scene sceneID="24w-zo-e5q">
             <objects>
-<<<<<<< HEAD
-                <viewController id="Owk-0Y-7ao" userLabel="Bookkeepers" customClass="Bookkeepers" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
-=======
                 <viewController id="Owk-0Y-7ao" userLabel="Bookkeepers" customClass="Bookkeeper" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> development
                     <view key="view" contentMode="scaleToFill" id="NDB-ya-H6E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,11 +318,7 @@
         <scene sceneID="9GQ-KZ-064">
             <objects>
                 <viewController id="ej4-OW-Eta" userLabel="Engineer" customClass="Engineer" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
-<<<<<<< HEAD
-                    <view key="view" contentMode="scaleToFill" id="LTO-hv-7uT">
-=======
                     <view key="view" contentMode="scaleToFill" id="LTO-hv-7uT" customClass="Eng">
->>>>>>> development
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -403,10 +358,6 @@
     </scenes>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
     <resources>
-<<<<<<< HEAD
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-=======
->>>>>>> development
         <image name="line.horizontal.3" catalog="system" width="32" height="32"/>
     </resources>
 </document>

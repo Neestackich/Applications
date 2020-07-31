@@ -40,12 +40,6 @@ class Default: UIViewController {
         }
     }
     
-    @IBAction func backSpaceClick(_ sender: Any) {
-        if expression.text != nil {
-            expression.text?.removeLast()
-        }
-    }
-    
     @IBAction func sevenClick(_ sender: Any) {
         expression.text! += "7"
     }
