@@ -10,41 +10,28 @@ import UIKit
 
 class Default: UIViewController {
 
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    @IBOutlet weak var expression: UILabel!
     
-    var operation: String!
+    // MARK: properties
+    
+    @IBOutlet weak var expression: UILabel!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var trailing: NSLayoutConstraint!
     
     var menuOut: Bool = false
+    var commaExists: Bool = false
     var bracketExists: Bool = false
     
     var result: Double = 0
+    
+    var operation: String!
+    
     var bracketsQuantity: Int = 0
+    
+    
+    // MARK: viewDialog and buttons' handlers
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    @IBAction func backSpaceClick(_ sender: Any) {
-        if expression.text?.count != 0 {
-            if expression.text?.last == ")" {
-                expression.text?.removeLast()
-                bracketsQuantity += 1
-                doesBracketsExist()
-            } else if expression.text?.last == "(" {
-                expression.text?.removeLast()
-                bracketsQuantity -= 1
-            } else if expression.text?.last == " " {
-                for _ in 1...3 {
-                    expression.text?.removeLast()
-                }
-                
-                doesBracketsExist()
-            } else {
-                expression.text?.removeLast()
-            }
-        }
     }
     
     @IBAction func hamburgerClick(_ sender: Any) {
@@ -63,10 +50,35 @@ class Default: UIViewController {
         }
     }
     
+    @IBAction func backSpaceClick(_ sender: Any) {
+        if expression.text?.count != 0 {
+            if expression.text?.last == ")" {
+                expression.text?.removeLast()
+                bracketsQuantity += 1
+                doesBracketsExist()
+            } else if expression.text?.last == "(" {
+                expression.text?.removeLast()
+                bracketsQuantity -= 1
+            } else if expression.text?.last == " " {
+                for _ in 1...3 {
+                    expression.text?.removeLast()
+                }
+                
+                doesBracketsExist()
+            } else if expression.text?.last == "." {
+                expression.text?.removeLast()
+                commaExists = false
+            } else {
+                expression.text?.removeLast()
+            }
+        }
+    }
+    
     @IBAction func clearClick(_ sender: Any) {
         expression.text! = ""
         bracketExists = false
         bracketsQuantity = 0
+        commaExists = false
     }
     
     @IBAction func bracketsClick(_ sender: Any) {
@@ -92,9 +104,17 @@ class Default: UIViewController {
         }
     }
     
+    @IBAction func remainderClick(_ sender: Any) {
+        if expressionCheck() {
+            expression.text! += " % "
+        }
+        
+        doesBracketsExist()
+    }
+    
     @IBAction func divisionClick(_ sender: Any) {
         if expressionCheck() {
-            expression.text! += " : "
+            expression.text! += " / "
         }
         
         doesBracketsExist()
@@ -125,48 +145,79 @@ class Default: UIViewController {
     }
     
     @IBAction func sevenClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "7"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
 
     @IBAction func eightClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "8"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
     
     @IBAction func nineClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "9"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
     
     @IBAction func fourClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "4"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
     
     @IBAction func fiveClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "5"
         bracketExists = bracketsQuantity != 0 ? true : false    }
     
     @IBAction func sixClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "6"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
     
     @IBAction func oneClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "1"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
     
     @IBAction func twoClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "2"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
     
     @IBAction func threeClick(_ sender: Any) {
+        isZeroFirstChar()
         expression.text! += "3"
         bracketExists = bracketsQuantity != 0 ? true : false
     }
+    
+    @IBAction func signClick(_ sender: Any) {
+        
+    }
+    
+    @IBAction func zeroClick(_ sender: Any) {
+        isZeroFirstChar()
+        expression.text! += "0"
+        bracketExists = bracketsQuantity != 0 ? true : false
+    }
+    
+    @IBAction func commaClick(_ sender: Any) {
+        if expression.text?.count != 0 &&
+            expression.text?.last != "." &&
+            !commaExists {
+            expression.text! += "."
+            commaExists = true
+        }
+    }
+    
+    
+    // MARK:  subsidiary back-end functions
     
     func expressionCheck() -> Bool {
         if expression.text?.last != " " &&
@@ -175,6 +226,12 @@ class Default: UIViewController {
             return true
         } else {
             return false
+        }
+    }
+    
+    func isZeroFirstChar() {
+        if expression.text?.count == 1 && expression.text?.last == "0" {
+            expression.text?.removeLast()
         }
     }
     
