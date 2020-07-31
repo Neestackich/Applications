@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class Default: UIViewController {
 
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     var menuOut: Bool = false
     var bracket: Bool = false
+    var plusClicked: Bool = false
     
     var result: Double = 0;
     
@@ -95,7 +96,22 @@ class ViewController: UIViewController {
             expression.text! += ")"
         }
     }
-
+    
+//    @IBAction func countClick(_ sender: Any) {
+//        if plusClicked {
+//            if let
+//        }
+//    }
+    
+    @IBAction func plusClick(_ sender: Any) {
+        if let number = expression.text {
+            result = Double(number)!
+            plusClicked = true
+        } else {
+            result = 0
+        }
+    }
+    
     @IBAction func divisionClick(_ sender: Any) {
         expression.text! += "/"
 
