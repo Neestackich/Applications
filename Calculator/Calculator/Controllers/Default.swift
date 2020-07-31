@@ -14,11 +14,12 @@ class Default: UIViewController {
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var expression: UILabel!
     
+    var operation: String!
+    
     var menuOut: Bool = false
     var bracket: Bool = false
-    var plusClicked: Bool = false
     
-    var result: Double = 0;
+    var result: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,21 +89,6 @@ class Default: UIViewController {
             expression.text! += "("
         } else {
             expression.text! += ")"
-        }
-    }
-    
-//    @IBAction func countClick(_ sender: Any) {
-//        if plusClicked {
-//            if let
-//        }
-//    }
-    
-    @IBAction func plusClick(_ sender: Any) {
-        if let number = expression.text {
-            result = Double(number)!
-            plusClicked = true
-        } else {
-            result = 0
         }
     }
     
