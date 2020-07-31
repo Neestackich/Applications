@@ -206,9 +206,6 @@
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="+"/>
-                                        <connections>
-                                            <action selector="plusClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d0E-3f-3v1"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdA-3Q-Vxz">
                                         <rect key="frame" x="0.0" y="600" width="102" height="92"/>
@@ -237,9 +234,6 @@
                                         <color key="backgroundColor" red="0.61332385230725395" green="0.61332385230725395" blue="0.61332385230725395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="="/>
-                                        <connections>
-                                            <action selector="countClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CzH-3S-PR9"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w8-As-bc7">
                                         <rect key="frame" x="104" y="506" width="102" height="92"/>
