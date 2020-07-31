@@ -198,7 +198,11 @@ class Default: UIViewController {
     }
     
     @IBAction func signClick(_ sender: Any) {
-        
+        if expression.text?.count != 0 {
+            if 
+        } else {
+            expression.text! += "-"
+        }
     }
     
     @IBAction func zeroClick(_ sender: Any) {
