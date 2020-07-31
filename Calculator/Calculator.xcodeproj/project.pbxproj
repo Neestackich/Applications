@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5DFC9B24D3FB8500242908 /* OPZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DFC9A24D3FB8500242908 /* OPZ.swift */; };
 		CEBA7E5A24CDFA44003FBE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA7E5924CDFA44003FBE24 /* AppDelegate.swift */; };
 		CEBA7E5C24CDFA44003FBE24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA7E5B24CDFA44003FBE24 /* SceneDelegate.swift */; };
 		CEBA7E5E24CDFA44003FBE24 /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA7E5D24CDFA44003FBE24 /* Default.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE5DFC9A24D3FB8500242908 /* OPZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPZ.swift; sourceTree = "<group>"; };
 		CEBA7E5624CDFA44003FBE24 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBA7E5924CDFA44003FBE24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEBA7E5B24CDFA44003FBE24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5DFC9924D3D7BB00242908 /* MainActivity */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DFC9A24D3FB8500242908 /* OPZ.swift */,
+			);
+			path = MainActivity;
+			sourceTree = "<group>";
+		};
 		CEBA7E4D24CDFA44003FBE24 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		CEBA7E5824CDFA44003FBE24 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DFC9924D3D7BB00242908 /* MainActivity */,
 				CEDE5B8724D13228009869D5 /* Controllers */,
 				CEBA7E5924CDFA44003FBE24 /* AppDelegate.swift */,
 				CEBA7E5B24CDFA44003FBE24 /* SceneDelegate.swift */,
@@ -155,6 +166,7 @@
 				CEDE5B8B24D132FE009869D5 /* Bookkeepers.swift in Sources */,
 				CEBA7E5E24CDFA44003FBE24 /* Default.swift in Sources */,
 				CEBA7E5A24CDFA44003FBE24 /* AppDelegate.swift in Sources */,
+				CE5DFC9B24D3FB8500242908 /* OPZ.swift in Sources */,
 				CEDE5B8924D1326D009869D5 /* Engineer.swift in Sources */,
 				CEBA7E5C24CDFA44003FBE24 /* SceneDelegate.swift in Sources */,
 			);
