@@ -146,6 +146,9 @@
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="minusClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ab2-a2-8Qr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-fz-LP8">
                                         <rect key="frame" x="104" y="224" width="102" height="92"/>
@@ -173,7 +176,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="/">
+                                        <state key="normal" title=":">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -206,27 +209,30 @@
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="plusClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MmW-fq-Iym"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdA-3Q-Vxz">
                                         <rect key="frame" x="0.0" y="600" width="102" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="7"/>
+                                        <state key="normal" title="+/-"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49c-W5-mfC">
                                         <rect key="frame" x="104" y="600" width="102" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="7"/>
+                                        <state key="normal" title="0"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0F-e6-rRl">
                                         <rect key="frame" x="208" y="600" width="102" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="7"/>
+                                        <state key="normal" title="."/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dx-74-NRj">
                                         <rect key="frame" x="312" y="600" width="102" height="92"/>
@@ -243,6 +249,15 @@
                                         <state key="normal" title="2"/>
                                         <connections>
                                             <action selector="twoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="txF-nQ-2KA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq4-3r-FXE">
+                                        <rect key="frame" x="328" y="179" width="71" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="arrow.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="backSpaceClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UcK-4N-vcm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -352,6 +367,7 @@
     </scenes>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="line.horizontal.3" catalog="system" width="32" height="32"/>
     </resources>
 </document>
