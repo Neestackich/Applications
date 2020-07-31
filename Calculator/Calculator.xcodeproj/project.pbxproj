@@ -43,6 +43,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5DFC9E24D4849400242908 /* MainActivity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainActivity;
+			sourceTree = "<group>";
+		};
 		CEBA7E4D24CDFA44003FBE24 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +69,7 @@
 		CEBA7E5824CDFA44003FBE24 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DFC9E24D4849400242908 /* MainActivity */,
 				CEDE5B8724D13228009869D5 /* Controllers */,
 				CEBA7E5924CDFA44003FBE24 /* AppDelegate.swift */,
 				CEBA7E5B24CDFA44003FBE24 /* SceneDelegate.swift */,
