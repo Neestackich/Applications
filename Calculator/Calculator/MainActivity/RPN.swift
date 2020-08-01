@@ -11,10 +11,23 @@ import UIKit
 class RPN {
     
     
+    // MARK: operands' types
+    
+    var finalExpression: String = ""
+
+    
     // MARK: operators' types
+    
+    enum Priority {
+        case backBracket
+        case frontBracket
+        case plusMinus
+        case multiplyDivision
+    }
     
     class Symbol {
         var value: Character!
+        var priority: Priority!
         var next: Symbol? = nil
     }
     
@@ -25,6 +38,19 @@ class RPN {
             if head.value == nil {
                 head.value = symbol
                 head.next = Symbol()
+                
+                switch symbol {
+                case ")":
+                    head.priority = Priority.backBracket
+                case "(":
+                    head.priority = Priority.frontBracket
+                case "+", "-":
+                    head.priority = Priority.plusMinus
+                case "x", "/":
+                    head.priority = Priority.multiplyDivision
+                default:
+                    break
+                }
             } else {
                 var dummy: Symbol = head
                 
@@ -40,10 +66,23 @@ class RPN {
         func pop() {
             
         }
+        
+        //сделать функцию pop для почленного вытягивания из стека
+        //и функцию для вытягивания всех элементов
+        //или сделать одну функцию с передачей нужных параметров для этого
     }
     
+    // MARK: parsing and counting functions
     
-    // MARK: operands' types
+    func parse(_ expression: String) {
+        
+    }
     
-    
+    func count() -> Double {
+        var result: Double = 0
+        
+        
+        
+        return result
+    }
 }
