@@ -77,7 +77,7 @@ class Default: UIViewController {
     
     @IBAction func clearClick(_ sender: Any) {
         commaExists = false
-        bracketExists = false
+        //bracketExists = false
         bracketsQuantity = 0
         expression.text! = ""
     }
@@ -98,7 +98,8 @@ class Default: UIViewController {
             } else {
                 bracketExists = false
                 bracketsQuantity += 1
-                expression.text! += " x ("
+                
+                expression.text! += expression.text?.last != " " ? " x (" : "("
             }
         }
     }
@@ -209,31 +210,29 @@ class Default: UIViewController {
                     stringSize -= 1
             }
             
-//            if expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] != "-" {
-//            expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
-//            }
-            
             switch expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] {
             case "-":
-                expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
+                if expression.text!.count >= 2 && expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize - 1)] == "(" {
+                    bracketsQuantity -= 1
+                    expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize - 1))
+                    expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize - 1))
+                } else {
+                    expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
+                }
             case " ":
                 minusInsert(stringSize)
             case "(":
-                expression.text?.append("-")
-            case ")":
-                expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize + 1))
-            default:
                 minusInsert(stringSize)
+            case ")":
+                expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
+            default:
+                minusInsert(stringSize - 1)
             }
-//            else {
-//                expression.text?.removeSubrange(stringSize..<(stringSize + 1))
-//            }
             
             if expression.text?.last == "-" {
                 expression.text?.removeLast()
             }
-        }
-        else {
+        } else {
             expression.text! += "-"
         }
     }
@@ -256,8 +255,9 @@ class Default: UIViewController {
     // MARK:  subsidiary back-end functions
     
     func minusInsert(_ stringSize: Int) {
-        expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
-        expression.text?.insert("(", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
+        expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize + 1))
+        expression.text?.insert("(", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize + 1))
+        
         bracketsQuantity += 1
         bracketExists = bracketsQuantity != 0 ? true : false
     }
