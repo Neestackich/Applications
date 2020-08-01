@@ -71,13 +71,14 @@ class Default: UIViewController {
                 expression.text?.removeLast()
             } else {
                 expression.text?.removeLast()
+                bracketExists = bracketsQuantity != 0 ? false : true
             }
         }
     }
     
     @IBAction func clearClick(_ sender: Any) {
         commaExists = false
-        //bracketExists = false
+        bracketExists = false
         bracketsQuantity = 0
         expression.text! = ""
     }
@@ -106,42 +107,37 @@ class Default: UIViewController {
     
     @IBAction func remainderClick(_ sender: Any) {
         if expressionCheck() {
+            doesBracketsExist()
             expression.text! += " % "
         }
-        
-        doesBracketsExist()
     }
     
     @IBAction func divisionClick(_ sender: Any) {
         if expressionCheck() {
+            doesBracketsExist()
             expression.text! += " / "
         }
-        
-        doesBracketsExist()
     }
     
     @IBAction func multiplyClick(_ sender: Any) {
         if expressionCheck() {
+            doesBracketsExist()
             expression.text! += " x "
         }
-        
-        doesBracketsExist()
     }
     
     @IBAction func minusClick(_ sender: Any) {
         if expressionCheck() {
+            doesBracketsExist()
             expression.text! += " - "
         }
-        
-        doesBracketsExist()
     }
     
     @IBAction func plusClick(_ sender: Any) {
         if expressionCheck() {
+            doesBracketsExist()
             expression.text! += " + "
         }
-        
-        doesBracketsExist()
     }
     
     @IBAction func sevenClick(_ sender: Any) {
@@ -220,13 +216,17 @@ class Default: UIViewController {
                     expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
                 }
             case " ":
-                minusInsert(stringSize)
+                bracketsQuantity += 1
+                expression.text! += "(--"
+                bracketExists = bracketsQuantity != 0 ? true : false
             case "(":
-                minusInsert(stringSize)
+                bracketsQuantity += 1
+                expression.text! += "(--"
+                bracketExists = bracketsQuantity != 0 ? true : false
             case ")":
                 expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
             default:
-                minusInsert(stringSize - 1)
+                minusInsert(stringSize)
             }
             
             if expression.text?.last == "-" {
