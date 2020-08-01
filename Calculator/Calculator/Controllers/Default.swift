@@ -69,9 +69,13 @@ class Default: UIViewController {
             } else if expression.text?.last == "." {
                 commaExists = false
                 expression.text?.removeLast()
+            } else if expression.text?.last == "-" {
+                //doesBracketsExist()
+                bracketsQuantity -= 1
+                expression.text?.removeLast()
             } else {
                 expression.text?.removeLast()
-                bracketExists = bracketsQuantity != 0 ? false : true
+                bracketExists = bracketsQuantity != 0 ? true : false
             }
         }
     }
@@ -216,17 +220,25 @@ class Default: UIViewController {
                     expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
                 }
             case " ":
-                bracketsQuantity += 1
-                expression.text! += "(--"
-                bracketExists = bracketsQuantity != 0 ? true : false
+                if expression.text?.last != " " {
+                    minusInsert(stringSize)
+                } else {
+                    bracketsQuantity += 1
+                    expression.text! += "(--"
+                    //bracketExists = bracketsQuantity != 0 ? true : false
+                }
             case "(":
-                bracketsQuantity += 1
-                expression.text! += "(--"
-                bracketExists = bracketsQuantity != 0 ? true : false
+                if expression.text?.last != "(" {
+                    minusInsert(stringSize - 1)
+                } else {
+                    bracketsQuantity += 1
+                    expression.text! += "(--"
+                    bracketExists = bracketsQuantity != 0 ? false : true
+                }
             case ")":
                 expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
             default:
-                minusInsert(stringSize)
+                minusInsert(stringSize - 1)
             }
             
             if expression.text?.last == "-" {
