@@ -12,20 +12,20 @@ class Default: UIViewController {
 
     
     // MARK: properties
+        
+    var operation: String!
     
-    @IBOutlet weak var expression: UILabel!
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    @IBOutlet weak var trailing: NSLayoutConstraint!
+    var result: Double = 0
+    
+    var bracketsQuantity: Int = 0
     
     var menuOut: Bool = false
     var commaExists: Bool = false
     var bracketExists: Bool = false
     
-    var result: Double = 0
-    
-    var operation: String!
-    
-    var bracketsQuantity: Int = 0
+    @IBOutlet weak var expression: UILabel!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var trailing: NSLayoutConstraint!
     
     
     // MARK: viewDialog and buttons' handlers
@@ -36,13 +36,13 @@ class Default: UIViewController {
     
     @IBAction func hamburgerClick(_ sender: Any) {
         if !menuOut {
-            trailing.constant = -150
-            leading.constant = 150
             menuOut = true
+            leading.constant = 150
+            trailing.constant = -150
         } else {
-            trailing.constant = 0
-            leading.constant = 0
             menuOut = false
+            leading.constant = 0
+            trailing.constant = 0
         }
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { self.view.layoutIfNeeded() }) {
@@ -53,21 +53,22 @@ class Default: UIViewController {
     @IBAction func backSpaceClick(_ sender: Any) {
         if expression.text?.count != 0 {
             if expression.text?.last == ")" {
-                expression.text?.removeLast()
-                bracketsQuantity += 1
                 doesBracketsExist()
-            } else if expression.text?.last == "(" {
+                bracketsQuantity += 1
                 expression.text?.removeLast()
+            } else if expression.text?.last == "(" {
                 bracketsQuantity -= 1
+                expression.text?.removeLast()
             } else if expression.text?.last == " " {
+                
                 for _ in 1...3 {
                     expression.text?.removeLast()
                 }
                 
                 doesBracketsExist()
             } else if expression.text?.last == "." {
-                expression.text?.removeLast()
                 commaExists = false
+                expression.text?.removeLast()
             } else {
                 expression.text?.removeLast()
             }
@@ -75,31 +76,30 @@ class Default: UIViewController {
     }
     
     @IBAction func clearClick(_ sender: Any) {
-        expression.text! = ""
-        bracketExists = false
-        bracketsQuantity = 0
         commaExists = false
+        //bracketExists = false
+        bracketsQuantity = 0
+        expression.text! = ""
     }
     
     @IBAction func bracketsClick(_ sender: Any) {
         if !bracketExists {
-            if expression.text?.last != "(" && bracketsQuantity == 0 && expression.text?.count != 0 && expression.text?.last != " " {
-                
+            if expression.text?.last != "(" && bracketsQuantity == 0 && expression.text?.count != 0 && expression.text?.last != " " && expression.text?.last != "-" {
+                bracketsQuantity += 1
                 expression.text! += " x ("
-                bracketsQuantity += 1
             } else {
-                expression.text! += "("
                 bracketsQuantity += 1
+                expression.text! += "("
             }
         } else {
             if bracketsQuantity != 0 && expression.text?.last != " " {
-                
-                expression.text! += ")"
                 bracketsQuantity -= 1
+                expression.text! += ")"
             } else {
-                expression.text! += " x ("
-                bracketsQuantity += 1
                 bracketExists = false
+                bracketsQuantity += 1
+                
+                expression.text! += expression.text?.last != " " ? " x (" : "("
             }
         }
     }
@@ -171,7 +171,8 @@ class Default: UIViewController {
     @IBAction func fiveClick(_ sender: Any) {
         isZeroFirstChar()
         expression.text! += "5"
-        bracketExists = bracketsQuantity != 0 ? true : false    }
+        bracketExists = bracketsQuantity != 0 ? true : false
+    }
     
     @IBAction func sixClick(_ sender: Any) {
         isZeroFirstChar()
@@ -198,7 +199,42 @@ class Default: UIViewController {
     }
     
     @IBAction func signClick(_ sender: Any) {
-        
+        if expression.text?.count != 0  {
+            var stringSize = expression.text!.count - 1
+            
+            while expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] != " " &&
+                expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] != "(" &&
+                expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] != ")" &&
+                expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] != "-" &&
+                stringSize != 0 {
+                    stringSize -= 1
+            }
+            
+            switch expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize)] {
+            case "-":
+                if expression.text!.count >= 2 && expression.text?[expression.text!.index(expression.text!.startIndex, offsetBy: stringSize - 1)] == "(" {
+                    bracketsQuantity -= 1
+                    expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize - 1))
+                    expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize - 1))
+                } else {
+                    expression.text?.remove(at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
+                }
+            case " ":
+                minusInsert(stringSize)
+            case "(":
+                minusInsert(stringSize)
+            case ")":
+                expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize))
+            default:
+                minusInsert(stringSize - 1)
+            }
+            
+            if expression.text?.last == "-" {
+                expression.text?.removeLast()
+            }
+        } else {
+            expression.text! += "-"
+        }
     }
     
     @IBAction func zeroClick(_ sender: Any) {
@@ -208,20 +244,26 @@ class Default: UIViewController {
     }
     
     @IBAction func commaClick(_ sender: Any) {
-        if expression.text?.count != 0 &&
-            expression.text?.last != "." &&
+        if expression.text?.count != 0 && expression.text?.last != "." &&
             !commaExists {
-            expression.text! += "."
             commaExists = true
+            expression.text! += "."
         }
     }
     
     
     // MARK:  subsidiary back-end functions
     
+    func minusInsert(_ stringSize: Int) {
+        expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize + 1))
+        expression.text?.insert("(", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize + 1))
+        
+        bracketsQuantity += 1
+        bracketExists = bracketsQuantity != 0 ? true : false
+    }
+    
     func expressionCheck() -> Bool {
-        if expression.text?.last != " " &&
-        expression.text?.last != "(" &&
+        if expression.text?.last != " " && expression.text?.last != "(" &&
             expression.text?.count != 0 {
             return true
         } else {
