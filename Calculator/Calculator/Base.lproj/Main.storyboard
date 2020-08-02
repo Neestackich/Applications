@@ -252,6 +252,9 @@
                                         <color key="backgroundColor" red="0.61332385230725395" green="0.61332385230725395" blue="0.61332385230725395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="="/>
+                                        <connections>
+                                            <action selector="countClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jqw-Iu-yoa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w8-As-bc7">
                                         <rect key="frame" x="104" y="506" width="102" height="92"/>
@@ -380,6 +383,6 @@
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="line.horizontal.3" catalog="system" width="32" height="32"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
     </resources>
 </document>

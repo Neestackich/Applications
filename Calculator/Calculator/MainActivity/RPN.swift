@@ -1,6 +1,3 @@
-
-import UIKit
-
 class RPN {
     
     
@@ -57,6 +54,7 @@ class RPN {
             if !isEmpty {
                 let dummy: Symbol = head.next!
                 head.next = dummy.next
+                isEmpty = head.next == nil ? true : false
                 
                 return dummy
             } else {
@@ -121,6 +119,12 @@ class RPN {
                 parsedExpression += String(character)
             }
         }
+        
+        if parsedExpression.last != " " {
+            parsedExpression += " "
+        }
+        
+        parsedExpression += stack.popLastNumber().value!
     }
 
     func count() -> Double {

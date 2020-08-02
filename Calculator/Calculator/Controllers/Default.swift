@@ -263,6 +263,13 @@ class Default: UIViewController {
         }
     }
     
+    @IBAction func countClick(_ sender: Any) {
+        if expression.text!.count != 0 {
+            print(expression.text!)
+            print(RPN("8 - 9").parsedExpression)
+        expression.text! = String(RPN(expression.text!).count())
+        }
+    }
     
     // MARK:  subsidiary back-end functions
     
