@@ -1,88 +1,159 @@
-//
-//  RPN.swift
-//  Calculator
-//
-//  Created by Neestackich on 31.07.2020.
-//  Copyright © 2020 Neestackich. All rights reserved.
-//
 
 import UIKit
 
 class RPN {
     
     
-    // MARK: operands' types
+    // MARK: properties
     
-    var finalExpression: String = ""
+    var stack: Stack = Stack()
+    var parsedExpression: String = ""
 
     
-    // MARK: operators' types
+    // MARK: inserted types
     
-    enum Priority {
+    enum Priority: Int {
         case backBracket
         case frontBracket
         case plusMinus
         case multiplyDivision
     }
-    
+
     class Symbol {
-        var value: Character!
+        var value: String!
         var priority: Priority!
         var next: Symbol? = nil
     }
-    
+
     struct Stack {
-        var head: Symbol
+        var isEmpty: Bool = true
+        var head: Symbol = Symbol()
+
+        mutating func push(_ symbol: String) {
+            isEmpty = false
+            head.value = symbol
+            priorityDefind(symbol)
+            let dummy: Symbol = Symbol()
+            dummy.next = head
+            head = dummy
+        }
         
-        func push(_ symbol: Character) {
-            if head.value == nil {
-                head.value = symbol
-                head.next = Symbol()
-                
-                switch symbol {
-                case ")":
-                    head.priority = Priority.backBracket
-                case "(":
-                    head.priority = Priority.frontBracket
-                case "+", "-":
-                    head.priority = Priority.plusMinus
-                case "x", "/":
-                    head.priority = Priority.multiplyDivision
-                default:
-                    break
-                }
-            } else {
-                var dummy: Symbol = head
-                
-                while dummy.next != nil {
-                    dummy = dummy.next!
-                }
-                
-                dummy.value = symbol
-                dummy.next = Symbol()
+        func priorityDefind(_ symbol: String) {
+            switch symbol {
+            case ")":
+                head.priority = Priority.backBracket
+            case "(":
+                head.priority = Priority.frontBracket
+            case "+", "-":
+                head.priority = Priority.plusMinus
+            case "x", "/":
+                head.priority = Priority.multiplyDivision
+            default:
+                break
             }
         }
         
-        func pop() {
-            
+        mutating func popLastNumber() -> Symbol {
+            if !isEmpty {
+                let dummy: Symbol = head.next!
+                head.next = dummy.next
+                
+                return dummy
+            } else {
+                return Symbol()
+            }
         }
         
-        //сделать функцию pop для почленного вытягивания из стека
-        //и функцию для вытягивания всех элементов
-        //или сделать одну функцию с передачей нужных параметров для этого
+        mutating func pop(by: Priority, _ result: inout String) {
+            if !isEmpty {
+                var dummy: Symbol = head
+                
+                while dummy.next != nil && dummy.next!.priority.rawValue >= by.rawValue {
+                    dummy = dummy.next!
+                    if dummy.priority != Priority.frontBracket {
+                        if result.last != " " {
+                            result += " "
+                        }
+                        
+                        result += String(dummy.value)
+                    }
+                }
+                
+                head.next = dummy.next
+                isEmpty = head.next == nil ? true : false
+            }
+        }
     }
     
-    // MARK: parsing and counting functions
     
-    func parse(_ expression: String) {
-        
+    // MARK: init, parse and count methods
+    
+    init(_ expression: String) {
+        parse(expression)
     }
-    
+
+    func parse(_ string: String) {
+        for character in string {
+            switch character {
+            case " ":
+                if parsedExpression.last != " " {
+                    parsedExpression += " "
+                }
+            case ")":
+                stack.pop(by: .frontBracket, &parsedExpression)
+            case "(":
+                stack.push(String(character))
+            case "+", "-":
+                if stack.isEmpty {
+                    stack.push(String(character))
+                } else {
+                    stack.pop(by: .plusMinus, &parsedExpression)
+                    stack.push(String(character))
+                }
+            case "x", "/":
+                if stack.isEmpty {
+                    stack.push(String(character))
+                } else {
+                    stack.pop(by: .multiplyDivision, &parsedExpression)
+                    stack.push(String(character))
+                }
+            default:
+                parsedExpression += String(character)
+            }
+        }
+    }
+
     func count() -> Double {
-        var result: Double = 0
+        var number: String = ""
         
+        for character in parsedExpression {
+            switch character {
+            case "+":
+                let summ = Double(stack.popLastNumber().value!)! + Double(stack.popLastNumber().value!)!
+                stack.push(String(summ))
+            case "-":
+                let firstNum = Double(stack.popLastNumber().value!)!
+                let summ = Double(stack.popLastNumber().value!)! - firstNum
+                stack.push(String(summ))
+            case "x":
+                let summ = Double(stack.popLastNumber().value!)! * Double(stack.popLastNumber().value!)!
+                stack.push(String(summ))
+            case "/":
+                let firstNum = Double(stack.popLastNumber().value!)!
+                let summ = Double(stack.popLastNumber().value!)! / firstNum
+                stack.push(String(summ))
+            case " ":
+                if number.isEmpty {
+                    continue
+                } else {
+                    stack.push(number)
+                    number = ""
+                }
+            default:
+                number += String(character)
+            }
+        }
         
-        
-        return result
+        return Double(stack.popLastNumber().value!)!
     }
 }
