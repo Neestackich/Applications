@@ -50,7 +50,7 @@ class RPN {
             }
         }
         
-        mutating func popLastNumber() -> Symbol {
+        mutating func popLastNumber() -> Symbol? {
             if !isEmpty {
                 let dummy: Symbol = head.next!
                 head.next = dummy.next
@@ -58,7 +58,7 @@ class RPN {
                 
                 return dummy
             } else {
-                return Symbol()
+                return nil
             }
         }
         
@@ -124,28 +124,48 @@ class RPN {
             parsedExpression += " "
         }
         
-        parsedExpression += stack.popLastNumber().value!
+        if let value = stack.popLastNumber()?.value {
+            parsedExpression += value
+        }
     }
 
-    func count() -> Double {
+    func count() throws -> Double? {
         var number: String = ""
         
         for character in parsedExpression {
             switch character {
             case "+":
-                let summ = Double(stack.popLastNumber().value!)! + Double(stack.popLastNumber().value!)!
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! + Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case "-":
-                let firstNum = Double(stack.popLastNumber().value!)!
-                let summ = Double(stack.popLastNumber().value!)! - firstNum
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! - Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case "x":
-                let summ = Double(stack.popLastNumber().value!)! * Double(stack.popLastNumber().value!)!
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! * Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case "/":
-                let firstNum = Double(stack.popLastNumber().value!)!
-                let summ = Double(stack.popLastNumber().value!)! / firstNum
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    if firstNum != "0" {
+                        let summ = Double(secondNum)! / Double(firstNum)!
+                        stack.push(String(summ))
+                    } else {
+                        throw CalculatorError.zeroDivision
+                    }
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case " ":
                 if number.isEmpty {
                     continue
@@ -158,6 +178,10 @@ class RPN {
             }
         }
         
-        return Double(stack.popLastNumber().value!)!
+        if let value = stack.popLastNumber()?.value {
+            return Double(value)
+        } else {
+            return nil
+        }
     }
 }

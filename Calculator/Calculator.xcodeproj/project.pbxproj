@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE51DF6E24D7DCE6006F9BDA /* CalculatorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51DF6D24D7DCE6006F9BDA /* CalculatorError.swift */; };
 		CE5DFC9D24D3FDA400242908 /* Programmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DFC9C24D3FDA400242908 /* Programmer.swift */; };
 		CE5DFCA024D49E1D00242908 /* RPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DFC9F24D49E1D00242908 /* RPN.swift */; };
 		CEBA7E5A24CDFA44003FBE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA7E5924CDFA44003FBE24 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE51DF6D24D7DCE6006F9BDA /* CalculatorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorError.swift; sourceTree = "<group>"; };
 		CE5DFC9C24D3FDA400242908 /* Programmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Programmer.swift; sourceTree = "<group>"; };
 		CE5DFC9F24D49E1D00242908 /* RPN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPN.swift; sourceTree = "<group>"; };
 		CEBA7E5624CDFA44003FBE24 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5DFC9F24D49E1D00242908 /* RPN.swift */,
+				CE51DF6D24D7DCE6006F9BDA /* CalculatorError.swift */,
 			);
 			path = MainActivity;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				CEDE5B8B24D132FE009869D5 /* Bookkeeper.swift in Sources */,
 				CE5DFC9D24D3FDA400242908 /* Programmer.swift in Sources */,
 				CEBA7E5E24CDFA44003FBE24 /* Default.swift in Sources */,
+				CE51DF6E24D7DCE6006F9BDA /* CalculatorError.swift in Sources */,
 				CEBA7E5A24CDFA44003FBE24 /* AppDelegate.swift in Sources */,
 				CEDE5B8924D1326D009869D5 /* Engineer.swift in Sources */,
 				CEBA7E5C24CDFA44003FBE24 /* SceneDelegate.swift in Sources */,
