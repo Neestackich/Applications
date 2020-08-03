@@ -1,6 +1,3 @@
-
-import UIKit
-
 class RPN {
     
     
@@ -53,14 +50,15 @@ class RPN {
             }
         }
         
-        mutating func popLastNumber() -> Symbol {
+        mutating func popLastNumber() -> Symbol? {
             if !isEmpty {
                 let dummy: Symbol = head.next!
                 head.next = dummy.next
+                isEmpty = head.next == nil ? true : false
                 
                 return dummy
             } else {
-                return Symbol()
+                return nil
             }
         }
         
@@ -93,9 +91,22 @@ class RPN {
     }
 
     func parse(_ string: String) {
+        var sign: String = ""
+        
         for character in string {
             switch character {
             case " ":
+                if sign.count != 0 {
+                    if stack.isEmpty {
+                        stack.push(sign)
+                    } else {
+                        stack.pop(by: .plusMinus, &parsedExpression)
+                        stack.push(sign)
+                    }
+                    
+                    sign = ""
+                }
+                
                 if parsedExpression.last != " " {
                     parsedExpression += " "
                 }
@@ -103,13 +114,15 @@ class RPN {
                 stack.pop(by: .frontBracket, &parsedExpression)
             case "(":
                 stack.push(String(character))
-            case "+", "-":
+            case "+":
                 if stack.isEmpty {
                     stack.push(String(character))
                 } else {
                     stack.pop(by: .plusMinus, &parsedExpression)
                     stack.push(String(character))
                 }
+            case "-":
+                sign = "-"
             case "x", "/":
                 if stack.isEmpty {
                     stack.push(String(character))
@@ -118,42 +131,83 @@ class RPN {
                     stack.push(String(character))
                 }
             default:
+                parsedExpression += sign
+                sign = ""
                 parsedExpression += String(character)
             }
         }
+        
+        if parsedExpression.last != " " {
+            parsedExpression += " "
+        }
+        
+        stack.pop(by: .plusMinus, &parsedExpression)
+        
+        if let value = stack.popLastNumber()?.value {
+            parsedExpression += value
+        }
     }
 
-    func count() -> Double {
+    func count() throws -> Double? {
         var number: String = ""
+        var sign: String = ""
         
         for character in parsedExpression {
             switch character {
             case "+":
-                let summ = Double(stack.popLastNumber().value!)! + Double(stack.popLastNumber().value!)!
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! + Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case "-":
-                let firstNum = Double(stack.popLastNumber().value!)!
-                let summ = Double(stack.popLastNumber().value!)! - firstNum
-                stack.push(String(summ))
+                sign += "-"
             case "x":
-                let summ = Double(stack.popLastNumber().value!)! * Double(stack.popLastNumber().value!)!
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! * Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case "/":
-                let firstNum = Double(stack.popLastNumber().value!)!
-                let summ = Double(stack.popLastNumber().value!)! / firstNum
-                stack.push(String(summ))
+                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    if firstNum != "0" {
+                        let summ = Double(secondNum)! / Double(firstNum)!
+                        stack.push(String(summ))
+                    } else {
+                        throw CalculatorError.zeroDivision
+                    }
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
             case " ":
                 if number.isEmpty {
-                    continue
+                    if sign.count != 0 {
+                        if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                                let summ = Double(secondNum)! - Double(firstNum)!
+                                stack.push(String(summ))
+                            } else {
+                                throw CalculatorError.unexpectedExpression
+                            }
+                    } else {
+                        continue
+                    }
                 } else {
                     stack.push(number)
                     number = ""
                 }
             default:
+                number += sign
+                sign = ""
                 number += String(character)
             }
         }
         
-        return Double(stack.popLastNumber().value!)!
+        if let value = stack.popLastNumber()?.value {
+            return Double(value)
+        } else {
+            return nil
+        }
     }
 }

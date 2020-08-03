@@ -19,6 +19,8 @@ class Default: UIViewController {
     
     var bracketsQuantity: Int = 0
     
+    var alert: UIAlertController!
+    
     var menuOut: Bool = false
     var commaExists: Bool = false
     var bracketExists: Bool = false
@@ -225,7 +227,6 @@ class Default: UIViewController {
                 } else {
                     bracketsQuantity += 1
                     expression.text! += "(--"
-                    //bracketExists = bracketsQuantity != 0 ? true : false
                 }
             case "(":
                 if expression.text?.last != "(" {
@@ -260,6 +261,26 @@ class Default: UIViewController {
             !commaExists {
             commaExists = true
             expression.text! += "."
+        }
+    }
+    
+    @IBAction func countClick(_ sender: Any) {
+        if expression.text!.count != 0 {
+            do {
+                expression.text! = String(try RPN(expression.text!).count()!)
+            } catch CalculatorError.zeroDivision {
+                alert = UIAlertController(title: "Error", message: "Division by zero", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } catch CalculatorError.unexpectedExpression {
+                alert = UIAlertController(title: "Error", message: "Unexpected expression", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } catch {
+                alert = UIAlertController(title: "Error", message: "Unexpected error", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
