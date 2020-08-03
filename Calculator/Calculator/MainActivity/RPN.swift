@@ -91,9 +91,22 @@ class RPN {
     }
 
     func parse(_ string: String) {
+        var sign: String = ""
+        
         for character in string {
             switch character {
             case " ":
+                if sign.count != 0 {
+                    if stack.isEmpty {
+                        stack.push(sign)
+                    } else {
+                        stack.pop(by: .plusMinus, &parsedExpression)
+                        stack.push(sign)
+                    }
+                    
+                    sign = ""
+                }
+                
                 if parsedExpression.last != " " {
                     parsedExpression += " "
                 }
@@ -101,13 +114,15 @@ class RPN {
                 stack.pop(by: .frontBracket, &parsedExpression)
             case "(":
                 stack.push(String(character))
-            case "+", "-":
+            case "+":
                 if stack.isEmpty {
                     stack.push(String(character))
                 } else {
                     stack.pop(by: .plusMinus, &parsedExpression)
                     stack.push(String(character))
                 }
+            case "-":
+                sign = "-"
             case "x", "/":
                 if stack.isEmpty {
                     stack.push(String(character))
@@ -116,6 +131,8 @@ class RPN {
                     stack.push(String(character))
                 }
             default:
+                parsedExpression += sign
+                sign = ""
                 parsedExpression += String(character)
             }
         }
@@ -124,6 +141,8 @@ class RPN {
             parsedExpression += " "
         }
         
+        stack.pop(by: .plusMinus, &parsedExpression)
+        
         if let value = stack.popLastNumber()?.value {
             parsedExpression += value
         }
@@ -131,6 +150,7 @@ class RPN {
 
     func count() throws -> Double? {
         var number: String = ""
+        var sign: String = ""
         
         for character in parsedExpression {
             switch character {
@@ -142,12 +162,7 @@ class RPN {
                     throw CalculatorError.unexpectedExpression
                 }
             case "-":
-                if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
-                    let summ = Double(secondNum)! - Double(firstNum)!
-                    stack.push(String(summ))
-                } else {
-                    throw CalculatorError.unexpectedExpression
-                }
+                sign += "-"
             case "x":
                 if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
                     let summ = Double(secondNum)! * Double(firstNum)!
@@ -168,12 +183,23 @@ class RPN {
                 }
             case " ":
                 if number.isEmpty {
-                    continue
+                    if sign.count != 0 {
+                        if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                                let summ = Double(secondNum)! - Double(firstNum)!
+                                stack.push(String(summ))
+                            } else {
+                                throw CalculatorError.unexpectedExpression
+                            }
+                    } else {
+                        continue
+                    }
                 } else {
                     stack.push(number)
                     number = ""
                 }
             default:
+                number += sign
+                sign = ""
                 number += String(character)
             }
         }
