@@ -1,9 +1,13 @@
+
+import UIKit
+
 class RPN {
     
     
     // MARK: properties
     
     var stack: Stack = Stack()
+    
     var parsedExpression: String = ""
 
     
@@ -104,7 +108,7 @@ class RPN {
                         stack.push(sign)
                     }
                     
-                    sign = ""
+                    sign.removeAll()
                 }
                 
                 if parsedExpression.last != " " {
@@ -132,7 +136,7 @@ class RPN {
                 }
             default:
                 parsedExpression += sign
-                sign = ""
+                sign.removeAll()
                 parsedExpression += String(character)
             }
         }
@@ -173,6 +177,7 @@ class RPN {
             case "/":
                 if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
                     if firstNum != "0" {
+                        print(secondNum, firstNum)
                         let summ = Double(secondNum)! / Double(firstNum)!
                         stack.push(String(summ))
                     } else {
@@ -190,16 +195,18 @@ class RPN {
                             } else {
                                 throw CalculatorError.unexpectedExpression
                             }
+
+                        sign.removeAll()
                     } else {
                         continue
                     }
                 } else {
                     stack.push(number)
-                    number = ""
+                    number.removeAll()
                 }
             default:
                 number += sign
-                sign = ""
+                sign.removeAll()
                 number += String(character)
             }
         }

@@ -1,25 +1,20 @@
 //
 //  AppDelegate.swift
-//  Calculator
+//  TravelApp
 //
-//  Created by Neestackich on 26.07.2020.
+//  Created by Neestackich on 04.08.2020.
 //  Copyright © 2020 Neestackich. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-//        window = UIWindow()
-//        window?.makeKeyAndVisible()
-//        window?.rootViewController = Bookkeepers()
-        
+        // Override point for customization after application launch.
         return true
     }
 
