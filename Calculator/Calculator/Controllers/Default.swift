@@ -9,7 +9,7 @@
 import UIKit
 
 class Default: UIViewController {
-
+    
     
     // MARK: properties
         
@@ -111,102 +111,23 @@ class Default: UIViewController {
         }
     }
     
-    @IBAction func remainderClick(_ sender: Any) {
-        if expressionCheck() {
-            doesBracketsExist()
-            expression.text! += " % "
+    @IBAction func numberButtonClick(_ sender: UIButton) {
+        if let buttonText = sender.titleLabel?.text {
+            isZeroFirstChar()
+            isBracketLastChar()
+            expression.text! += buttonText
+            bracketExists = bracketsQuantity != 0 ? true : false
         }
-    }
-    
-    @IBAction func divisionClick(_ sender: Any) {
-        if expressionCheck() {
-            doesBracketsExist()
-            expression.text! += " / "
-        }
-    }
-    
-    @IBAction func multiplyClick(_ sender: Any) {
-        if expressionCheck() {
-            doesBracketsExist()
-            expression.text! += " x "
-        }
-    }
-    
-    @IBAction func minusClick(_ sender: Any) {
-        if expressionCheck() {
-            doesBracketsExist()
-            expression.text! += " - "
-        }
-    }
-    
-    @IBAction func plusClick(_ sender: Any) {
-        if expressionCheck() {
-            doesBracketsExist()
-            expression.text! += " + "
-        }
-    }
-    
-    @IBAction func sevenClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "7"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
 
-    @IBAction func eightClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "8"
-        bracketExists = bracketsQuantity != 0 ? true : false
     }
     
-    @IBAction func nineClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "9"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
-    
-    @IBAction func fourClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "4"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
-    
-    @IBAction func fiveClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "5"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
-    
-    @IBAction func sixClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "6"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
-    
-    @IBAction func oneClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "1"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
-    
-    @IBAction func twoClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "2"
-        bracketExists = bracketsQuantity != 0 ? true : false
-    }
-    
-    @IBAction func threeClick(_ sender: Any) {
-        isZeroFirstChar()
-        isBracketLastChar()
-        expression.text! += "3"
-        bracketExists = bracketsQuantity != 0 ? true : false
+    @IBAction func operationButtonClick(_ sender: UIButton) {
+        if expressionCheck() {
+            if let buttonText = sender.titleLabel?.text {
+                doesBracketsExist()
+                expression.text! += buttonText
+            }
+        }
     }
     
     @IBAction func signClick(_ sender: Any) {
