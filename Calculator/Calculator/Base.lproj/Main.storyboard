@@ -77,7 +77,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="7"/>
                                         <connections>
-                                            <action selector="sevenClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aRB-7X-UQi"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MAy-Uj-REd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGT-yB-kqd">
@@ -87,7 +87,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="8"/>
                                         <connections>
-                                            <action selector="eightClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5od-8H-1yA"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bqe-OH-dVn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzE-MA-Nnf">
@@ -97,7 +97,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="9"/>
                                         <connections>
-                                            <action selector="nineClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="94z-0g-TMZ"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wGM-qq-jIX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zeg-n9-m0A">
@@ -107,7 +107,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="4"/>
                                         <connections>
-                                            <action selector="fourClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CCh-Qu-5fp"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xGR-TU-Kxg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OM-L0-Lf8">
@@ -115,9 +115,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="x"/>
+                                        <state key="normal" title=" x "/>
                                         <connections>
-                                            <action selector="multiplyClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0f9-AY-gvK"/>
+                                            <action selector="operationButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mht-d1-X5f"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4If-mP-Ext">
@@ -127,7 +127,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="5"/>
                                         <connections>
-                                            <action selector="fiveClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sEN-2Q-N4K"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="seU-vD-DS7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc6-V3-2h3">
@@ -137,7 +137,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="6"/>
                                         <connections>
-                                            <action selector="sixClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nrc-5a-6GB"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WdI-dN-SbO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTy-Di-HZK">
@@ -145,9 +145,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="-"/>
+                                        <state key="normal" title=" - "/>
                                         <connections>
-                                            <action selector="minusClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ab2-a2-8Qr"/>
+                                            <action selector="operationButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Rr-Jl-1rI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-fz-LP8">
@@ -167,11 +167,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="%">
+                                        <state key="normal" title=" % ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="remainderClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B0V-nC-lCF"/>
+                                            <action selector="operationButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r3x-kl-aBj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qb6-Eb-qUe">
@@ -179,11 +179,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="/">
+                                        <state key="normal" title=" / ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="divisionClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wE2-T2-jcX"/>
+                                            <action selector="operationButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OS5-W8-aw9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVz-bF-sLo">
@@ -193,7 +193,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="1"/>
                                         <connections>
-                                            <action selector="oneClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uXV-HE-CjQ"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awQ-ES-UCg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQu-ck-IaE">
@@ -203,7 +203,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="3"/>
                                         <connections>
-                                            <action selector="threeClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wtj-OQ-ZXI"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y1a-cs-Vf0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHC-6b-GSO">
@@ -211,9 +211,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14793363209999999" green="0.14793363209999999" blue="0.14793363209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                        <state key="normal" title="+"/>
+                                        <state key="normal" title=" + "/>
                                         <connections>
-                                            <action selector="plusClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MmW-fq-Iym"/>
+                                            <action selector="operationButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bBi-jX-sag"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdA-3Q-Vxz">
@@ -263,7 +263,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                         <state key="normal" title="2"/>
                                         <connections>
-                                            <action selector="twoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="txF-nQ-2KA"/>
+                                            <action selector="numberButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Vz-mF-BJk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq4-3r-FXE">

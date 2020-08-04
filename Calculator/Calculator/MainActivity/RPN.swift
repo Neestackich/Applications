@@ -7,6 +7,7 @@ class RPN {
     // MARK: properties
     
     var stack: Stack = Stack()
+    
     var parsedExpression: String = ""
 
     
@@ -140,15 +141,11 @@ class RPN {
             }
         }
         
-                if parsedExpression.last != " " {
-                    parsedExpression += " "
-                }
+        if parsedExpression.last != " " {
+            parsedExpression += " "
+        }
         
         stack.pop(by: .plusMinus, &parsedExpression)
-        
-//        if parsedExpression.last != " " {
-//            parsedExpression += " "
-//        }
         
         if let value = stack.popLastNumber()?.value {
             parsedExpression += value
