@@ -1,5 +1,5 @@
 //
-//  LaunchScreenController.swift
+//  LaunchScreen.swift
 //  TravelApp
 //
 //  Created by Neestackich on 06.08.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaunchScreenController: UIViewController {
+class LaunchScreen: UIViewController {
     
     
     // MARK: Properties
