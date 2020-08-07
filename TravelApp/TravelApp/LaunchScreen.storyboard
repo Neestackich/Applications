@@ -15,22 +15,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Welcome. This is travel app." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1m-Sr-05H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome. This is travel app." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1m-Sr-05H">
                                 <rect key="frame" x="24" y="227" width="366" height="87.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="32"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="M.png" translatesAutoresizingMaskIntoConstraints="NO" id="uu6-Mc-Usk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M.png" translatesAutoresizingMaskIntoConstraints="NO" id="uu6-Mc-Usk">
                                 <rect key="frame" x="24" y="147" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0AI-pH-Vsr"/>
+                                    <constraint firstAttribute="width" constant="60" id="Dee-Do-gMU"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="A1m-Sr-05H" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="24" id="PWC-WL-0jp"/>
-                            <constraint firstItem="A1m-Sr-05H" firstAttribute="top" secondItem="uu6-Mc-Usk" secondAttribute="bottom" constant="20" id="QlG-Ve-2j7"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="A1m-Sr-05H" secondAttribute="trailing" constant="24" id="eqJ-cE-25W"/>
+                            <constraint firstItem="A1m-Sr-05H" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="24" id="7KW-t2-giP"/>
+                            <constraint firstItem="uu6-Mc-Usk" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="103" id="8WI-fN-eyL"/>
+                            <constraint firstItem="A1m-Sr-05H" firstAttribute="top" secondItem="uu6-Mc-Usk" secondAttribute="bottom" constant="20" id="Gom-qY-Ygh"/>
+                            <constraint firstItem="uu6-Mc-Usk" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="24" id="hD3-3D-kM5"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="A1m-Sr-05H" secondAttribute="trailing" constant="24" id="z9o-lC-X4H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
