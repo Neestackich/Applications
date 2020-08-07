@@ -124,9 +124,6 @@
                                 <rect key="frame" x="184" y="565" width="46" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="9oh-3Z-our" kind="show" id="3fr-Z7-Uta"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,7 +140,7 @@
             <objects>
                 <viewController id="9oh-3Z-our" customClass="TravelListViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eDz-FF-NHF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="myH-41-h19"/>
@@ -198,18 +195,19 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="example@mail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-dK-ZoG">
                                                 <rect key="frame" x="0.0" y="21.5" width="169.5" height="25.5"/>
+                                                <color key="textColor" red="0.19525178109999999" green="0.19525178109999999" blue="0.19525178109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8I-DW-sIl">
                                                 <rect key="frame" x="0.0" y="53" width="366" height="1"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="04D-gi-6vb"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="M8I-DW-sIl" secondAttribute="bottom" id="9Cp-qD-nBm"/>
                                             <constraint firstItem="GQZ-dK-ZoG" firstAttribute="leading" secondItem="33s-pg-2rm" secondAttribute="leading" id="AAH-DB-2vi"/>
@@ -232,12 +230,13 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="********" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1A-7l-KRd">
                                                 <rect key="frame" x="0.0" y="21.5" width="67" height="25.5"/>
+                                                <color key="textColor" red="0.19525178109999999" green="0.19525178109999999" blue="0.19525178109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dU5-we-f8D">
                                                 <rect key="frame" x="0.0" y="53" width="366" height="1"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="7cI-4t-O7O"/>
                                                 </constraints>
@@ -248,7 +247,7 @@
                                                 <state key="normal" image="hide.png"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="dU5-we-f8D" firstAttribute="leading" secondItem="Ra8-np-xU7" secondAttribute="leading" id="7Yq-zD-8mw"/>
                                             <constraint firstItem="ZJ8-ag-7qx" firstAttribute="centerY" secondItem="Ra8-np-xU7" secondAttribute="centerY" id="82S-Vg-UkU"/>
@@ -266,7 +265,7 @@
                                         <rect key="frame" x="0.0" y="128" width="366" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="gLn-sf-eoS"/>
+                                            <constraint firstAttribute="height" constant="50" id="VTW-P8-gYu"/>
                                         </constraints>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,16 +273,16 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iNL-tL-ygc" firstAttribute="leading" secondItem="okb-CK-0Pc" secondAttribute="leading" id="5EO-yC-8VB"/>
                                     <constraint firstItem="33s-pg-2rm" firstAttribute="top" secondItem="okb-CK-0Pc" secondAttribute="top" id="9DE-Q2-mnU"/>
                                     <constraint firstAttribute="trailing" secondItem="33s-pg-2rm" secondAttribute="trailing" id="Eeu-5U-IT9"/>
                                     <constraint firstItem="33s-pg-2rm" firstAttribute="leading" secondItem="okb-CK-0Pc" secondAttribute="leading" id="FZZ-ed-8Do"/>
-                                    <constraint firstItem="iNL-tL-ygc" firstAttribute="top" secondItem="Ra8-np-xU7" secondAttribute="bottom" id="ca1-Hq-aJT"/>
-                                    <constraint firstAttribute="trailing" secondItem="iNL-tL-ygc" secondAttribute="trailing" id="uf5-IB-xb9"/>
+                                    <constraint firstItem="iNL-tL-ygc" firstAttribute="leading" secondItem="okb-CK-0Pc" secondAttribute="leading" id="KZB-VS-UrJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="iNL-tL-ygc" secondAttribute="trailing" id="gIo-LI-b8z"/>
+                                    <constraint firstItem="iNL-tL-ygc" firstAttribute="top" secondItem="Ra8-np-xU7" secondAttribute="bottom" constant="10" id="vmB-Mf-FnX"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-iT-L9b">
-                                <rect key="frame" x="24" y="534" width="174" height="36"/>
+                                <rect key="frame" x="24" y="532.5" width="174" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleColor" red="0.19525178109999999" green="0.19525178109999999" blue="0.19525178109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -294,11 +293,11 @@
                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wci-jS-DCj" firstAttribute="trailing" secondItem="okb-CK-0Pc" secondAttribute="trailing" constant="24" id="2vv-ak-HNa"/>
+                            <constraint firstItem="WdI-iT-L9b" firstAttribute="top" secondItem="okb-CK-0Pc" secondAttribute="bottom" constant="80" id="Dlj-n9-EhG"/>
+                            <constraint firstItem="WdI-iT-L9b" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="I1h-gR-3eA"/>
                             <constraint firstItem="okb-CK-0Pc" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="JKW-Zx-PYg"/>
                             <constraint firstItem="Rup-tH-x6c" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="dcG-e4-4pj"/>
                             <constraint firstItem="Rup-tH-x6c" firstAttribute="top" secondItem="wci-jS-DCj" secondAttribute="top" constant="90" id="f5Q-Cr-3CK"/>
-                            <constraint firstItem="WdI-iT-L9b" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="rVr-48-wzq"/>
-                            <constraint firstItem="wci-jS-DCj" firstAttribute="bottom" secondItem="WdI-iT-L9b" secondAttribute="bottom" constant="292" id="sze-6T-gc3"/>
                             <constraint firstItem="okb-CK-0Pc" firstAttribute="top" secondItem="Rup-tH-x6c" secondAttribute="bottom" constant="50" id="tN1-jH-5PH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wci-jS-DCj"/>
