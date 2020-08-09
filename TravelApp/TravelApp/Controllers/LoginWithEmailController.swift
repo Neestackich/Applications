@@ -18,18 +18,16 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailUnderline: UIView!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordUnderline: UIView!
+    @IBOutlet weak var passwordTextField: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
-    
 
     
     // MARK: methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let navigationItemHeight = self.navigationController?.navigationBar.frame.height ?? 0.0
             
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		CE01035424D9237E0041CA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01035324D9237E0041CA0A /* AppDelegate.swift */; };
 		CE01035624D9237E0041CA0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01035524D9237E0041CA0A /* SceneDelegate.swift */; };
 		CE01035D24D923800041CA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE01035C24D923800041CA0A /* Assets.xcassets */; };
+		CE52832324DFF5F600EEE977 /* CreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52832224DFF5F600EEE977 /* CreateAccountController.swift */; };
 		CE52FA5F24DC1C80004155B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52FA5E24DC1C80004155B7 /* LaunchScreen.storyboard */; };
 		CE616EDF24DBB9E3008A8436 /* M.png in Resources */ = {isa = PBXBuildFile; fileRef = CE616EDE24DBB9E3008A8436 /* M.png */; };
 		CE616EE124DBBFE2008A8436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE616EE024DBBFE2008A8436 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		CE01035524D9237E0041CA0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE01035C24D923800041CA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE01036124D923800041CA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE52832224DFF5F600EEE977 /* CreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountController.swift; sourceTree = "<group>"; };
 		CE52FA5E24DC1C80004155B7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE616EDE24DBB9E3008A8436 /* M.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = M.png; path = TravelApp/O/M.png; sourceTree = SOURCE_ROOT; };
 		CE616EE024DBBFE2008A8436 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -58,7 +60,6 @@
 				AE266EC4B6D6F23CB08F6E33 /* Pods-TravelApp.debug.xcconfig */,
 				946ACA374C288E319D624C86 /* Pods-TravelApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -111,6 +112,7 @@
 				CE616EE724DBED75008A8436 /* LaunchScreen.swift */,
 				CEBDD50324DD473F000DF992 /* TravelListController.swift */,
 				CEBDD50724DD941B000DF992 /* LoginWithEmailController.swift */,
+				CE52832224DFF5F600EEE977 /* CreateAccountController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +244,7 @@
 			files = (
 				CE01035424D9237E0041CA0A /* AppDelegate.swift in Sources */,
 				CEBDD50424DD473F000DF992 /* TravelListController.swift in Sources */,
+				CE52832324DFF5F600EEE977 /* CreateAccountController.swift in Sources */,
 				CE616EE524DBEA82008A8436 /* WelcomePageControll.swift in Sources */,
 				CE616EE824DBED75008A8436 /* LaunchScreen.swift in Sources */,
 				CEBDD50824DD941B000DF992 /* LoginWithEmailController.swift in Sources */,
