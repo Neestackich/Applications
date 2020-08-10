@@ -13,8 +13,6 @@ class WelcomePageController: UIViewController {
     
     // MARK: properties
     
-    @IBOutlet weak var welcomeLabel: UILabel!
-    
     @IBOutlet weak var emailLogin: UIButton!
     @IBOutlet weak var createAccount: UIButton!
     
@@ -24,7 +22,6 @@ class WelcomePageController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        welcomeLabel.text! = "Welcome.\nThis is travel app."
         createAccount.layer.cornerRadius = 5
         emailLogin.layer.cornerRadius = 5
     }

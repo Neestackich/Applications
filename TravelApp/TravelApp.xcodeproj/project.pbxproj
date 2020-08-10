@@ -11,12 +11,13 @@
 		CE01035424D9237E0041CA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01035324D9237E0041CA0A /* AppDelegate.swift */; };
 		CE01035624D9237E0041CA0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01035524D9237E0041CA0A /* SceneDelegate.swift */; };
 		CE01035D24D923800041CA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE01035C24D923800041CA0A /* Assets.xcassets */; };
+		CE4FBE3724E077E2009BA70B /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FBE3624E077E2009BA70B /* ForgotPasswordController.swift */; };
 		CE52832324DFF5F600EEE977 /* CreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52832224DFF5F600EEE977 /* CreateAccountController.swift */; };
 		CE52FA5F24DC1C80004155B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52FA5E24DC1C80004155B7 /* LaunchScreen.storyboard */; };
+		CE5317D324E095BC00388279 /* AddStopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5317D224E095BC00388279 /* AddStopController.swift */; };
 		CE616EDF24DBB9E3008A8436 /* M.png in Resources */ = {isa = PBXBuildFile; fileRef = CE616EDE24DBB9E3008A8436 /* M.png */; };
 		CE616EE124DBBFE2008A8436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE616EE024DBBFE2008A8436 /* Main.storyboard */; };
 		CE616EE524DBEA82008A8436 /* WelcomePageControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE616EE424DBEA82008A8436 /* WelcomePageControll.swift */; };
-		CE616EE824DBED75008A8436 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE616EE724DBED75008A8436 /* LaunchScreen.swift */; };
 		CEBDD50424DD473F000DF992 /* TravelListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD50324DD473F000DF992 /* TravelListController.swift */; };
 		CEBDD50624DD9366000DF992 /* hide.png in Resources */ = {isa = PBXBuildFile; fileRef = CEBDD50524DD9366000DF992 /* hide.png */; };
 		CEBDD50824DD941B000DF992 /* LoginWithEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD50724DD941B000DF992 /* LoginWithEmailController.swift */; };
@@ -31,12 +32,13 @@
 		CE01035524D9237E0041CA0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE01035C24D923800041CA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE01036124D923800041CA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE4FBE3624E077E2009BA70B /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		CE52832224DFF5F600EEE977 /* CreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountController.swift; sourceTree = "<group>"; };
 		CE52FA5E24DC1C80004155B7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE5317D224E095BC00388279 /* AddStopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStopController.swift; sourceTree = "<group>"; };
 		CE616EDE24DBB9E3008A8436 /* M.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = M.png; path = TravelApp/O/M.png; sourceTree = SOURCE_ROOT; };
 		CE616EE024DBBFE2008A8436 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE616EE424DBEA82008A8436 /* WelcomePageControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageControll.swift; sourceTree = "<group>"; };
-		CE616EE724DBED75008A8436 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		CEBDD50324DD473F000DF992 /* TravelListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelListController.swift; sourceTree = "<group>"; };
 		CEBDD50524DD9366000DF992 /* hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hide.png; path = TravelApp/O/hide.png; sourceTree = SOURCE_ROOT; };
 		CEBDD50724DD941B000DF992 /* LoginWithEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithEmailController.swift; sourceTree = "<group>"; };
@@ -109,10 +111,11 @@
 			isa = PBXGroup;
 			children = (
 				CE616EE424DBEA82008A8436 /* WelcomePageControll.swift */,
-				CE616EE724DBED75008A8436 /* LaunchScreen.swift */,
 				CEBDD50324DD473F000DF992 /* TravelListController.swift */,
 				CEBDD50724DD941B000DF992 /* LoginWithEmailController.swift */,
 				CE52832224DFF5F600EEE977 /* CreateAccountController.swift */,
+				CE4FBE3624E077E2009BA70B /* ForgotPasswordController.swift */,
+				CE5317D224E095BC00388279 /* AddStopController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,8 +248,9 @@
 				CE01035424D9237E0041CA0A /* AppDelegate.swift in Sources */,
 				CEBDD50424DD473F000DF992 /* TravelListController.swift in Sources */,
 				CE52832324DFF5F600EEE977 /* CreateAccountController.swift in Sources */,
+				CE4FBE3724E077E2009BA70B /* ForgotPasswordController.swift in Sources */,
 				CE616EE524DBEA82008A8436 /* WelcomePageControll.swift in Sources */,
-				CE616EE824DBED75008A8436 /* LaunchScreen.swift in Sources */,
+				CE5317D324E095BC00388279 /* AddStopController.swift in Sources */,
 				CEBDD50824DD941B000DF992 /* LoginWithEmailController.swift in Sources */,
 				CE01035624D9237E0041CA0A /* SceneDelegate.swift in Sources */,
 			);
