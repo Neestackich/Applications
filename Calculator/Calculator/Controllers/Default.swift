@@ -26,14 +26,97 @@ class Default: UIViewController {
     var bracketExists: Bool = false
     
     @IBOutlet weak var expression: UILabel!
+    @IBOutlet weak var sixButton: UIButton!
+    @IBOutlet weak var oneButton: UIButton!
+    @IBOutlet weak var twoButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var signButton: UIButton!
+    @IBOutlet weak var zeroButton: UIButton!
+    @IBOutlet weak var fourButton: UIButton!
+    @IBOutlet weak var fiveButton: UIButton!
+    @IBOutlet weak var nineButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var sevenButton: UIButton!
+    @IBOutlet weak var eightButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var commaButton: UIButton!
+    @IBOutlet weak var countButton: UIButton!
+    @IBOutlet weak var threeButton: UIButton!
+    @IBOutlet weak var divisionButton: UIButton!
+    @IBOutlet weak var multiplyButton: UIButton!
+    @IBOutlet weak var bracketsButton: UIButton!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leftAfterDivisionButton: UIButton!
     
     
     // MARK: viewDialog and buttons' handlers
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sixButton.layer.cornerRadius = 15
+        oneButton.layer.cornerRadius = 15
+        twoButton.layer.cornerRadius = 15
+        plusButton.layer.cornerRadius = 15
+        signButton.layer.cornerRadius = 15
+        zeroButton.layer.cornerRadius = 15
+        fourButton.layer.cornerRadius = 15
+        fiveButton.layer.cornerRadius = 15
+        nineButton.layer.cornerRadius = 15
+        clearButton.layer.cornerRadius = 15
+        sevenButton.layer.cornerRadius = 15
+        eightButton.layer.cornerRadius = 15
+        commaButton.layer.cornerRadius = 15
+        countButton.layer.cornerRadius = 15
+        threeButton.layer.cornerRadius = 15
+        minusButton.layer.cornerRadius = 15
+        divisionButton.layer.cornerRadius = 15
+        multiplyButton.layer.cornerRadius = 15
+        bracketsButton.layer.cornerRadius = 15
+        leftAfterDivisionButton.layer.cornerRadius = 15
+        
+        sixButton.layer.borderWidth = 1
+        oneButton.layer.borderWidth = 1
+        twoButton.layer.borderWidth = 1
+        plusButton.layer.borderWidth = 1
+        signButton.layer.borderWidth = 1
+        zeroButton.layer.borderWidth = 1
+        fourButton.layer.borderWidth = 1
+        fiveButton.layer.borderWidth = 1
+        nineButton.layer.borderWidth = 1
+        clearButton.layer.borderWidth = 1
+        sevenButton.layer.borderWidth = 1
+        eightButton.layer.borderWidth = 1
+        commaButton.layer.borderWidth = 1
+        countButton.layer.borderWidth = 1
+        threeButton.layer.borderWidth = 1
+        minusButton.layer.borderWidth = 1
+        divisionButton.layer.borderWidth = 1
+        multiplyButton.layer.borderWidth = 1
+        bracketsButton.layer.borderWidth = 1
+        leftAfterDivisionButton.layer.borderWidth = 1
+        
+        sixButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        oneButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        twoButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        plusButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        signButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        zeroButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        fourButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        fiveButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        nineButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        clearButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        sevenButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        eightButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        commaButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        countButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        threeButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        minusButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        divisionButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        multiplyButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        bracketsButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        leftAfterDivisionButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
     }
     
     @IBAction func hamburgerClick(_ sender: Any) {
@@ -125,7 +208,7 @@ class Default: UIViewController {
         if expressionCheck() {
             if let buttonText = sender.titleLabel?.text {
                 doesBracketsExist()
-                expression.text! += buttonText
+                expression.text! += " " + buttonText + " "
             }
         }
     }

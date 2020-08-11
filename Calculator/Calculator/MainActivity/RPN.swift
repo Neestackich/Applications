@@ -31,10 +31,11 @@ class RPN {
         var head: Symbol = Symbol()
 
         mutating func push(_ symbol: String) {
+            let dummy: Symbol = Symbol()
+            
             isEmpty = false
             head.value = symbol
             priorityDefind(symbol)
-            let dummy: Symbol = Symbol()
             dummy.next = head
             head = dummy
         }
@@ -57,6 +58,7 @@ class RPN {
         mutating func popLastNumber() -> Symbol? {
             if !isEmpty {
                 let dummy: Symbol = head.next!
+                
                 head.next = dummy.next
                 isEmpty = head.next == nil ? true : false
                 
