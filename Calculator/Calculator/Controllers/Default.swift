@@ -47,6 +47,7 @@ class Default: UIViewController {
     @IBOutlet weak var bracketsButton: UIButton!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
+     @IBOutlet weak var expressionOutputArea: UIView!
     @IBOutlet weak var leftAfterDivisionButton: UIButton!
     
     
@@ -74,6 +75,7 @@ class Default: UIViewController {
         divisionButton.layer.cornerRadius = 15
         multiplyButton.layer.cornerRadius = 15
         bracketsButton.layer.cornerRadius = 15
+        expressionOutputArea.layer.cornerRadius = 15
         leftAfterDivisionButton.layer.cornerRadius = 15
         
         sixButton.layer.borderWidth = 1
@@ -95,6 +97,7 @@ class Default: UIViewController {
         divisionButton.layer.borderWidth = 1
         multiplyButton.layer.borderWidth = 1
         bracketsButton.layer.borderWidth = 1
+        expressionOutputArea.layer.borderWidth = 1
         leftAfterDivisionButton.layer.borderWidth = 1
         
         sixButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
@@ -116,6 +119,7 @@ class Default: UIViewController {
         divisionButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
         multiplyButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
         bracketsButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
+        expressionOutputArea.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.3)
         leftAfterDivisionButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.2)
     }
     
@@ -208,7 +212,7 @@ class Default: UIViewController {
         if expressionCheck() {
             if let buttonText = sender.titleLabel?.text {
                 doesBracketsExist()
-                expression.text! += " " + buttonText + " "
+                expression.text! += buttonText
             }
         }
     }

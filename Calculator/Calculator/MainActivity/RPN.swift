@@ -7,7 +7,6 @@ class RPN {
     // MARK: properties
     
     var stack: Stack = Stack()
-    
     var parsedExpression: String = ""
 
     
@@ -31,11 +30,10 @@ class RPN {
         var head: Symbol = Symbol()
 
         mutating func push(_ symbol: String) {
-            let dummy: Symbol = Symbol()
-            
             isEmpty = false
             head.value = symbol
             priorityDefind(symbol)
+            let dummy: Symbol = Symbol()
             dummy.next = head
             head = dummy
         }
@@ -58,7 +56,6 @@ class RPN {
         mutating func popLastNumber() -> Symbol? {
             if !isEmpty {
                 let dummy: Symbol = head.next!
-                
                 head.next = dummy.next
                 isEmpty = head.next == nil ? true : false
                 
@@ -158,6 +155,17 @@ class RPN {
         var number: String = ""
         var sign: String = ""
         
+        func minus() throws -> Void {
+            if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! - Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
+
+            sign.removeAll()
+        }
+        
         for character in parsedExpression {
             switch character {
             case "+":
@@ -168,7 +176,11 @@ class RPN {
                     throw CalculatorError.unexpectedExpression
                 }
             case "-":
-                sign += "-"
+                if parsedExpression.last != character {
+                    sign = String(character)
+                } else {
+                    try minus()
+                }
             case "x":
                 if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
                     let summ = Double(secondNum)! * Double(firstNum)!
@@ -191,14 +203,7 @@ class RPN {
             case " ":
                 if number.isEmpty {
                     if sign.count != 0 {
-                        if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
-                                let summ = Double(secondNum)! - Double(firstNum)!
-                                stack.push(String(summ))
-                            } else {
-                                throw CalculatorError.unexpectedExpression
-                            }
-
-                        sign.removeAll()
+                       try minus()
                     } else {
                         continue
                     }

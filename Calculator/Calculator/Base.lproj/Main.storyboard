@@ -26,7 +26,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="3oA-cU-XJs" secondAttribute="height" multiplier="399:250" id="wnw-3h-6dy"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="46"/>
+                                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="70"/>
                                                 <color key="textColor" red="0.24936959959999999" green="0.62263196239999996" blue="0.23208637800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -40,14 +40,14 @@
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="arrow.left" catalog="system">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="backSpaceClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0u-iz-1K8"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.099073024610000004" green="0.094280117509999997" blue="0.094842893959999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.11520714312791824" green="0.10983609408140182" blue="0.11084824055433273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="3oA-cU-XJs" firstAttribute="top" secondItem="7HW-dL-KDt" secondAttribute="top" id="6SC-da-ax2"/>
                                             <constraint firstAttribute="bottom" secondItem="Tc8-xX-VPW" secondAttribute="bottom" constant="8" id="7Ns-NT-qdb"/>
@@ -90,7 +90,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="ggd-bh-wu2"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                                        <state key="normal" title="%">
+                                                        <state key="normal" title=" % ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -105,7 +105,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="RNl-Rk-50o"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                                        <state key="normal" title="/">
+                                                        <state key="normal" title=" / ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -165,7 +165,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="GyH-gN-VI7"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                                        <state key="normal" title="X">
+                                                        <state key="normal" title=" X ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -225,7 +225,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="PcC-SG-OFm"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                                        <state key="normal" title="-">
+                                                        <state key="normal" title=" - ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -285,7 +285,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="Evy-4J-cRE"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                                        <state key="normal" title="+">
+                                                        <state key="normal" title=" + ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -638,7 +638,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" red="0.248603465" green="0.248603465" blue="0.248603465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Jl-ly-Sc3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LH1-lx-eMl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3Jl-ly-Sc3" secondAttribute="bottom" id="a5h-sg-JUh"/>
@@ -662,6 +662,7 @@
                         <outlet property="divisionButton" destination="AbM-49-F6m" id="Opo-sJ-onT"/>
                         <outlet property="eightButton" destination="l0d-uA-wVo" id="2a2-RA-0Yp"/>
                         <outlet property="expression" destination="3oA-cU-XJs" id="RGj-Zn-k9w"/>
+                        <outlet property="expressionOutputArea" destination="7HW-dL-KDt" id="rh1-Ju-ZlV"/>
                         <outlet property="fiveButton" destination="dqk-mi-kHH" id="MbE-lT-DoL"/>
                         <outlet property="fourButton" destination="TQ7-3J-o26" id="0AL-Ne-JhY"/>
                         <outlet property="leftAfterDivisionButton" destination="xlg-uC-ixw" id="Lxq-Vu-oi9"/>
