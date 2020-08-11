@@ -7,7 +7,6 @@ class RPN {
     // MARK: properties
     
     var stack: Stack = Stack()
-    
     var parsedExpression: String = ""
 
     
@@ -156,6 +155,17 @@ class RPN {
         var number: String = ""
         var sign: String = ""
         
+        func minus() throws -> Void {
+            if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
+                    let summ = Double(secondNum)! - Double(firstNum)!
+                    stack.push(String(summ))
+                } else {
+                    throw CalculatorError.unexpectedExpression
+                }
+
+            sign.removeAll()
+        }
+        
         for character in parsedExpression {
             switch character {
             case "+":
@@ -166,7 +176,11 @@ class RPN {
                     throw CalculatorError.unexpectedExpression
                 }
             case "-":
-                sign += "-"
+                if parsedExpression.last != character {
+                    sign = String(character)
+                } else {
+                    try minus()
+                }
             case "x":
                 if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
                     let summ = Double(secondNum)! * Double(firstNum)!
@@ -177,7 +191,6 @@ class RPN {
             case "/":
                 if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
                     if firstNum != "0" {
-                        print(secondNum, firstNum)
                         let summ = Double(secondNum)! / Double(firstNum)!
                         stack.push(String(summ))
                     } else {
@@ -189,14 +202,7 @@ class RPN {
             case " ":
                 if number.isEmpty {
                     if sign.count != 0 {
-                        if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
-                                let summ = Double(secondNum)! - Double(firstNum)!
-                                stack.push(String(summ))
-                            } else {
-                                throw CalculatorError.unexpectedExpression
-                            }
-
-                        sign.removeAll()
+                       try minus()
                     } else {
                         continue
                     }
