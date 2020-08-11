@@ -22,10 +22,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3oA-cU-XJs">
-                                                <rect key="frame" x="0.0" y="0.0" width="399" height="250"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="3oA-cU-XJs" secondAttribute="height" multiplier="399:250" id="wnw-3h-6dy"/>
-                                                </constraints>
+                                                <rect key="frame" x="6" y="6" width="393" height="244"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="70"/>
                                                 <color key="textColor" red="0.24936959959999999" green="0.62263196239999996" blue="0.23208637800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -49,14 +46,13 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.11520714312791824" green="0.10983609408140182" blue="0.11084824055433273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="3oA-cU-XJs" firstAttribute="top" secondItem="7HW-dL-KDt" secondAttribute="top" id="6SC-da-ax2"/>
                                             <constraint firstAttribute="bottom" secondItem="Tc8-xX-VPW" secondAttribute="bottom" constant="8" id="7Ns-NT-qdb"/>
+                                            <constraint firstAttribute="bottom" secondItem="3oA-cU-XJs" secondAttribute="bottom" constant="6" id="ChO-g1-7kH"/>
                                             <constraint firstAttribute="trailing" secondItem="Tc8-xX-VPW" secondAttribute="trailing" constant="15" id="NJY-R5-5Sa"/>
-                                            <constraint firstItem="3oA-cU-XJs" firstAttribute="leading" secondItem="7HW-dL-KDt" secondAttribute="leading" id="Snc-qh-Ufn"/>
                                             <constraint firstAttribute="height" constant="256" id="VHV-Df-n4R"/>
-                                            <constraint firstAttribute="bottom" secondItem="3oA-cU-XJs" secondAttribute="bottom" constant="6" id="mRI-TK-o8d"/>
-                                            <constraint firstAttribute="trailing" secondItem="3oA-cU-XJs" secondAttribute="trailing" constant="15" id="o62-1q-fg8"/>
-                                            <constraint firstAttribute="width" secondItem="7HW-dL-KDt" secondAttribute="height" multiplier="207:128" id="oaf-mW-qU1"/>
+                                            <constraint firstItem="3oA-cU-XJs" firstAttribute="top" secondItem="7HW-dL-KDt" secondAttribute="top" constant="6" id="bX7-AP-Wuu"/>
+                                            <constraint firstItem="3oA-cU-XJs" firstAttribute="leading" secondItem="7HW-dL-KDt" secondAttribute="leading" constant="6" id="dux-6e-nCH"/>
+                                            <constraint firstAttribute="trailing" secondItem="3oA-cU-XJs" secondAttribute="trailing" constant="15" id="tzV-y3-NZI"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DAo-rT-tXW">
@@ -165,7 +161,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="GyH-gN-VI7"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                                        <state key="normal" title=" X ">
+                                                        <state key="normal" title=" x ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>

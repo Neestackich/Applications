@@ -191,7 +191,6 @@ class RPN {
             case "/":
                 if let firstNum = stack.popLastNumber()?.value, let secondNum = stack.popLastNumber()?.value {
                     if firstNum != "0" {
-                        print(secondNum, firstNum)
                         let summ = Double(secondNum)! / Double(firstNum)!
                         stack.push(String(summ))
                     } else {
