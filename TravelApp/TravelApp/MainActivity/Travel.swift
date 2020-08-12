@@ -6,4 +6,9 @@
 //  Copyright © 2020 Neestackich. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class Travel {
+    @objc dynamic var country: String = ""
+    @objc dynamic var stops: [Stop] = []
+}

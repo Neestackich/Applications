@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class Stop {
+    @objc dynamic var stopCityName: String = ""
+    @objc dynamic var description: String = ""
+    @objc dynamic var spentMoneyValue: String = ""
+    @objc dynamic var raiting: Int = 0
+}
