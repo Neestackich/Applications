@@ -41,17 +41,23 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         passwordTextField.isSecureTextEntry = true
     }
     
+    
+    // MARK: -event handlers
+    
     @IBAction func showPasswordClick(_ sender: Any) {
         if passwordTextField.isSecureTextEntry {
             passwordTextField.isSecureTextEntry = false
-            showPasswordBtn.tintColor = UIColor.systemBlue
-            showPasswordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
+            slowedColorChange(objects: showPasswordBtn, color: UIColor.systemBlue, duration: 0.5)
+            slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye"), duration: 0.5)
         } else {
             passwordTextField.isSecureTextEntry = true
-            showPasswordBtn.tintColor = UIColor.systemGray4
-            showPasswordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            slowedColorChange(objects: showPasswordBtn, color: UIColor.systemGray, duration: 0.5)
+            slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye.slash"), duration: 0.5)
         }
     }
+    
+    
+    // MARK: -text fields editing functions
     
     @objc func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -69,5 +75,28 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     @objc func hideKeyboardByTap() {
         view.endEditing(true)
+    }
+    
+    
+    // MARK: -color changing generic functions
+    
+    func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                if object is UIButton {
+                    object.tintColor = color
+                } else {
+                    object.backgroundColor = color
+                }
+            }
+        })
+    }
+    
+    func slowedImageChange<T: UIButton>(objects: T..., image: UIImage?, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                object.setImage(image, for: .normal)
+            }
+        })
     }
 }
