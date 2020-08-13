@@ -13,13 +13,15 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     // MARK: properties
     
+
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailUnderline: UIView!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordUnderline: UIView!
-    @IBOutlet weak var passwordTextField: UIView!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var showPasswordBtn: UIButton!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
 
@@ -35,8 +37,27 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboardByTap)))
         
         loginButton.layer.cornerRadius = 5
-        emailTextField.keyboardType = .default
+        emailTextField.keyboardType = .emailAddress
+        passwordTextField.isSecureTextEntry = true
     }
+    
+    
+    // MARK: -event handlers
+    
+    @IBAction func showPasswordClick(_ sender: Any) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            slowedColorChange(objects: showPasswordBtn, color: UIColor.systemBlue, duration: 0.5)
+            slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye"), duration: 0.5)
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            slowedColorChange(objects: showPasswordBtn, color: UIColor.systemGray, duration: 0.5)
+            slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye.slash"), duration: 0.5)
+        }
+    }
+    
+    
+    // MARK: -text fields editing functions
     
     @objc func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -54,5 +75,28 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     @objc func hideKeyboardByTap() {
         view.endEditing(true)
+    }
+    
+    
+    // MARK: -color changing generic functions
+    
+    func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                if object is UIButton {
+                    object.tintColor = color
+                } else {
+                    object.backgroundColor = color
+                }
+            }
+        })
+    }
+    
+    func slowedImageChange<T: UIButton>(objects: T..., image: UIImage?, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                object.setImage(image, for: .normal)
+            }
+        })
     }
 }

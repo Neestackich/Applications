@@ -672,7 +672,10 @@
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWL-YG-LWb">
                                                                 <rect key="frame" x="347" y="16" width="19" height="22"/>
                                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" image="hide.png"/>
+                                                                <state key="normal" image="eye.slash" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="showPasswordClick:" destination="9oh-3Z-our" eventType="touchUpInside" id="K9n-BC-Gqy"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -718,7 +721,10 @@
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-ip-e1O">
                                                                 <rect key="frame" x="347" y="16" width="19" height="22"/>
                                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" image="hide.png"/>
+                                                                <state key="normal" image="eye.slash" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="showPasswordCheckClick:" destination="9oh-3Z-our" eventType="touchUpInside" id="9mH-4s-hI5"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -746,7 +752,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="fiy-le-RMH" kind="show" id="cGq-ZC-zUu"/>
+                                                            <action selector="createAccountClick:" destination="9oh-3Z-our" eventType="touchUpInside" id="oQX-WT-YMh"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -789,12 +795,20 @@
                     <connections>
                         <outlet property="createAccButton" destination="NxW-2u-Wy6" id="AXy-pZ-Hfu"/>
                         <outlet property="emailField" destination="g95-uP-tjR" id="S84-EV-yxj"/>
+                        <outlet property="emailUnderline" destination="I6d-dn-ZGA" id="Jqk-IZ-GK9"/>
                         <outlet property="firstNameField" destination="JFT-4E-njy" id="vmX-Nd-phx"/>
+                        <outlet property="firstNameUnderline" destination="ljq-58-AoY" id="b1V-XB-jbB"/>
                         <outlet property="lastNameField" destination="1rV-jV-gNP" id="dAD-ST-Ue7"/>
+                        <outlet property="lastNameUnderline" destination="I8w-h8-ksN" id="CPd-wV-7f4"/>
+                        <outlet property="nickNameUnderline" destination="EoE-ah-jdT" id="gWJ-GY-Gvp"/>
                         <outlet property="nicknameField" destination="py7-cf-k6K" id="qyA-jz-Qwg"/>
                         <outlet property="passwordCheckField" destination="5Ld-Lq-bKT" id="xvs-XX-XV5"/>
+                        <outlet property="passwordCheckUnderline" destination="WbT-1H-cww" id="pzU-9D-3Y0"/>
                         <outlet property="passwordField" destination="xlr-Pc-3z9" id="kHR-WR-Y25"/>
+                        <outlet property="passwordUnderline" destination="Ki4-vv-1WL" id="JRO-Ma-suS"/>
                         <outlet property="scrollView" destination="oar-4L-EGd" id="jWL-r3-Hns"/>
+                        <outlet property="showPasswordBtn" destination="sWL-YG-LWb" id="Q2m-55-OxK"/>
+                        <outlet property="showPasswordCheckBtn" destination="YBJ-ip-e1O" id="AdW-tL-dMv"/>
                         <outlet property="stackWithFieldsAndButtons" destination="E9L-xh-WQk" id="I7T-pb-izn"/>
                     </connections>
                 </viewController>
@@ -994,7 +1008,10 @@
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ8-ag-7qx">
                                                 <rect key="frame" x="347" y="16" width="19" height="22"/>
                                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="hide.png"/>
+                                                <state key="normal" image="eye.slash" catalog="system"/>
+                                                <connections>
+                                                    <action selector="showPasswordClick:" destination="VBR-ju-jkD" eventType="touchUpInside" id="Ufg-tJ-YaE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1067,8 +1084,9 @@
                         <outlet property="forgotPasswordButton" destination="WdI-iT-L9b" id="ToM-aD-Pcv"/>
                         <outlet property="loginButton" destination="iNL-tL-ygc" id="u0q-Gm-asP"/>
                         <outlet property="passwordLabel" destination="5Se-ag-S6A" id="zHN-8E-ajW"/>
-                        <outlet property="passwordTextField" destination="Ra8-np-xU7" id="bao-hk-Kd1"/>
+                        <outlet property="passwordTextField" destination="V1A-7l-KRd" id="Ac7-o4-Vki"/>
                         <outlet property="passwordUnderline" destination="dU5-we-f8D" id="j1O-Fb-6xi"/>
+                        <outlet property="showPasswordBtn" destination="ZJ8-ag-7qx" id="7TH-tn-LaY"/>
                         <outlet property="stackWithLabelsAndBtn" destination="okb-CK-0Pc" id="dtN-wp-1NM"/>
                     </connections>
                 </viewController>
@@ -1077,13 +1095,10 @@
             <point key="canvasLocation" x="897" y="-575"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="B0i-um-SQr"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19525178109999999" green="0.19525178109999999" blue="0.19525178109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="M.png" width="60" height="60"/>
-        <image name="hide.png" width="19" height="16"/>
+        <image name="eye.slash" catalog="system" width="128" height="86"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

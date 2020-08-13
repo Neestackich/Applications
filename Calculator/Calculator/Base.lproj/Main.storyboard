@@ -68,7 +68,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="VUk-u1-DTq"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="XmM-5b-lnT"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="()">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,7 +85,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="Tkz-Kk-I5B"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="ggd-bh-wu2"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title=" % ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -100,7 +100,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="9rg-gw-LQN"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="RNl-Rk-50o"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title=" / ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -115,7 +115,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="ce6-UF-oux"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="mFS-tm-UMr"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -130,7 +130,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="GPa-ZM-CqA"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="zm4-v7-bVb"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -145,7 +145,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="NHa-yn-bul"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="chx-EK-jGA"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -160,7 +160,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="3H9-bG-0f1"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="GyH-gN-VI7"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title=" x ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -175,7 +175,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="Jq3-9E-Gt5"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="fel-OU-q3W"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -190,7 +190,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="BFY-kR-QuE"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="BLP-Uf-RGL"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -205,7 +205,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="l2c-rt-db5"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="o9V-n5-MKR"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -220,7 +220,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="Ggf-a8-wrG"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="PcC-SG-OFm"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title=" - ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -235,7 +235,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="AyD-cr-tI1"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="R6g-7o-sCG"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -250,7 +250,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="The-el-Dvs"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="shd-dQ-cQc"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -265,7 +265,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="N4C-h6-bVU"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="mHt-WG-MHW"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -280,7 +280,7 @@
                                                             <constraint firstAttribute="width" constant="102.25" id="5b5-I7-zZT"/>
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="Evy-4J-cRE"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title=" + ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -295,7 +295,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="5d7-Mw-vj6"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="N7c-OT-32M"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="+/-">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -310,7 +310,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="IyO-nQ-5ws"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="dWw-DN-cRj"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -325,7 +325,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="Wfi-3D-wVY"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="e0x-sq-u9G"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -340,7 +340,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="MEe-er-kbh"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="thq-6R-fRi"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="46"/>
                                                         <state key="normal" title="=">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -489,7 +489,7 @@
                                                             <constraint firstAttribute="height" constant="102.40000000000001" id="F5r-oR-lky"/>
                                                             <constraint firstAttribute="width" constant="102.25" id="eke-kj-5J9"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="46"/>
                                                         <state key="normal" title="C">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
