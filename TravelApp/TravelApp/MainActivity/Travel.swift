@@ -8,7 +8,12 @@
 
 import UIKit
 
-class Travel {
+class Travel: NSObject {
     @objc dynamic var country: String = ""
     @objc dynamic var stops: [Stop] = []
+    
+    init(country: String, stops: [Stop]) {
+        self.country = country
+        self.stops = stops
+    }
 }

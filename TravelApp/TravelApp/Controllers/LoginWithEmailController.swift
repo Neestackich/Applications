@@ -13,13 +13,15 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     // MARK: properties
     
+
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailUnderline: UIView!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordUnderline: UIView!
-    @IBOutlet weak var passwordTextField: UIView!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var showPasswordBtn: UIButton!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
 
@@ -35,7 +37,20 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboardByTap)))
         
         loginButton.layer.cornerRadius = 5
-        emailTextField.keyboardType = .default
+        emailTextField.keyboardType = .emailAddress
+        passwordTextField.isSecureTextEntry = true
+    }
+    
+    @IBAction func showPasswordClick(_ sender: Any) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            showPasswordBtn.tintColor = UIColor.systemBlue
+            showPasswordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            showPasswordBtn.tintColor = UIColor.systemGray4
+            showPasswordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        }
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
