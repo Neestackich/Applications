@@ -11,12 +11,12 @@ import UIKit
 class ForgotPasswordController: UIViewController {
     
     
-    
+    // MARK: Properties
     
     @IBOutlet weak var resetPasswordButton: UIButton!
     
     
-    
+    // MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()

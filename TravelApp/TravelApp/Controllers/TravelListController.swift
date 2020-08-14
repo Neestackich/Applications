@@ -13,12 +13,41 @@ class TravelListViewController: UIViewController {
     
     // MARK: properties
     
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nicknameLabel: UILabel!
     
+    var user: User!
+    var nameOpt: String!
+    var email: String!
     
     
     // MARK: methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //print(name)
+        if let name = nameOpt {
+            print(name)
+            nameLabel?.text = name
+            print(nameLabel?.text!)
+        }
+    }
+    
+//    func linking() {
+//        nameLabel.text = user?.firstName
+//        lastNameLabel.text = user?.lastName
+//        emailLabel.text = user?.email
+//        nicknameLabel.text = user?.nickName
+//    }
+    
+    static func classInit(user: User) -> TravelListViewController {
+        let travelListController = TravelListViewController()
+        travelListController.user = user
+        
+        
+        return travelListController
     }
 }

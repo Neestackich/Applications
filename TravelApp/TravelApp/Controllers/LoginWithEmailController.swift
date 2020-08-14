@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     
-    // MARK: properties
+    // MARK: Properties
     
-
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailUnderline: UIView!
@@ -26,7 +26,7 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
 
     
-    // MARK: methods
+    // MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,46 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: -event handlers
+    
+    @IBAction func loginClick(_ sender: Any) {
+        buttonPressAnimatio(objects: loginButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
+        
+        if let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
+            var config = Realm.Configuration()
+            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("usersList.realm")
+            config.readOnly = false
+            
+            let usersList = try! Realm(configuration: config)
+            
+            if usersList.objects(User.self).filter("email = '\(email)'").count != 0 {
+                let user = usersList.objects(User.self).filter("email = '\(email)'").first
+                
+                if (user?.password)! == password {
+                    slowedColorChange(objects: emailUnderline, color: UIColor.systemGreen, duration: 0.2)
+                    slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
+                    
+                    if let userObject = user {
+                        
+                        let vc = storyboard?.instantiateViewController(identifier: "Travels list") as? TravelListViewController
+                        vc?.modalPresentationStyle = .fullScreen
+                        present(vc!, animated: true)
+                        //navigationController?.pushViewController(travelList, animated: true)
+                    }
+                } else {
+                    //wrong password
+                    slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 1)
+                }
+            } else {
+                //no account with such email
+                slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
+                slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
+            }
+        } else {
+            //empty fields
+            slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
+            slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
+        }
+    }
     
     @IBAction func showPasswordClick(_ sender: Any) {
         if passwordTextField.isSecureTextEntry {
@@ -78,7 +118,7 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // MARK: -color changing generic functions
+    // MARK: -color and other props changing generic functions
     
     func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
@@ -97,6 +137,20 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
             for object in objects {
                 object.setImage(image, for: .normal)
             }
+        })
+    }
+    
+    func buttonPressAnimatio<T: UIButton>(objects: T..., duration: TimeInterval, resizeDuration: TimeInterval, x: CGFloat, y: CGFloat, resizeX: CGFloat, resizeY: CGFloat) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                object.transform = CGAffineTransform(scaleX: x, y: y)
+            }
+        }, completion: { _ in
+            UIView.animate(withDuration: resizeDuration, animations: {
+                for object in objects {
+                    object.transform = CGAffineTransform(scaleX: resizeX, y: resizeY)
+                }
+            })
         })
     }
 }
