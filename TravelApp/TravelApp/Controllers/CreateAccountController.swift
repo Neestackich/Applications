@@ -94,14 +94,21 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
                 realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent("usersList.realm")
                 
                 let usersList = try! Realm(configuration: realmConfiguration)
-                print(usersList.configuration.fileURL)
                 
                 if usersList.objects(User.self).filter("email = '\(email)'").count == 0 {
+                    let user = User(firstName: firstName, lastName: lastName, email: email, nickName: nickName, password: password)
+                    
                     try! usersList.write {
-                        usersList.add(User(firstName: firstName, lastName: lastName, email: email, nickName: nickName, password: password))
+                        usersList.add(user)
                     }
                     
-                    slowedColorChange(objects: emailUnderline, nickNameUnderline, passwordUnderline, passwordCheckUnderline, firstNameUnderline, lastNameUnderline, color: UIColor.systemGreen, duration: 1.3)
+                    slowedColorChange(objects: emailUnderline, nickNameUnderline, passwordUnderline, passwordCheckUnderline, firstNameUnderline, lastNameUnderline, color: UIColor.systemGreen, duration: 0.5)
+                    
+                    let vc = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.user = user
+                    
+                    present(vc, animated: true)
                 } else {
                     //email already exists
                     emailField.isHighlighted = true
