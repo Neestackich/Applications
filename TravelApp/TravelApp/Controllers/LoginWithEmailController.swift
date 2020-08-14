@@ -62,9 +62,10 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
                     slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
                     
                     if let userObject = user {
-                        
                         let vc = storyboard?.instantiateViewController(identifier: "Travels list") as? TravelListViewController
                         vc?.modalPresentationStyle = .fullScreen
+                        vc?.user = userObject
+                        
                         present(vc!, animated: true)
                         //navigationController?.pushViewController(travelList, animated: true)
                     }

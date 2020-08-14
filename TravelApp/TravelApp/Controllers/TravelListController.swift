@@ -11,7 +11,7 @@ import UIKit
 class TravelListViewController: UIViewController {
     
     
-    // MARK: properties
+    // MARK: Properties
     
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var lastNameLabel: UILabel!
@@ -23,17 +23,12 @@ class TravelListViewController: UIViewController {
     var email: String!
     
     
-    // MARK: methods
+    // MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print(name)
-        if let name = nameOpt {
-            print(name)
-            nameLabel?.text = name
-            print(nameLabel?.text!)
-        }
+        emailLabel.text = user?.email
     }
     
 //    func linking() {
