@@ -12,8 +12,9 @@
 //потом кнопка, которая достает нужный объект(ы) из базы
 
 import UIKit
+import RealmSwift
 
-class TravelListViewController: UIViewController, /*UITableViewDataSource*/ UITableViewDelegate {
+class TravelListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     // MARK: Properties
@@ -25,8 +26,9 @@ class TravelListViewController: UIViewController, /*UITableViewDataSource*/ UITa
     @IBOutlet weak var travelsTable: UITableView!
     
     var user: User!
-    
+    var travelsList: [Travel] = []
     let travelAddID: String = "TravelAdd"
+    
     
     // MARK: Methods
     
@@ -37,15 +39,28 @@ class TravelListViewController: UIViewController, /*UITableViewDataSource*/ UITa
     }
     
     func setup() {
-        //
         travelsTable.delegate = self
-        //travelsTable.dataSource = self
+        travelsTable.dataSource = self
+        travelsTable.separatorStyle = .none
+        travelsTable.layer.cornerRadius = 15
+        
+        var config = Realm.Configuration()
+        config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(user.email).realm")
+        let usersTravels = try! Realm(configuration: config)
+        let travelsFromDB = usersTravels.objects(Travel.self)
+        
+        for singleTravel in travelsFromDB {
+            travelsList.append(singleTravel)
+        }
     }
     
+    
+    // MARK: -buttons' event handlers
+    
     @IBAction func addTravelClick(_ sender: Any) {
-        let createTravelVC = storyboard?.instantiateViewController(identifier: travelAddID) as! CreateTravelController
+        let createTravelVC = storyboard?.instantiateViewController(withIdentifier: travelAddID) as! CreateTravelController
         createTravelVC.modalPresentationStyle = .fullScreen
-        createTravelVC.userEmail = user?.email
+        createTravelVC.user = user
         
         present(createTravelVC, animated: true)
     }
@@ -55,5 +70,31 @@ class TravelListViewController: UIViewController, /*UITableViewDataSource*/ UITa
         welcomeScreenVC.modalPresentationStyle = .fullScreen
         
         present(welcomeScreenVC, animated: true)
+    }
+    
+    
+    // MARK: -table view methods
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return travelsList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let travel = travelsList[indexPath.row]
+        let travelCell = tableView.dequeueReusableCell(withIdentifier: "TravelCell") as! TravelCell
+        travelCell.countryName.text = travel.country
+        travelCell.countryDescription.text = travel.travelDescription
+        
+        return travelCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let stopsVC = storyboard?.instantiateViewController(identifier: "StopsList") as! StopsListController
+        stopsVC.modalPresentationStyle = .fullScreen
+        stopsVC.travel = travelsList[indexPath.row]
+        stopsVC.travelIndex = indexPath.row
+        stopsVC.user = user
+        
+        present(stopsVC, animated: true)
     }
 }
