@@ -23,4 +23,11 @@ class ForgotPasswordController: UIViewController {
         
         resetPasswordButton.layer.cornerRadius = 5
     }
+    
+    @IBAction func backToLoginWithEmailClick(_ sender: Any) {
+        let loginWithEmailVC = storyboard?.instantiateViewController(identifier: "LoginWithEmail") as! LoginWithEmailController
+        loginWithEmailVC.modalPresentationStyle = .fullScreen
+        
+        present(loginWithEmailVC, animated: true)
+    }
 }
