@@ -11,7 +11,7 @@ import UIKit
 class Default: UIViewController {
     
     
-    // MARK: properties
+    // MARK: Properties
         
     var operation: String!
     
@@ -51,7 +51,7 @@ class Default: UIViewController {
     @IBOutlet weak var leftAfterDivisionButton: UIButton!
     
     
-    // MARK: viewDialog and buttons' handlers
+    // MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +123,9 @@ class Default: UIViewController {
         leftAfterDivisionButton.layer.borderColor = CGColor(srgbRed: 48, green: 48, blue: 48, alpha: 0.3)
     }
     
+    
+    // MARK: -buttons' handlers
+    
     @IBAction func hamburgerClick(_ sender: Any) {
         if !menuOut {
             menuOut = true
@@ -174,6 +177,8 @@ class Default: UIViewController {
         bracketExists = false
         bracketsQuantity = 0
         expression.text! = ""
+        
+        buttonPressAnimatio(objects: clearButton, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func bracketsClick(_ sender: Any) {
@@ -196,6 +201,8 @@ class Default: UIViewController {
                 expression.text! += expression.text?.last != " " ? " x (" : "("
             }
         }
+        
+        buttonPressAnimatio(objects: bracketsButton, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func numberButtonClick(_ sender: UIButton) {
@@ -205,7 +212,8 @@ class Default: UIViewController {
             expression.text! += buttonText
             bracketExists = bracketsQuantity != 0 ? true : false
         }
-
+        
+        buttonPressAnimatio(objects: sender, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func operationButtonClick(_ sender: UIButton) {
@@ -216,6 +224,8 @@ class Default: UIViewController {
                 commaExists = commaExists ? false : true
             }
         }
+        
+        buttonPressAnimatio(objects: sender, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func signClick(_ sender: Any) {
@@ -266,12 +276,16 @@ class Default: UIViewController {
         } else {
             expression.text! += "-"
         }
+        
+        buttonPressAnimatio(objects: signButton, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func zeroClick(_ sender: Any) {
         isZeroFirstChar()
         expression.text! += "0"
         bracketExists = bracketsQuantity != 0 ? true : false
+        
+        buttonPressAnimatio(objects: zeroButton, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func commaClick(_ sender: Any) {
@@ -280,6 +294,8 @@ class Default: UIViewController {
             commaExists = true
             expression.text! += "."
         }
+        
+        buttonPressAnimatio(objects: commaButton, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     @IBAction func countClick(_ sender: Any) {
@@ -300,10 +316,12 @@ class Default: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+        
+        buttonPressAnimatio(objects: countButton, duration: 0.1, resizeDuration: 0.1, x: 0.9, y: 0.9, resizeX: 1, resizeY: 1)
     }
     
     
-    // MARK:  subsidiary back-end functions
+    // MARK:  -subsidiary back-end functions
     
     func minusInsert(_ stringSize: Int) {
         expression.text?.insert("-", at: expression.text!.index(expression.text!.startIndex, offsetBy: stringSize + 1))
@@ -341,5 +359,19 @@ class Default: UIViewController {
                 bracketExists = true
             }
         }
+    }
+    
+    func buttonPressAnimatio<T: UIButton>(objects: T..., duration: TimeInterval, resizeDuration: TimeInterval, x: CGFloat, y: CGFloat, resizeX: CGFloat, resizeY: CGFloat) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                object.transform = CGAffineTransform(scaleX: x, y: y)
+            }
+        }, completion: { _ in
+            UIView.animate(withDuration: resizeDuration, animations: {
+                for object in objects {
+                    object.transform = CGAffineTransform(scaleX: resizeX, y: resizeY)
+                }
+            })
+        })
     }
 }

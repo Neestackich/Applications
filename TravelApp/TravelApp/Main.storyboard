@@ -800,6 +800,7 @@
                     <navigationItem key="navigationItem" id="Eh6-Qp-zEE"/>
                     <connections>
                         <outlet property="emailLabel" destination="q3h-G7-7Jx" id="vn5-8M-lnN"/>
+                        <outlet property="view" destination="qIz-u6-ULO" id="RLl-d8-iFJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEY-wn-2aD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

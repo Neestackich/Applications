@@ -36,6 +36,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordCheckUnderline: UIView!
     @IBOutlet weak var passwordCheckField: UITextField!
     @IBOutlet weak var stackWithFieldsAndButtons: UIStackView!
+    @IBOutlet weak var backToWelcomeScreenButton: UIBarButtonItem!
     
     
     // MARK: Methods
@@ -43,16 +44,27 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardHide)))
-        
+        setup()
+    }
+    
+    func setup() {
         createAccButton.layer.cornerRadius = 5
         passwordField.isSecureTextEntry = true
         emailField.keyboardType = .emailAddress
         passwordCheckField.isSecureTextEntry = true
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardHide)))
     }
     
     
     // MARK: -event handlers
+    
+    @IBAction func backToWelcomeScreenClick(_ sender: Any) {
+        let welcomeScreenVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeScreen") as! WelcomePageController
+        welcomeScreenVC.modalPresentationStyle = .fullScreen
+        
+        present(welcomeScreenVC, animated: true)
+    }
     
     @IBAction func showPasswordClick(_ sender: Any) {
         buttonPressAnimatio(objects: showPasswordBtn, duration: 0.1, resizeDuration: 0.1, x: 0.6, y: 0.6, resizeX: 1, resizeY: 1)
@@ -91,7 +103,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
             !password.isEmpty, let passwordCheck = passwordCheckField.text, !passwordCheck.isEmpty {
             if password == passwordCheck {
                 var realmConfiguration = Realm.Configuration()
-                realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent("usersList.realm")
+                realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent("users.realm")
                 
                 let usersList = try! Realm(configuration: realmConfiguration)
                 
@@ -104,11 +116,11 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
                     
                     slowedColorChange(objects: emailUnderline, nickNameUnderline, passwordUnderline, passwordCheckUnderline, firstNameUnderline, lastNameUnderline, color: UIColor.systemGreen, duration: 0.5)
                     
-                    let vc = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
-                    vc.modalPresentationStyle = .fullScreen
-                    vc.user = user
+                    let travelsListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
+                    travelsListVC.modalPresentationStyle = .fullScreen
+                    travelsListVC.user = user
                     
-                    present(vc, animated: true)
+                    present(travelsListVC, animated: true)
                 } else {
                     //email already exists
                     emailField.isHighlighted = true
