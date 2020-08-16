@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Travel: NSObject {
+class Travel: Object {
+    @objc dynamic var raiting: Int = 0
     @objc dynamic var country: String = ""
-    @objc dynamic var stops: [Stop] = []
+    @objc dynamic var travelDescription: String = ""
+    dynamic var stops: List<Stop> = List<Stop>()
     
-    init(country: String, stops: [Stop]) {
-        self.country = country
+    override required init() {}
+    
+    init(raiting: Int, country: String, travelDescription: String, stops: List<Stop>) {
         self.stops = stops
+        self.country = country
+        self.raiting = raiting
+        self.travelDescription = travelDescription
     }
 }
