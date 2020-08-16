@@ -30,26 +30,37 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboardByTap)))
-        
+        setup()
+    }
+    
+    func setup() {
         loginButton.layer.cornerRadius = 5
         emailTextField.keyboardType = .emailAddress
         passwordTextField.isSecureTextEntry = true
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboardByTap)))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     
     // MARK: -event handlers
+    
+    @IBAction func backToWelcomeScreenClick(_ sender: Any) {
+        let welcomeScreenVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeScreen") as! WelcomePageController
+        welcomeScreenVC.modalPresentationStyle = .fullScreen
+        
+        present(welcomeScreenVC, animated: true)
+    }
     
     @IBAction func loginClick(_ sender: Any) {
         buttonPressAnimatio(objects: loginButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
         
         if let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
             var config = Realm.Configuration()
-            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("usersList.realm")
+            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("users.realm")
             config.readOnly = false
             
             let usersList = try! Realm(configuration: config)
@@ -58,15 +69,15 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
                 let user = usersList.objects(User.self).filter("email = '\(email)'").first
                 
                 if (user?.password)! == password {
-                    slowedColorChange(objects: emailUnderline, color: UIColor.systemGreen, duration: 0.2)
-                    slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
+                slowedColorChange(objects: emailUnderline, color: UIColor.systemGreen, duration: 0.2)
+                slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
+                
+                if let userObject = user {
+                    let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
+                    travelListVC.modalPresentationStyle = .fullScreen
+                    travelListVC.user = userObject
                     
-                    if let userObject = user {
-                        let vc = storyboard?.instantiateViewController(identifier: "Travels list") as? TravelListViewController
-                        vc?.modalPresentationStyle = .fullScreen
-                        vc?.user = userObject
-
-                        present(vc!, animated: true)
+                    present(travelListVC, animated: true)
                     }
                 } else {
                     //wrong password
@@ -96,6 +107,12 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func forgotPasswordClick(_ sender: Any) {
+        let forgotPasswordVC = storyboard?.instantiateViewController(withIdentifier: "ForgotPassword") as! ForgotPasswordController
+        forgotPasswordVC.modalPresentationStyle = .fullScreen
+        
+        present(forgotPasswordVC, animated: true)
+    }
     
     // MARK: -text fields editing functions
     
