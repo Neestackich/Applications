@@ -22,25 +22,24 @@ class CreateTravelController: UIViewController {
     @IBOutlet weak var raitingStepper: UIStepper!
     @IBOutlet weak var descriptionField: UITextField!
     
+    var user: User!
     var travel: Travel!
-    
-    var userEmail: String!
+    let tarvelsListVCID: String = "Travels list"
     
     
     // MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     
     // MARK: -buttons' handlers
     
     @IBAction func cancelClick(_ sender: Any) {
-        let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
+        let travelListVC = storyboard?.instantiateViewController(identifier: tarvelsListVCID) as! TravelListViewController
         travelListVC.modalPresentationStyle = .fullScreen
+        travelListVC.user = user
         
         present(travelListVC, animated: true)
     }
@@ -48,10 +47,8 @@ class CreateTravelController: UIViewController {
     @IBAction func saveClick(_ sender: Any) {
         if let name = nameField.text, !name.isEmpty, let description = descriptionField.text, !description.isEmpty {
             var config = Realm.Configuration()
-            
-            if let email = userEmail {
-                config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(email).realm")
-            }
+
+            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(user.email).realm")
             
             let travelList = try! Realm(configuration: config)
             
@@ -63,6 +60,7 @@ class CreateTravelController: UIViewController {
             
             let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
             travelListVC.modalPresentationStyle = .fullScreen
+            travelListVC.user = user
             
             present(travelListVC, animated: true)
         } else {
@@ -81,7 +79,7 @@ class CreateTravelController: UIViewController {
     }
     
     
-    // MARK: -
+    // MARK: -animation functions
     
     func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
