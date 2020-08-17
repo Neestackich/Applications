@@ -24,6 +24,7 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var travelsTable: UITableView!
+    @IBOutlet weak var noTravelsLabel: UILabel!
     
     var user: User!
     var travelsList: [Travel] = []
@@ -51,6 +52,12 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
         
         for singleTravel in travelsFromDB {
             travelsList.append(singleTravel)
+        }
+        
+        if travelsList.count == 0 {
+            noTravelsLabel.text = "У вас не создано ни одной точки маршрута. \nНажмите \"+\", чтобы добавить."
+        } else {
+            noTravelsLabel.text?.removeAll()
         }
     }
     

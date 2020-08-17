@@ -30,10 +30,6 @@ class WelcomePageController: UIViewController {
     func setup() {
         emailLogin.layer.cornerRadius = 5
         createAccount.layer.cornerRadius = 5
-        
-        UIView.animate(withDuration: 1, animations: {
-            self.mainPic.transform = CGAffineTransform(rotationAngle: 90)
-        })
     }
     
     // MARK: -event handlers

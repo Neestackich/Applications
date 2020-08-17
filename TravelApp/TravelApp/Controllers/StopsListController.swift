@@ -14,6 +14,7 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: Properties
     
+    @IBOutlet weak var noStopsLabel: UILabel!
     @IBOutlet weak var stopsTableList: UITableView!
     
     var user: User!
@@ -21,6 +22,7 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
     var travelIndex: Int!
     let addStopVCID: String = "AddStop"
     let travelListVCID: String = "Travels list"
+    
     
     // MARK: Methods
     
@@ -35,6 +37,12 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
         stopsTableList.dataSource = self
         stopsTableList.separatorStyle = .none
         stopsTableList.layer.cornerRadius = 15
+        
+        if travel.stops.count == 0 {
+            noStopsLabel.text = "У вас не создано ни одной точки маршрута. \nНажмите \"+\", чтобы добавить."
+        } else {
+            noStopsLabel.text?.removeAll()
+        }
     }
     
     
@@ -52,6 +60,7 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
         let addStopVC = storyboard?.instantiateViewController(withIdentifier: addStopVCID) as! AddStopController
         addStopVC.modalPresentationStyle = .fullScreen
         addStopVC.user = user
+        addStopVC.travel = travel
         addStopVC.travelIndex = travelIndex
         
         present(addStopVC, animated: true)
