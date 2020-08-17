@@ -66,4 +66,8 @@ class AddStopController: UIViewController {
             present(stopsListVC, animated: true)
         }
     }
+    
+    @IBAction func stepperClick(_ sender: Any) {
+        raiting.text = String(raitingStepper.value)
+    }
 }
