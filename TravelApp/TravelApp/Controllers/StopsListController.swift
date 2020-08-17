@@ -52,6 +52,7 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
         let addStopVC = storyboard?.instantiateViewController(withIdentifier: addStopVCID) as! AddStopController
         addStopVC.modalPresentationStyle = .fullScreen
         addStopVC.user = user
+        addStopVC.travel = travel
         addStopVC.travelIndex = travelIndex
         
         present(addStopVC, animated: true)
