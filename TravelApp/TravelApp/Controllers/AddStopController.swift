@@ -21,6 +21,7 @@ class AddStopController: UIViewController {
     @IBOutlet weak var stopDescription: UITextView!
     
     var user: User!
+    var travel: Travel!
     var travelIndex: Int!
     let stopsListVCID: String = "StopsList"
     
@@ -45,10 +46,8 @@ class AddStopController: UIViewController {
             config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(user.email).realm")
             
             let travelsDB = try! Realm(configuration: config)
-            print(travelsDB.configuration.fileURL)
             
             let travels = travelsDB.objects(Travel.self)
-            //print(travels[travelIndex])
             
             try! travelsDB.write {
                 let stop: Stop = Stop()
@@ -56,14 +55,12 @@ class AddStopController: UIViewController {
                 stop.stopCityName = name
                 
                 travels[travelIndex].stops.append(stop)
-
-                
-//                travels[travelIndex].stops.append(Stop(raiting: Int(raitingStepper.value), stopCityName: name, stopDescription: stopDescription, spentMoneyValue: moneySpent))
             }
             
             let stopsListVC = storyboard?.instantiateViewController(identifier: stopsListVCID) as! StopsListController
             stopsListVC.modalPresentationStyle = .fullScreen
             stopsListVC.user = user
+            stopsListVC.travel = travel
             stopsListVC.travelIndex = travelIndex
             
             present(stopsListVC, animated: true)
