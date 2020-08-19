@@ -15,6 +15,7 @@ class TravelCell: UITableViewCell {
     
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var countryName: UILabel!
+    @IBOutlet weak var raitingStack: UIStackView!
     @IBOutlet weak var countryDescription: UILabel!
     
     

@@ -36,6 +36,8 @@ class AddStopController: UIViewController {
         let stopsListVC = storyboard?.instantiateViewController(identifier: stopsListVCID) as! StopsListController
         stopsListVC.modalPresentationStyle = .fullScreen
         stopsListVC.user = user
+        stopsListVC.travel = travel
+        stopsListVC.travelIndex = travelIndex
         
         present(stopsListVC, animated: true)
     }

@@ -23,8 +23,8 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
-    @IBOutlet weak var travelsTable: UITableView!
     @IBOutlet weak var noTravelsLabel: UILabel!
+    @IBOutlet weak var travelsTable: UITableView!
     
     var user: User!
     var travelsList: [Travel] = []
@@ -87,10 +87,19 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var counter = 1
         let travel = travelsList[indexPath.row]
         let travelCell = tableView.dequeueReusableCell(withIdentifier: "TravelCell") as! TravelCell
         travelCell.countryName.text = travel.country
         travelCell.countryDescription.text = travel.travelDescription
+        
+        for subview in travelCell.raitingStack.arrangedSubviews {
+            if counter <= travel.raiting {
+                slowedColorChange(objects: subview, color: .systemOrange, duration: 0.1)
+            }
+            
+            counter += 1
+        }
         
         return travelCell
     }
@@ -103,5 +112,17 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
         stopsVC.user = user
         
         present(stopsVC, animated: true)
+    }
+    
+    func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                if object is UIImageView {
+                    object.tintColor = color
+                } else {
+                    object.backgroundColor = color
+                }
+            }
+        })
     }
 }
