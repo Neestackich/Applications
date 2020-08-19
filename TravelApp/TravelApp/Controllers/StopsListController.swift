@@ -74,10 +74,42 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var counter = 1
         let stop = travel.stops[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StopCell") as! StopCell
         cell.cityName.text = stop.stopCityName
+        cell.moneySpend.text = stop.spentMoneyValue
+        cell.stopDescription.text = stop.stopDescription
+        
+        for subview in cell.raitingStack.arrangedSubviews {
+            if counter <= stop.raiting {
+                slowedColorChange(objects: subview, color: .systemOrange, duration: 1)
+            }
+            
+            counter += 1
+        }
+        
+        if stop.transport == 1 {
+            cell.transportPic.image = UIImage(named: "car12.png")
+        } else if stop.transport == 2 {
+            cell.transportPic.image = UIImage(named: "train12.png")
+        }
         
         return cell
+    }
+    
+    
+    // MARK: -subsidiary functions
+    
+    func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            for object in objects {
+                if object is UIImageView {
+                    object.tintColor = color
+                } else {
+                    object.backgroundColor = color
+                }
+            }
+        })
     }
 }
