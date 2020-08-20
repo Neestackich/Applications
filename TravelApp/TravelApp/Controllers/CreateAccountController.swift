@@ -38,6 +38,8 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stackWithFieldsAndButtons: UIStackView!
     @IBOutlet weak var backToWelcomeScreenButton: UIBarButtonItem!
     
+    var databasePath: String = "accounts.realm"
+    
     
     // MARK: Methods
     
@@ -103,7 +105,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
             !password.isEmpty, let passwordCheck = passwordCheckField.text, !passwordCheck.isEmpty {
             if password == passwordCheck {
                 var realmConfiguration = Realm.Configuration()
-                realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent("users.realm")
+                realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
                 
                 let usersList = try! Realm(configuration: realmConfiguration)
                 
