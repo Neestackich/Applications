@@ -11,6 +11,11 @@
 		CE01035424D9237E0041CA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01035324D9237E0041CA0A /* AppDelegate.swift */; };
 		CE01035624D9237E0041CA0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01035524D9237E0041CA0A /* SceneDelegate.swift */; };
 		CE01035D24D923800041CA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE01035C24D923800041CA0A /* Assets.xcassets */; };
+		CE4B803024E8E9CA000F6835 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B802F24E8E9CA000F6835 /* TravelCell.swift */; };
+		CE4C4CBC24EAC41A0040913E /* AddMoneyValueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C4CBB24EAC41A0040913E /* AddMoneyValueController.swift */; };
+		CE4D0E9424E903EE0098E96F /* CreateTravelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0E9324E903EE0098E96F /* CreateTravelController.swift */; };
+		CE4D0E9624E991DB0098E96F /* StopsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0E9524E991DB0098E96F /* StopsListController.swift */; };
+		CE4D0E9A24E994BB0098E96F /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0E9924E994BB0098E96F /* StopCell.swift */; };
 		CE4FBE3724E077E2009BA70B /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FBE3624E077E2009BA70B /* ForgotPasswordController.swift */; };
 		CE52701524E4520A00440C9E /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52701424E4520A00440C9E /* Travel.swift */; };
 		CE52701724E452CC00440C9E /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52701624E452CC00440C9E /* Stop.swift */; };
@@ -24,6 +29,12 @@
 		CEBDD50424DD473F000DF992 /* TravelListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD50324DD473F000DF992 /* TravelListController.swift */; };
 		CEBDD50624DD9366000DF992 /* hide.png in Resources */ = {isa = PBXBuildFile; fileRef = CEBDD50524DD9366000DF992 /* hide.png */; };
 		CEBDD50824DD941B000DF992 /* LoginWithEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD50724DD941B000DF992 /* LoginWithEmailController.swift */; };
+		CED9ED0024ED6FC800B4D06B /* car12.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9ECFF24ED6FC800B4D06B /* car12.png */; };
+		CED9ED0424ED716300B4D06B /* plane12.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9ED0324ED716300B4D06B /* plane12.png */; };
+		CED9ED0624ED716F00B4D06B /* train12.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9ED0524ED716F00B4D06B /* train12.png */; };
+		CED9ED0824ED718C00B4D06B /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9ED0724ED718C00B4D06B /* car.png */; };
+		CED9ED0C24ED71D500B4D06B /* plane.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9ED0B24ED71D500B4D06B /* plane.png */; };
+		CED9ED0E24ED72BE00B4D06B /* train.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9ED0D24ED72BE00B4D06B /* train.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +46,11 @@
 		CE01035524D9237E0041CA0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE01035C24D923800041CA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE01036124D923800041CA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE4B802F24E8E9CA000F6835 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
+		CE4C4CBB24EAC41A0040913E /* AddMoneyValueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyValueController.swift; sourceTree = "<group>"; };
+		CE4D0E9324E903EE0098E96F /* CreateTravelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTravelController.swift; sourceTree = "<group>"; };
+		CE4D0E9524E991DB0098E96F /* StopsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsListController.swift; sourceTree = "<group>"; };
+		CE4D0E9924E994BB0098E96F /* StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
 		CE4FBE3624E077E2009BA70B /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		CE52701424E4520A00440C9E /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
 		CE52701624E452CC00440C9E /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
@@ -48,6 +64,12 @@
 		CEBDD50324DD473F000DF992 /* TravelListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelListController.swift; sourceTree = "<group>"; };
 		CEBDD50524DD9366000DF992 /* hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hide.png; path = TravelApp/O/hide.png; sourceTree = SOURCE_ROOT; };
 		CEBDD50724DD941B000DF992 /* LoginWithEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithEmailController.swift; sourceTree = "<group>"; };
+		CED9ECFF24ED6FC800B4D06B /* car12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = car12.png; path = ../../../../../../../Downloads/car12.png; sourceTree = "<group>"; };
+		CED9ED0324ED716300B4D06B /* plane12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plane12.png; path = ../../../../../../../Downloads/plane12.png; sourceTree = "<group>"; };
+		CED9ED0524ED716F00B4D06B /* train12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = train12.png; path = ../../../../../../../Downloads/train12.png; sourceTree = "<group>"; };
+		CED9ED0724ED718C00B4D06B /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = car.png; path = ../../../../../../Stuff/car.png; sourceTree = "<group>"; };
+		CED9ED0B24ED71D500B4D06B /* plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plane.png; path = ../../../../../../Stuff/plane.png; sourceTree = "<group>"; };
+		CED9ED0D24ED72BE00B4D06B /* train.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = train.png; path = ../../../../../../Stuff/train.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +133,8 @@
 				CE5F4BC124E3D6F00036F33C /* User.swift */,
 				CE52701424E4520A00440C9E /* Travel.swift */,
 				CE52701624E452CC00440C9E /* Stop.swift */,
+				CE4B802F24E8E9CA000F6835 /* TravelCell.swift */,
+				CE4D0E9924E994BB0098E96F /* StopCell.swift */,
 			);
 			path = MainActivity;
 			sourceTree = "<group>";
@@ -119,7 +143,13 @@
 			isa = PBXGroup;
 			children = (
 				CEBDD50524DD9366000DF992 /* hide.png */,
+				CED9ED0324ED716300B4D06B /* plane12.png */,
 				CE616EDE24DBB9E3008A8436 /* M.png */,
+				CED9ED0D24ED72BE00B4D06B /* train.png */,
+				CED9ED0B24ED71D500B4D06B /* plane.png */,
+				CED9ED0724ED718C00B4D06B /* car.png */,
+				CED9ED0524ED716F00B4D06B /* train12.png */,
+				CED9ECFF24ED6FC800B4D06B /* car12.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -133,6 +163,9 @@
 				CE52832224DFF5F600EEE977 /* CreateAccountController.swift */,
 				CE4FBE3624E077E2009BA70B /* ForgotPasswordController.swift */,
 				CE5317D224E095BC00388279 /* AddStopController.swift */,
+				CE4D0E9324E903EE0098E96F /* CreateTravelController.swift */,
+				CE4D0E9524E991DB0098E96F /* StopsListController.swift */,
+				CE4C4CBB24EAC41A0040913E /* AddMoneyValueController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,10 +238,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED9ED0424ED716300B4D06B /* plane12.png in Resources */,
+				CED9ED0E24ED72BE00B4D06B /* train.png in Resources */,
+				CED9ED0824ED718C00B4D06B /* car.png in Resources */,
 				CE616EDF24DBB9E3008A8436 /* M.png in Resources */,
+				CED9ED0024ED6FC800B4D06B /* car12.png in Resources */,
 				CEBDD50624DD9366000DF992 /* hide.png in Resources */,
 				CE52FA5F24DC1C80004155B7 /* LaunchScreen.storyboard in Resources */,
+				CED9ED0C24ED71D500B4D06B /* plane.png in Resources */,
 				CE01035D24D923800041CA0A /* Assets.xcassets in Resources */,
+				CED9ED0624ED716F00B4D06B /* train12.png in Resources */,
 				CE616EE124DBBFE2008A8436 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,13 +305,18 @@
 				CEBDD50424DD473F000DF992 /* TravelListController.swift in Sources */,
 				CE52832324DFF5F600EEE977 /* CreateAccountController.swift in Sources */,
 				CE52701524E4520A00440C9E /* Travel.swift in Sources */,
+				CE4B803024E8E9CA000F6835 /* TravelCell.swift in Sources */,
 				CE4FBE3724E077E2009BA70B /* ForgotPasswordController.swift in Sources */,
 				CE616EE524DBEA82008A8436 /* WelcomePageControll.swift in Sources */,
+				CE4D0E9624E991DB0098E96F /* StopsListController.swift in Sources */,
 				CE5F4BC224E3D6F00036F33C /* User.swift in Sources */,
+				CE4D0E9424E903EE0098E96F /* CreateTravelController.swift in Sources */,
+				CE4C4CBC24EAC41A0040913E /* AddMoneyValueController.swift in Sources */,
 				CE52701724E452CC00440C9E /* Stop.swift in Sources */,
 				CE5317D324E095BC00388279 /* AddStopController.swift in Sources */,
 				CEBDD50824DD941B000DF992 /* LoginWithEmailController.swift in Sources */,
 				CE01035624D9237E0041CA0A /* SceneDelegate.swift in Sources */,
+				CE4D0E9A24E994BB0098E96F /* StopCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
