@@ -19,10 +19,12 @@ class AddStopController: UIViewController {
     @IBOutlet weak var stopName: UITextField!
     @IBOutlet weak var raitingStepper: UIStepper!
     @IBOutlet weak var stopDescription: UITextView!
+    @IBOutlet weak var transport: UISegmentedControl!
     
     var user: User!
     var travel: Travel!
     var travelIndex: Int!
+    let addMoneyVCID: String = "AddMoney"
     let stopsListVCID: String = "StopsList"
     
     
@@ -30,6 +32,10 @@ class AddStopController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func setup() {
+        transport.selectedSegmentTintColor = .black
     }
     
     @IBAction func cancelClick(_ sender: Any) {
@@ -55,6 +61,18 @@ class AddStopController: UIViewController {
                 let stop: Stop = Stop()
                 stop.raiting = Int(raitingStepper.value)
                 stop.stopCityName = name
+                //stop.transport = transport.
+                stop.stopDescription = stopDescription.text
+                
+                if let money = moneySpent.text, !money.isEmpty {
+                    stop.spentMoneyValue = money
+                }
+                
+                if transport.selectedSegmentIndex == 1 {
+                    stop.transport = 1
+                } else if transport.selectedSegmentIndex == 2 {
+                    stop.transport = 2
+                }
                 
                 travels[travelIndex].stops.append(stop)
             }
@@ -71,5 +89,12 @@ class AddStopController: UIViewController {
     
     @IBAction func stepperClick(_ sender: Any) {
         raiting.text = String(raitingStepper.value)
+    }
+    
+    @IBAction func chooseCurrency(_ sender: Any) {
+        var addMoneyVC = storyboard?.instantiateViewController(withIdentifier: addMoneyVCID) as! AddMoneyValueController
+        addMoneyVC.modalPresentationStyle = .fullScreen
+        
+        present(addMoneyVC, animated: true)
     }
 }
