@@ -25,6 +25,8 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
 
+    var databasePath: String = "accounts.realm"
+    
     
     // MARK: Methods
     
@@ -60,7 +62,7 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         
         if let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
             var config = Realm.Configuration()
-            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("users.realm")
+            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
             config.readOnly = false
             
             let usersList = try! Realm(configuration: config)
@@ -113,6 +115,7 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         
         present(forgotPasswordVC, animated: true)
     }
+    
     
     // MARK: -text fields editing functions
     
