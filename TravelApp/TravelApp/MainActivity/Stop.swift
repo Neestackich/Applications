@@ -11,6 +11,8 @@ import RealmSwift
 
 class Stop: Object {
     @objc dynamic var raiting: Int = 0
+    @objc dynamic var transport: Int = 0
+    @objc dynamic var geolocation: String = ""
     @objc dynamic var stopCityName: String = ""
     @objc dynamic var stopDescription: String = ""
     @objc dynamic var spentMoneyValue: String = ""
