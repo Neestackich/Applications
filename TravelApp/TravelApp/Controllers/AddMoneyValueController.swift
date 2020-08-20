@@ -10,21 +10,22 @@ import UIKit
 
 class AddMoneyValueController: UIViewController {
 
+    
+    // MARK: Properties
+    
+    @IBOutlet weak var currencyType: UIStackView!
+    
+    
+    // MARK: Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setup()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setup() {
+        currencyType.layer.borderColor = UIColor(red: 126, green: 140, blue: 229, alpha: 1) as! CGColor
     }
-    */
-
 }
