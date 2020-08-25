@@ -6,6 +6,11 @@
 //  Copyright © 2020 Neestackich. All rights reserved.
 //
 
+// баг с перемещениес кнопки от клавы
+// короче это из-за стайла филдов
+// если ставить дефолт - все работает
+
+
 import UIKit
 import RealmSwift
 
@@ -18,9 +23,9 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailUnderline: UIView!
     @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var showPasswordBtn: UIButton!
     @IBOutlet weak var passwordUnderline: UIView!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var showPasswordBtn: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
