@@ -31,7 +31,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M.png" translatesAutoresizingMaskIntoConstraints="NO" id="y4g-Rd-y8n">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M" translatesAutoresizingMaskIntoConstraints="NO" id="y4g-Rd-y8n">
                                 <rect key="frame" x="24" y="147" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="7m6-Sm-NVI"/>
@@ -106,6 +106,7 @@
                         <outlet property="createAccount" destination="UYO-bB-UGV" id="Aos-Ub-DDp"/>
                         <outlet property="emailLogin" destination="iiu-3f-KPk" id="y9q-uD-iN2"/>
                         <outlet property="mainPic" destination="y4g-Rd-y8n" id="Djd-8X-JfG"/>
+                        <outlet property="mainView" destination="Hfo-Td-uTY" id="fw4-M5-cbo"/>
                         <outlet property="moreWaysToLogin" destination="5Bd-DO-tp3" id="YKU-ic-FOW"/>
                     </connections>
                 </viewController>
@@ -316,12 +317,12 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="ijX-7P-goB">
-                                                                <rect key="frame" x="295" y="11.5" width="101" height="32"/>
+                                                                <rect key="frame" x="283" y="11.5" width="113" height="32"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <segments>
-                                                                    <segment title="" image="plane.png"/>
-                                                                    <segment title="" image="car.png"/>
-                                                                    <segment title="" image="train.png"/>
+                                                                    <segment title="✈️"/>
+                                                                    <segment title="🚙"/>
+                                                                    <segment title="🚂"/>
                                                                 </segments>
                                                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -445,7 +446,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knC-U6-FSw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4644.927536231884" y="103.79464285714285"/>
+            <point key="canvasLocation" x="4629" y="104"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vaI-hQ-SWT">
@@ -878,7 +879,7 @@
                                                                 <constraint firstAttribute="height" constant="91" id="xtf-1Z-Ufv"/>
                                                             </constraints>
                                                         </view>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plane12.png" translatesAutoresizingMaskIntoConstraints="NO" id="r0H-9c-taL">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plane12" translatesAutoresizingMaskIntoConstraints="NO" id="r0H-9c-taL">
                                                             <rect key="frame" x="30" y="97.5" width="22" height="22"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="tintColor" red="0.49411764705882355" green="0.5490196078431373" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1813,15 +1814,12 @@
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="M.png" width="60" height="60"/>
-        <image name="car.png" width="14" height="13"/>
+        <image name="M" width="60" height="60"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="eye.slash" catalog="system" width="128" height="86"/>
-        <image name="plane.png" width="15" height="15"/>
-        <image name="plane12.png" width="12" height="12"/>
+        <image name="plane12" width="12" height="12"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <image name="train.png" width="15" height="15"/>
     </resources>
 </document>

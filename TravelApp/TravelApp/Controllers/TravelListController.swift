@@ -17,7 +17,7 @@ import RealmSwift
 class TravelListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    // MARK: Properties
+    // MARK: - Properties
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -31,13 +31,42 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     let travelAddID: String = "TravelAdd"
     
     
-    // MARK: Methods
+    // MARK: - Methods
     
+    // срабатывает когда экран был загружен, верстки еще нету
+    // размеры элементов будут еще как в сториборде
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         setup()
     }
+    
+    // перед тем, как вьюшка появится
+    // тоже не сверстано
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    // когда вьюшка уже появилась
+    // уже сверстано
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    // сработает перед тем, как закроется экран
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    // сработает, когда закроется экран полностью
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     
     func setup() {
         travelsTable.delegate = self
@@ -62,7 +91,7 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    // MARK: -buttons' event handlers
+    // MARK: - buttons' event handlers
     
     @IBAction func addTravelClick(_ sender: Any) {
         let createTravelVC = storyboard?.instantiateViewController(withIdentifier: travelAddID) as! CreateTravelController
@@ -80,7 +109,7 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    // MARK: -table view methods
+    // MARK: - table view methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travelsList.count

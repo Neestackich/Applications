@@ -17,6 +17,7 @@ class WelcomePageController: UIViewController {
     @IBOutlet weak var emailLogin: UIButton!
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var moreWaysToLogin: UIButton!
+    @IBOutlet var mainView: UIView!
     
     
     // MARK: Methods
@@ -28,8 +29,8 @@ class WelcomePageController: UIViewController {
     }
     
     func setup() {
-        emailLogin.layer.cornerRadius = 5
-        createAccount.layer.cornerRadius = 5
+        emailLogin.layer.cornerRadius = 4
+        createAccount.layer.cornerRadius = 4
     }
     
     // MARK: -event handlers
