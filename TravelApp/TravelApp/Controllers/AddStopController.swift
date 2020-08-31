@@ -32,10 +32,13 @@ class AddStopController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setup()
     }
     
     func setup() {
-        transport.selectedSegmentTintColor = .black
+        transport.layer.borderWidth = 1
+        transport.layer.borderColor = CGColor.init(srgbRed: 0, green: 122/255, blue: 255/255, alpha: 1)
     }
     
     @IBAction func cancelClick(_ sender: Any) {
@@ -92,7 +95,7 @@ class AddStopController: UIViewController {
     }
     
     @IBAction func chooseCurrency(_ sender: Any) {
-        var addMoneyVC = storyboard?.instantiateViewController(withIdentifier: addMoneyVCID) as! AddMoneyValueController
+        let addMoneyVC = storyboard?.instantiateViewController(withIdentifier: addMoneyVCID) as! AddMoneyValueController
         addMoneyVC.modalPresentationStyle = .fullScreen
         
         present(addMoneyVC, animated: true)

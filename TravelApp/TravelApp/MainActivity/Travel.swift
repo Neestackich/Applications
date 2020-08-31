@@ -6,7 +6,7 @@
 //  Copyright © 2020 Neestackich. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 class Travel: Object {
