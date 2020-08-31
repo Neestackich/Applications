@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PT7-i3-Dwi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1k-O2-c2B">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -79,7 +79,9 @@
                                     <constraint firstAttribute="width" constant="366" id="QCX-Pb-3qN"/>
                                     <constraint firstAttribute="height" constant="30" id="rgg-SD-NYY"/>
                                 </constraints>
-                                <state key="normal" title="More ways to log in"/>
+                                <state key="normal" title="More ways to log in">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -236,7 +238,7 @@
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWG-jH-LRl">
                                                                 <rect key="frame" x="374" y="16" width="20" height="22"/>
-                                                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal" image="plus.circle" catalog="system"/>
                                                             </button>
                                                         </subviews>
@@ -279,10 +281,10 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXi-nV-o7F">
                                                                 <rect key="frame" x="277" y="12" width="117" height="30"/>
                                                                 <state key="normal" title="Выбрать валюту">
-                                                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="titleColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="chooseCurrency:" destination="lmX-XJ-nrx" eventType="touchUpInside" id="qbz-zu-LFS"/>
+                                                                    <action selector="chooseCurrency:" destination="lmX-XJ-nrx" eventType="touchUpInside" id="jpP-4s-jGN"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -316,8 +318,8 @@
                                                                 <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="ijX-7P-goB">
-                                                                <rect key="frame" x="283" y="11.5" width="113" height="32"/>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ijX-7P-goB">
+                                                                <rect key="frame" x="114.5" y="11.5" width="281.5" height="32"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <segments>
                                                                     <segment title="✈️"/>
@@ -325,7 +327,7 @@
                                                                     <segment title="🚂"/>
                                                                 </segments>
                                                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="selectedSegmentTintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </segmentedControl>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -338,6 +340,7 @@
                                                             <constraint firstItem="ijX-7P-goB" firstAttribute="centerY" secondItem="mTr-up-gmR" secondAttribute="centerY" id="PWE-is-ab4"/>
                                                             <constraint firstItem="PFP-cF-4IZ" firstAttribute="leading" secondItem="mTr-up-gmR" secondAttribute="leading" constant="16" id="Sx8-p1-fby"/>
                                                             <constraint firstAttribute="bottom" secondItem="0KV-gy-37w" secondAttribute="bottom" id="t5Z-3t-1HH"/>
+                                                            <constraint firstItem="ijX-7P-goB" firstAttribute="leading" secondItem="PFP-cF-4IZ" secondAttribute="trailing" constant="4" id="v7z-lA-rM2"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0m-kN-0c5">
@@ -405,13 +408,13 @@
                                 <items>
                                     <navigationItem title="Title" id="EOX-eV-Nah">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="qgF-Eh-78v">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelClick:" destination="lmX-XJ-nrx" id="yLF-l3-Std"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="6Nc-Cx-Jf3">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="saveClick:" destination="lmX-XJ-nrx" id="uKE-fZ-p9D"/>
                                             </connections>
@@ -456,7 +459,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NG6-0h-fvp">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NG6-0h-fvp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-1D-XU2">
@@ -487,7 +490,7 @@
         <!--Add Money Value Controller-->
         <scene sceneID="HjD-Dh-c2p">
             <objects>
-                <viewController storyboardIdentifier="ChooseCurrency" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wOi-pg-Wb2" customClass="AddMoneyValueController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMoney" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wOi-pg-Wb2" customClass="AddMoneyValueController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g06-id-7Pu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,13 +498,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите потраченную сумму" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-4t-tj1">
                                 <rect key="frame" x="16" y="108" width="382" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.1670579663" green="0.1670579663" blue="0.1670579663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите сумму" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5pf-Hf-6C0">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите сумму" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5pf-Hf-6C0">
                                 <rect key="frame" x="16" y="151.5" width="382" height="44"/>
                                 <color key="backgroundColor" red="0.91467718909999995" green="0.91467718909999995" blue="0.91467718909999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.80320021740000003" green="0.80501033980000003" blue="0.83263256450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Ivf-C4-dIG"/>
                                 </constraints>
@@ -509,41 +512,45 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pb3-Dw-XkB">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pb3-Dw-XkB">
                                 <rect key="frame" x="16" y="227.5" width="382" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title="Third"/>
+                                    <segment title="＄"/>
+                                    <segment title="€"/>
+                                    <segment title="₽"/>
                                 </segments>
+                                <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="selectedSegmentTintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kuc-kp-9Yt">
-                                <rect key="frame" x="16" y="285" width="382" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="459-hA-35M">
+                                <rect key="frame" x="16" y="800" width="382" height="50"/>
+                                <color key="backgroundColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="mli-Lk-97O"/>
+                                    <constraint firstAttribute="height" constant="50" id="XNC-3y-Vdu"/>
                                 </constraints>
-                            </stackView>
+                                <state key="normal" title="Готово"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kuc-kp-9Yt" firstAttribute="top" secondItem="pb3-Dw-XkB" secondAttribute="bottom" constant="26.5" id="0bA-6s-PvG"/>
-                            <constraint firstItem="Kuc-kp-9Yt" firstAttribute="leading" secondItem="pS2-48-FfX" secondAttribute="leading" constant="16" id="AZs-Hx-sbg"/>
                             <constraint firstItem="GMt-4t-tj1" firstAttribute="leading" secondItem="pS2-48-FfX" secondAttribute="leading" constant="16" id="MaR-NK-Nyr"/>
                             <constraint firstItem="pS2-48-FfX" firstAttribute="trailing" secondItem="5pf-Hf-6C0" secondAttribute="trailing" constant="16" id="QdY-60-KII"/>
                             <constraint firstItem="GMt-4t-tj1" firstAttribute="top" secondItem="pS2-48-FfX" secondAttribute="top" constant="64" id="W5V-6j-m3U"/>
+                            <constraint firstItem="459-hA-35M" firstAttribute="leading" secondItem="pS2-48-FfX" secondAttribute="leading" constant="16" id="Z1Y-4l-Y3m"/>
                             <constraint firstItem="pS2-48-FfX" firstAttribute="trailing" secondItem="GMt-4t-tj1" secondAttribute="trailing" constant="16" id="aI8-IU-dXm"/>
+                            <constraint firstItem="pS2-48-FfX" firstAttribute="bottom" secondItem="459-hA-35M" secondAttribute="bottom" constant="12" id="dZd-gy-nLe"/>
+                            <constraint firstItem="pS2-48-FfX" firstAttribute="trailing" secondItem="459-hA-35M" secondAttribute="trailing" constant="16" id="euK-mE-R9z"/>
                             <constraint firstItem="pb3-Dw-XkB" firstAttribute="top" secondItem="5pf-Hf-6C0" secondAttribute="bottom" constant="32" id="hIB-qU-1F0"/>
-                            <constraint firstItem="pS2-48-FfX" firstAttribute="trailing" secondItem="Kuc-kp-9Yt" secondAttribute="trailing" constant="16" id="jGH-Zf-UfX"/>
                             <constraint firstItem="5pf-Hf-6C0" firstAttribute="leading" secondItem="pS2-48-FfX" secondAttribute="leading" constant="16" id="k43-cf-W47"/>
                             <constraint firstItem="pS2-48-FfX" firstAttribute="trailing" secondItem="pb3-Dw-XkB" secondAttribute="trailing" constant="16" id="qtd-gj-TIA"/>
                             <constraint firstItem="pb3-Dw-XkB" firstAttribute="leading" secondItem="pS2-48-FfX" secondAttribute="leading" constant="16" id="uPc-ae-i44"/>
                             <constraint firstItem="5pf-Hf-6C0" firstAttribute="top" secondItem="GMt-4t-tj1" secondAttribute="bottom" constant="16" id="xQ8-pF-TYa"/>
-                            <constraint firstItem="pS2-48-FfX" firstAttribute="bottom" secondItem="Kuc-kp-9Yt" secondAttribute="bottom" constant="548" id="ydo-Td-Gzk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pS2-48-FfX"/>
                     </view>
                     <connections>
-                        <outlet property="currencyType" destination="Kuc-kp-9Yt" id="spA-bi-51v"/>
+                        <outlet property="currencyType" destination="pb3-Dw-XkB" id="Heq-dQ-1xT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVg-a7-PKy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -564,13 +571,13 @@
                                 <items>
                                     <navigationItem title="Travel" id="fwC-3l-OiL">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="WZq-3K-NDO">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelClick:" destination="ksR-Mn-vW1" id="Re2-He-Kg9"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="dQx-hM-kfB">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="saveClick:" destination="ksR-Mn-vW1" id="9Wn-Vh-niz"/>
                                             </connections>
@@ -639,7 +646,7 @@
                                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="cu8-q2-lWK">
                                                         <rect key="frame" x="300" y="11" width="94" height="32"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
                                                             <action selector="stepperClick:" destination="ksR-Mn-vW1" eventType="valueChanged" id="ZVY-vq-lBu"/>
                                                         </connections>
@@ -764,13 +771,13 @@
                                 <items>
                                     <navigationItem title="Stops" id="meI-w0-Xkd">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="30A-5Z-wJH">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="backToTravelsListControllerClick:" destination="gaV-RL-oMc" id="ita-sf-eyc"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="2eY-Zv-0cw">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="addStopClick:" destination="gaV-RL-oMc" id="YIA-ar-LRB"/>
                                             </connections>
@@ -1346,13 +1353,13 @@
                                 <items>
                                     <navigationItem title="Travels list" id="pKy-fE-AZj">
                                         <barButtonItem key="leftBarButtonItem" title="Quit" id="fwN-aN-9xK">
-                                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="quitClick:" destination="fiy-le-RMH" id="7eM-3I-g8c"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="e2I-rj-ZRh">
-                                            <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.4941176471" green="0.54901960780000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="addTravelClick:" destination="fiy-le-RMH" id="KBG-3B-XJ2"/>
                                             </connections>
@@ -1752,11 +1759,18 @@
                                     <constraint firstItem="iNL-tL-ygc" firstAttribute="top" secondItem="Ra8-np-xU7" secondAttribute="bottom" constant="10" id="vmB-Mf-FnX"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-iT-L9b">
-                                <rect key="frame" x="24" y="468.5" width="174" height="36"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" red="0.19525178109999999" green="0.19525178109999999" blue="0.19525178109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-iT-L9b">
+                                <rect key="frame" x="24" y="468.5" width="174" height="35"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Forgot your password?">
+                                            <attributes>
+                                                <color key="NSColor" red="0.19525178109999999" green="0.19525178109999999" blue="0.19525178109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                 </state>
                                 <connections>
                                     <action selector="forgotPasswordClick:" destination="VBR-ju-jkD" eventType="touchUpInside" id="Hi6-6s-m8X"/>
