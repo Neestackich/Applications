@@ -14,6 +14,8 @@
 import UIKit
 import Firebase
 import RealmSwift
+import FirebaseAuth
+import FirebaseFirestore
 
 
 class CreateAccountController: UIViewController, UITextFieldDelegate {
@@ -102,6 +104,8 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
         buttonPressAnimatio(objects: createAccButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
         
         if areTextFieldsValid() {
+            createAccount()
+            
 //            var realmConfiguration = Realm.Configuration()
 //            realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
 //
@@ -127,11 +131,52 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
 //                slowedColorChange(objects: emailUnderline, color: .red, duration: 1.3)
 //            }
             
+        }
+    }
+    
+    private func createAccount() {
+        if let email = emailField.text, let password = passwordField.text, let nickName = nicknameField.text, let firstName = firstNameField.text, let lastName = lastNameField.text {
             
-            
-            
-            
-            
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if error != nil {
+                    let errorCode = AuthErrorCode(rawValue: error!._code)
+                    
+                    switch errorCode {
+                    case .emailAlreadyInUse:
+                        self.slowedColorChange(objects: self.emailUnderline, color: .red, duration: 1.3)
+                    case .invalidEmail:
+                        self.slowedColorChange(objects: self.emailUnderline, color: .red, duration: 1.3)
+                    case .weakPassword:
+                        self.slowedColorChange(objects: self.passwordUnderline, color: .red, duration: 1.3)
+                        self.slowedColorChange(objects: self.passwordCheckUnderline, color: .red, duration: 1.3)
+                    default:
+                        break
+                    }
+                } else {
+                    let dataBase = Firestore.firestore()
+                    dataBase.collection("users").addDocument(data: [
+                        "email": email,
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "nickName": nickName,
+                        "password": password,
+                        "uid": authResult!.user.uid
+                    ]) { error in
+                        if error != nil {
+                            
+                            let errorCode = FirestoreErrorCode(rawValue: error!._code)
+
+//                            switch errorCode {
+//                            case .alreadyExists:
+//                            case .
+//                            default:
+//
+//                            }
+                            
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -176,17 +221,8 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
     private func isPasswordValid() -> Bool {
         if let password = passwordField.text, let passwordCheck = passwordCheckField.text {
             if password == passwordCheck {
-                let passwordPattern = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
                 
-                if passwordPattern.evaluate(with: password) {
-                   
-                    return true
-                } else {
-                    // хз на кой черт надо, потом проверю
-                    // passwordCheckField.isHighlighted = true
-                    slowedColorChange(objects: passwordUnderline, color: .red, duration: 1.3)
-                    slowedColorChange(objects: passwordCheckUnderline, color: .red, duration: 1.3)
-                }
+                return true
             } else {
                 passwordCheckField.isHighlighted = true
                 slowedColorChange(objects: passwordCheckUnderline, color: .red, duration: 1.3)
