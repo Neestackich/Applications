@@ -13,6 +13,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
@@ -65,40 +66,76 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBAction func loginClick(_ sender: Any) {
         buttonPressAnimatio(objects: loginButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
         
-        if let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
-            var config = Realm.Configuration()
-            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
-            config.readOnly = false
+        if areTextFieldsValid() {
+            userLogin()
             
-            let usersList = try! Realm(configuration: config)
+//            var config = Realm.Configuration()
+//            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
+//            config.readOnly = false
+//
+//            let usersList = try! Realm(configuration: config)
+//
+//            if usersList.objects(User.self).filter("email = '\(email)'").count != 0 {
+//                let user = usersList.objects(User.self).filter("email = '\(email)'").first
+//
+//                if (user?.password)! == password {
+//                slowedColorChange(objects: emailUnderline, color: UIColor.systemGreen, duration: 0.2)
+//                slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
+//
+//                if let userObject = user {
+//                    let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
+//                    travelListVC.modalPresentationStyle = .fullScreen
+//                    travelListVC.user = userObject
+//
+//                    present(travelListVC, animated: true)
+//                    }
+//                } else {
+//                    //wrong password
+//                    slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 1)
+//                }
+//            } else {
+//                //no account with such email
+//                slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
+//                slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
+//            }
             
-            if usersList.objects(User.self).filter("email = '\(email)'").count != 0 {
-                let user = usersList.objects(User.self).filter("email = '\(email)'").first
-                
-                if (user?.password)! == password {
-                slowedColorChange(objects: emailUnderline, color: UIColor.systemGreen, duration: 0.2)
-                slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
-                
-                if let userObject = user {
-                    let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
-                    travelListVC.modalPresentationStyle = .fullScreen
-                    travelListVC.user = userObject
+        }
+    }
+    
+    func userLogin() {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password ) { signInResult, error in
+                if error != nil {
+                    let errorCode = AuthErrorCode(rawValue: error!._code)
                     
-                    present(travelListVC, animated: true)
+                    switch errorCode {
+                    case .wrongPassword:
+                        self.slowedColorChange(objects: self.passwordUnderline, color: UIColor.red, duration: 0.5)
+                    case .invalidEmail:
+                        self.slowedColorChange(objects: self.emailUnderline, color: UIColor.red, duration: 0.5)
+                    default:
+                        break
                     }
                 } else {
-                    //wrong password
-                    slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 1)
+                    print("Successful sign in")
                 }
-            } else {
-                //no account with such email
+            }
+        }
+    }
+    
+    func areTextFieldsValid() -> Bool {
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            if (emailTextField.text?.isEmpty)! {
                 slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
+            }
+            
+            if (passwordTextField.text?.isEmpty)! {
                 slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
             }
+            
+            return false
         } else {
-            //empty fields
-            slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
-            slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
+            return true
         }
     }
     

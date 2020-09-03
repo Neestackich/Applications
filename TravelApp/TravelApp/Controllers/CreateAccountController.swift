@@ -12,7 +12,11 @@
 
 
 import UIKit
+import Firebase
 import RealmSwift
+import FirebaseAuth
+import FirebaseFirestore
+
 
 class CreateAccountController: UIViewController, UITextFieldDelegate {
     
@@ -99,42 +103,90 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
     @IBAction func createAccountClick(_ sender: Any) {
         buttonPressAnimatio(objects: createAccButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
         
-        if let email = emailField.text, !email.isEmpty, let nickName = nicknameField.text,
-            !nickName.isEmpty, let firstName = firstNameField.text, !firstName.isEmpty,
-            let lastName = lastNameField.text, !lastName.isEmpty, let password = passwordField.text,
-            !password.isEmpty, let passwordCheck = passwordCheckField.text, !passwordCheck.isEmpty {
-            if password == passwordCheck {
-                var realmConfiguration = Realm.Configuration()
-                realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
-                
-                let usersList = try! Realm(configuration: realmConfiguration)
-                
-                if usersList.objects(User.self).filter("email = '\(email)'").count == 0 {
-                    let user = User(firstName: firstName, lastName: lastName, email: email, nickName: nickName, password: password)
+        if areTextFieldsValid() {
+            createAccount()
+            
+//            var realmConfiguration = Realm.Configuration()
+//            realmConfiguration.fileURL = realmConfiguration.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
+//
+//            let usersList = try! Realm(configuration: realmConfiguration)
+//
+//            if usersList.objects(User.self).filter("email = '\(email)'").count == 0 {
+//                let user = User(firstName: firstName, lastName: lastName, email: email, nickName: nickName, password: password)
+//
+////                try! usersList.write {
+////                    usersList.add(user)
+////                }
+//
+////                slowedColorChange(objects: emailUnderline, nickNameUnderline, passwordUnderline, passwordCheckUnderline, firstNameUnderline, lastNameUnderline,color: UIColor.systemGreen, duration: 0.5)
+////
+////                let travelsListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
+////                travelsListVC.modalPresentationStyle = .fullScreen
+////                travelsListVC.user = user
+////
+////                present(travelsListVC, animated: true)
+//            } else {
+//                //email already exists
+//                emailField.isHighlighted = true
+//                slowedColorChange(objects: emailUnderline, color: .red, duration: 1.3)
+//            }
+            
+        }
+    }
+    
+    private func createAccount() {
+        if let email = emailField.text, let password = passwordField.text, let nickName = nicknameField.text, let firstName = firstNameField.text, let lastName = lastNameField.text {
+            
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if error != nil {
+                    let errorCode = AuthErrorCode(rawValue: error!._code)
                     
-                    try! usersList.write {
-                        usersList.add(user)
+                    switch errorCode {
+                    case .emailAlreadyInUse:
+                        self.slowedColorChange(objects: self.emailUnderline, color: .red, duration: 1.3)
+                    case .invalidEmail:
+                        self.slowedColorChange(objects: self.emailUnderline, color: .red, duration: 1.3)
+                    case .weakPassword:
+                        self.slowedColorChange(objects: self.passwordUnderline, color: .red, duration: 1.3)
+                        self.slowedColorChange(objects: self.passwordCheckUnderline, color: .red, duration: 1.3)
+                    default:
+                        break
                     }
-                    
-                    slowedColorChange(objects: emailUnderline, nickNameUnderline, passwordUnderline, passwordCheckUnderline, firstNameUnderline, lastNameUnderline, color: UIColor.systemGreen, duration: 0.5)
-                    
-                    let travelsListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
-                    travelsListVC.modalPresentationStyle = .fullScreen
-                    travelsListVC.user = user
-                    
-                    present(travelsListVC, animated: true)
                 } else {
-                    //email already exists
-                    emailField.isHighlighted = true
-                    slowedColorChange(objects: emailUnderline, color: .red, duration: 1.3)
+                    let dataBase = Firestore.firestore()
+                    dataBase.collection("users").addDocument(data: [
+                        "email": email,
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "nickName": nickName,
+                        "password": password,
+                        "uid": authResult!.user.uid
+                    ]) { error in
+                        if error != nil {
+                            
+                            let errorCode = FirestoreErrorCode(rawValue: error!._code)
+
+//                            switch errorCode {
+//                            case .alreadyExists:
+//                            case .
+//                            default:
+//
+//                            }
+                            
+                        }
+                    }
                 }
-            } else {
-                //wrong passwords
-                passwordCheckField.isHighlighted = true
-                slowedColorChange(objects: passwordCheckUnderline, color: .red, duration: 1.3)
             }
-        } else {
-            //empty fields
+        }
+    }
+    
+    
+    // MARK: -validation check
+    
+    private func areTextFieldsValid() -> Bool {
+        
+        if emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && nicknameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && passwordCheckField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
             if (emailField.text?.isEmpty)! {
                 slowedColorChange(objects: emailUnderline, color: .red, duration: 1.3)
             }
@@ -158,7 +210,26 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
             if (passwordCheckField.text?.isEmpty)! {
                 slowedColorChange(objects: passwordCheckUnderline, color: .red, duration: 1.3)
             }
+
+            return false
+        } else {
+            
+            return isPasswordValid()
         }
+    }
+    
+    private func isPasswordValid() -> Bool {
+        if let password = passwordField.text, let passwordCheck = passwordCheckField.text {
+            if password == passwordCheck {
+                
+                return true
+            } else {
+                passwordCheckField.isHighlighted = true
+                slowedColorChange(objects: passwordCheckUnderline, color: .red, duration: 1.3)
+            }
+        }
+        
+        return false
     }
     
     
@@ -196,7 +267,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
     
     // MARK: -color changing generic functions
     
-    func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
+    private func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
             for object in objects {
                 if object is UIButton {
@@ -208,7 +279,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func slowedImageChange<T: UIButton>(objects: T..., image: UIImage?, duration: TimeInterval) {
+    private func slowedImageChange<T: UIButton>(objects: T..., image: UIImage?, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
             for object in objects {
                 object.setImage(image, for: .normal)
@@ -216,7 +287,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func buttonPressAnimatio<T: UIButton>(objects: T..., duration: TimeInterval, resizeDuration: TimeInterval, x: CGFloat, y: CGFloat, resizeX: CGFloat, resizeY: CGFloat) {
+    private func buttonPressAnimatio<T: UIButton>(objects: T..., duration: TimeInterval, resizeDuration: TimeInterval, x: CGFloat, y: CGFloat, resizeX: CGFloat, resizeY: CGFloat) {
         UIView.animate(withDuration: duration, animations: {
             for object in objects {
                 object.transform = CGAffineTransform(scaleX: x, y: y)
@@ -230,7 +301,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func rotate<T: UIView>(objects: T..., duration: TimeInterval, angle: CGFloat) {
+    private func rotate<T: UIView>(objects: T..., duration: TimeInterval, angle: CGFloat) {
         UIView.animate(withDuration: duration, animations: {
             for object in objects {
                 object.transform = CGAffineTransform(rotationAngle: angle)
