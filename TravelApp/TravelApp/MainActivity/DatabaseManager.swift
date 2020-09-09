@@ -62,6 +62,8 @@ class DatabaseManager {
             } else {
                 DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: authResult!.user.uid)
                 DatabaseManager.shared.addFirestoreUserToRealm()
+                /////
+                
                 DatabaseManager.shared.addFirestoreTravelsToRealm()
                 
                 ////////////////////////!!!!!!!
@@ -91,19 +93,22 @@ class DatabaseManager {
             "country": country,
             "raiting": raiting,
             "travelDescription": travelDescription,
-            "travelId": UUID().uuidString
+            "travelid": UUID().uuidString
         ])
     }
     
-//    func createFirebaseStop(geolocation: String, raiting: Int, spentMoneyValue: String, stopCityName: String, stopDescription: String, transport: Int) {
-//        let firesoreDatabase = Firestore.firestore()
-//        firesoreDatabase.collection("users").document(uid).collection("travels").addDocument(data: [
-//            "country": country,
-//            "raiting": raiting,
-//            "travelDescription": travelDescription,
-//            "userId": userId
-//        ])
-//    }
+    func createFirebaseStop(geolocation: String, raiting: Int, spentMoneyValue: String, stopCityName: String, stopDescription: String, transport: Int) {
+        let firesoreDatabase = Firestore.firestore()
+        firesoreDatabase.collection("users").document(uid).collection("travels").addDocument(data: [
+            "geolocation": geolocation,
+            "raiting": raiting,
+            "stopCityName": stopCityName,
+            "spentMoneyValue": spentMoneyValue,
+            "stopDescription": stopDescription,
+            "transport": transport,
+            "stopid": UUID().uuidString
+        ])
+    }
     
     func addFirestoreUserToRealm() {
         let firestoreDatabase = Firestore.firestore()
@@ -132,24 +137,34 @@ class DatabaseManager {
                     let dataDescription = document.data()
                     
                     try! realmDatabase.write {
-                        realmDatabase.add(Travel(raiting: dataDescription["raiting"] as! Int, country: dataDescription[""] as! String, travelDescription: dataDescription["travelDescription"] as! String, stops: List<Stop>()))
+                        realmDatabase.add(Travel(raiting: dataDescription["raiting"] as! Int, country: dataDescription["country"] as! String, travelDescription: dataDescription["travelDescription"] as! String, stops: List<Stop>()))
                     }
                 }
             }
         }
     }
     
-    func addFirebaseStopsToRealm(travelId: String) {
+    func addFirebaseStopsToRealm() {
         let firebaseDatabase = Firestore.firestore()
         let realmDatabase = try! Realm(configuration: config)
 
-        //firebaseDatabase.collection("users").document(uid).collection("travels").document(travelId).collection("stops").ad
+        firebaseDatabase.collection("users").document(uid).collection("travels").document(travelid).collection("stops").getDocuments { documentsList, error in
+            if let documentsList = documentsList {
+                for document in documentsList.documents {
+                    let dataDescription = document.data()
+                    
+                    try! realmDatabase.write {
+                        realmDatabase.add(Stop(geolocation: dataDescription["geolocation"] as! String, raiting: dataDescription["raiting"] as! Int, spentMoneyValue: dataDescription["spentMoneyValue"] as! String, stopCityName: dataDescription["stopCityName"] as! String, stopDescription: dataDescription["stopDescription"] as! String, transport: dataDescription["transport"] as! Int))
+                    }
+                }
+            }
+        }
     }
     
     func getFirebaseStops() {
         let firestoreDatabase = Firestore.firestore()
         
-        firestoreDatabase.collection("travels").document("6AVfK1bQdlPJn6s1GgsN").collection("stops").document("YnVReziT4y8Aof7Wh4R7").getDocument { document, error in
+        firestoreDatabase.collection("travels").document(uid).collection("travels").document("YnVReziT4y8Aof7Wh4R7").getDocument { document, error in
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 
@@ -157,6 +172,18 @@ class DatabaseManager {
                 
             }
         }
+    }
+    
+    func updateFirebaseTravel() {
+        
+    }
+    
+    func updateFirebaseStop() {
+        
+    }
+    
+    func updateRealmStop() {
+        
     }
     
 //    func getFirebaseUser() -> User? {
