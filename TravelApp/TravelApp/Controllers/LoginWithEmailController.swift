@@ -68,21 +68,16 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         
         if areTextFieldsValid() {
             if let email = emailTextField.text, let password = passwordTextField.text {
-                if let errorCode = DatabaseManager.shared.signInFirebaseUser(email: email, password: password) {
-                    switch errorCode {
-                    case .wrongPassword:
-                        self.slowedColorChange(objects: self.passwordUnderline, color: UIColor.red, duration: 0.5)
-                    case .invalidEmail:
-                        self.slowedColorChange(objects: self.emailUnderline, color: UIColor.red, duration: 0.5)
-                    default:
-                        break
-                    }
+                DatabaseManager.shared.signInFirebaseUser(email: email, password: password, emailUnderline: emailUnderline, passwordUnderline: passwordUnderline, colorChangeAnimation: slowedColorChange(object:color:duration:)) {
+                    let travelListVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelListViewController") as! TravelListViewController
+                    travelListVC.modalPresentationStyle = .fullScreen
+                    self.present(travelListVC, animated: true)
                 }
             }
             
-            let travelListVC = storyboard?.instantiateViewController(withIdentifier: "Travels list") as! TravelListViewController
-            travelListVC.modalPresentationStyle = .fullScreen
-            present(travelListVC, animated: true)
+//            let travelListVC = storyboard?.instantiateViewController(withIdentifier: "TravelListViewController") as! TravelListViewController
+//            travelListVC.modalPresentationStyle = .fullScreen
+//            present(travelListVC, animated: true)
             
            // DatabaseManager.shared.getStops()
             
@@ -203,6 +198,16 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: -color and other props changing generic functions
+    
+    func slowedColorChange(object: UIView, color: UIColor, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            if object is UIButton {
+                object.tintColor = color
+            } else {
+                object.backgroundColor = color
+            }
+        })
+    }
     
     func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
