@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class Travel: Object {
+    @objc dynamic var travelId: String = ""
     @objc dynamic var raiting: Int = 0
     @objc dynamic var country: String = ""
     @objc dynamic var travelDescription: String = ""

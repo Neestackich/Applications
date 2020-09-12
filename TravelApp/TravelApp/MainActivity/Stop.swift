@@ -19,8 +19,10 @@ class Stop: Object {
     
     override required init() {}
     
-    init(raiting: Int, stopCityName: String, stopDescription: String, spentMoneyValue: String) {
+    init(geolocation: String, raiting: Int, spentMoneyValue: String, stopCityName: String, stopDescription: String, transport: Int) {
         self.raiting = raiting
+        self.transport = transport
+        self.geolocation = geolocation
         self.stopCityName = stopCityName
         self.stopDescription = stopDescription
         self.spentMoneyValue = spentMoneyValue

@@ -31,7 +31,7 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
 
-    var databasePath: String = "accounts.realm"
+    var databasePath: String = "usersDatabase"
     
     
     // MARK: Methods
@@ -67,7 +67,20 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         buttonPressAnimatio(objects: loginButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
         
         if areTextFieldsValid() {
-            userLogin()
+            if let email = emailTextField.text, let password = passwordTextField.text {
+                DatabaseManager.shared.signInFirebaseUser(email: email, password: password, emailUnderline: emailUnderline, passwordUnderline: passwordUnderline, colorChangeAnimation: slowedColorChange(object:color:duration:)) {
+                    let travelListVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelListViewController") as! TravelListViewController
+                    travelListVC.modalPresentationStyle = .fullScreen
+                    self.present(travelListVC, animated: true)
+                }
+            }
+            
+//            let travelListVC = storyboard?.instantiateViewController(withIdentifier: "TravelListViewController") as! TravelListViewController
+//            travelListVC.modalPresentationStyle = .fullScreen
+//            present(travelListVC, animated: true)
+            
+           // DatabaseManager.shared.getStops()
+            
             
 //            var config = Realm.Configuration()
 //            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
@@ -99,27 +112,23 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
 //                slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
 //            }
             
+            
+            
+//            switch errorCode {
+//            case .wrongPassword:
+//                self.slowedColorChange(objects: self.passwordUnderline, color: UIColor.red, duration: 0.5)
+//            case .invalidEmail:
+//                self.slowedColorChange(objects: self.emailUnderline, color: UIColor.red, duration: 0.5)
+//            default:
+//                break
+//            }
+            
         }
     }
     
     func userLogin() {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password ) { signInResult, error in
-                if error != nil {
-                    let errorCode = AuthErrorCode(rawValue: error!._code)
-                    
-                    switch errorCode {
-                    case .wrongPassword:
-                        self.slowedColorChange(objects: self.passwordUnderline, color: UIColor.red, duration: 0.5)
-                    case .invalidEmail:
-                        self.slowedColorChange(objects: self.emailUnderline, color: UIColor.red, duration: 0.5)
-                    default:
-                        break
-                    }
-                } else {
-                    print("Successful sign in")
-                }
-            }
+            
         }
     }
     
@@ -161,6 +170,14 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     // MARK: -text fields editing functions
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if emailTextField.isEditing {
+            slowedColorChange(objects: emailUnderline, color: .systemGray4, duration: 1.3)
+        }  else if passwordTextField.isEditing {
+            slowedColorChange(objects: passwordUnderline, color: .systemGray4, duration: 1.3)
+        }
+    }
+    
     @objc func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let screenHeightWithKeyboard = UIScreen.main.bounds.height - keyboardSize.height - 15
@@ -181,6 +198,16 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: -color and other props changing generic functions
+    
+    func slowedColorChange(object: UIView, color: UIColor, duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            if object is UIButton {
+                object.tintColor = color
+            } else {
+                object.backgroundColor = color
+            }
+        })
+    }
     
     func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
