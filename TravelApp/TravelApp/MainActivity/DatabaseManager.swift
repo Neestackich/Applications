@@ -43,22 +43,32 @@ class DatabaseManager {
         self.uid = uid
     }
     
-    func signInFirebaseUser(email: String, password: String) -> AuthErrorCode? {
+    func signInFirebaseUser(email: String, password: String, emailUnderline: UIView, passwordUnderline: UIView, colorChangeAnimation: @escaping (UIView, UIColor, TimeInterval) -> Void, action: (() -> Void)!) {
         var errorCode: AuthErrorCode?
         
-        Auth.auth().signIn(withEmail: email, password: password ) { signInResult, error in
+        Auth.auth().signIn(withEmail: email, password: password) { signInResult, error in
             if error != nil {
                 errorCode = AuthErrorCode(rawValue: error!._code)
+                
+                switch errorCode {
+                case .invalidEmail:
+                    colorChangeAnimation(emailUnderline, .systemRed, 0.1)
+                case .wrongPassword:
+                    colorChangeAnimation(passwordUnderline, .systemRed, 0.1)
+                default:
+                    colorChangeAnimation(emailUnderline, .systemRed, 0.1)
+                    colorChangeAnimation(passwordUnderline, .systemRed, 0.1)
+                }
             } else {
                 DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: signInResult!.user.uid)
-                DatabaseManager.shared.addFirestoreUserToRealm()
-                DatabaseManager.shared.addFirestoreTravelsToRealm()
+                // DatabaseManager.shared.addFirestoreTravelsToRealm()
+                // DatabaseManager.shared.addFirebaseStopsToRealm()
+
+                DatabaseManager.shared.addFirestoreTravelsToRealm(action: action)
                 
                 print("Successful sign in")
             }
         }
-        
-        return errorCode
     }
     
     func createFirebaseUser(email: String, password: String, firstName: String, lastName: String, nickName: String) -> AuthErrorCode? {
@@ -69,7 +79,6 @@ class DatabaseManager {
                 errorCode = AuthErrorCode(rawValue: error!._code)
             } else {
                 DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: authResult!.user.uid)
-                DatabaseManager.shared.addFirestoreUserToRealm()
                 
                 let firesoreDatabase = Firestore.firestore()
                 firesoreDatabase.collection("users").document(authResult!.user.uid).setData([
@@ -80,12 +89,12 @@ class DatabaseManager {
                     "password": password,
                     "uid": authResult!.user.uid
                     ]) { error in
-                    if error != nil {
-                         // обработать ошибку
-                    }
-                    }
+                        if error != nil {
+                             // обработать ошибку
+                        }
                 }
             }
+        }
         
         return errorCode
     }
@@ -113,7 +122,7 @@ class DatabaseManager {
         ])
     }
     
-    func addFirestoreUserToRealm() {
+    func addFirestoreUserToRealm(action: (() -> Void)!) {
         let firestoreDatabase = Firestore.firestore()
         let realmDatabase = try! Realm(configuration: config)
         
@@ -125,13 +134,17 @@ class DatabaseManager {
                     try! realmDatabase.write {
                         realmDatabase.add(User(firstName: dataDescription?["firstName"] as! String, lastName: dataDescription?["lastName"] as! String, email: dataDescription?["email"] as! String, nickName: dataDescription?["nickName"] as! String, password: dataDescription?["password"] as! String, uid: dataDescription?["uid"] as! String))
                     }
+                    
+                    if action != nil {
+                        action()
+                    }
                 }
             }
         }
         print(realmDatabase.configuration.fileURL)
     }
     
-    func addFirestoreTravelsToRealm() {
+    func addFirestoreTravelsToRealm(action: (() -> Void)!) {
         let firestoreDatabase = Firestore.firestore()
         let realmDatabase = try! Realm(configuration: config)
         
@@ -144,13 +157,17 @@ class DatabaseManager {
                         try! realmDatabase.write {
                             realmDatabase.add(Travel(travelid: dataDescription["travelId"] as! String, raiting: dataDescription["raiting"] as! Int, country: dataDescription["country"] as! String, travelDescription: dataDescription["travelDescription"] as! String, stops: List<Stop>()))
                         }
+                        
+                        if action != nil {
+                            action()
+                        }
                     }
                 }
             }
         }
     }
     
-    func addFirebaseStopsToRealm() {
+    func addFirebaseStopsToRealm(action: (() -> Void)!) {
         let firebaseDatabase = Firestore.firestore()
         let realmDatabase = try! Realm(configuration: config)
         
@@ -162,6 +179,10 @@ class DatabaseManager {
                         
                         try! realmDatabase.write {
                             realmDatabase.add(Stop(geolocation: dataDescription["geolocation"] as! String, raiting: dataDescription["raiting"] as! Int, spentMoneyValue: dataDescription["spentMoneyValue"] as! String, stopCityName: dataDescription["stopCityName"] as! String, stopDescription: dataDescription["stopDescription"] as! String, transport: dataDescription["transport"] as! Int, stopid: dataDescription["stopid"] as! String))
+                        }
+                        
+                        if action != nil {
+                            action()
                         }
                     }
                 }
@@ -183,8 +204,12 @@ class DatabaseManager {
         }
     }
     
-    func updateFirebaseStop() {
+    func updateFirebaseStop(geolocation: String, raiting: Int, spentMoneyValue: String, stopCityName: String, stopDescription: String, transport: Int) {
+        let firebaseDatabase = Firestore.firestore()
         
+        if let unwrappedUid = uid, let unwrappedTravelid = travelid {
+            firebaseDatabase.collection("users").document(unwrappedUid).collection("travels").document(unwrappedTravelid)
+        }
     }
     
     func updateRealmStop() {
@@ -215,8 +240,6 @@ class DatabaseManager {
         return realmDatabase.objects(Stop.self)
     }
     
-    //
-    
     func deleteExactRealmUser() {
         let realmUsersDatabase = try! Realm(configuration: config)
         
@@ -235,5 +258,9 @@ class DatabaseManager {
                 realmUsersDatabase.deleteAll()
             }
         }
+        
+        uid = nil
+        travelid = nil
+        stopid = nil
     }
 }
