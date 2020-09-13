@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PT7-i3-Dwi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PT7-i3-Dwi">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -1269,6 +1269,9 @@
                                                     </navigationItem>
                                                 </items>
                                             </navigationBar>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Roh-f4-Fiw">
+                                                <rect key="frame" x="197" y="579" width="20" height="37"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1280,7 +1283,10 @@
                                             <constraint firstItem="uNY-FB-6bY" firstAttribute="top" secondItem="K0t-Yc-KDH" secondAttribute="top" id="dNc-WX-tBF"/>
                                             <constraint firstItem="uNY-FB-6bY" firstAttribute="leading" secondItem="K0t-Yc-KDH" secondAttribute="leading" id="kaJ-RX-dQO"/>
                                             <constraint firstAttribute="trailing" secondItem="E9L-xh-WQk" secondAttribute="trailing" constant="24" id="nVo-ni-V5N"/>
+                                            <constraint firstItem="Roh-f4-Fiw" firstAttribute="top" secondItem="P1Z-AW-Wzi" secondAttribute="bottom" constant="442.32999999999998" id="tx5-g2-vOq"/>
                                             <constraint firstItem="P1Z-AW-Wzi" firstAttribute="leading" secondItem="K0t-Yc-KDH" secondAttribute="leading" constant="24" id="url-71-sMP"/>
+                                            <constraint firstItem="Roh-f4-Fiw" firstAttribute="leading" secondItem="K0t-Yc-KDH" secondAttribute="leading" constant="197" id="wLw-vO-k4j"/>
+                                            <constraint firstAttribute="trailing" secondItem="Roh-f4-Fiw" secondAttribute="trailing" constant="197" id="woK-nw-lqH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1314,6 +1320,7 @@
                         <outlet property="firstNameUnderline" destination="ljq-58-AoY" id="b1V-XB-jbB"/>
                         <outlet property="lastNameField" destination="1rV-jV-gNP" id="dAD-ST-Ue7"/>
                         <outlet property="lastNameUnderline" destination="I8w-h8-ksN" id="CPd-wV-7f4"/>
+                        <outlet property="loadingActivityIndicator" destination="Roh-f4-Fiw" id="dFZ-I3-lME"/>
                         <outlet property="nickNameUnderline" destination="EoE-ah-jdT" id="gWJ-GY-Gvp"/>
                         <outlet property="nicknameField" destination="py7-cf-k6K" id="qyA-jz-Qwg"/>
                         <outlet property="passwordCheckField" destination="5Ld-Lq-bKT" id="xvs-XX-XV5"/>
@@ -1790,18 +1797,24 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="GwD-HR-CCu">
+                                <rect key="frame" x="189" y="367" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Rup-tH-x6c" firstAttribute="top" secondItem="opv-u2-3tr" secondAttribute="bottom" constant="46" id="0vT-5s-9ch"/>
                             <constraint firstItem="wci-jS-DCj" firstAttribute="trailing" secondItem="okb-CK-0Pc" secondAttribute="trailing" constant="24" id="2vv-ak-HNa"/>
+                            <constraint firstItem="wci-jS-DCj" firstAttribute="trailing" secondItem="GwD-HR-CCu" secondAttribute="trailing" constant="188" id="I2D-F6-gdN"/>
                             <constraint firstItem="okb-CK-0Pc" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="JKW-Zx-PYg"/>
                             <constraint firstItem="opv-u2-3tr" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" id="JnO-qC-WYB"/>
+                            <constraint firstItem="GwD-HR-CCu" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="189" id="VHh-Nj-4gm"/>
                             <constraint firstItem="opv-u2-3tr" firstAttribute="trailing" secondItem="wci-jS-DCj" secondAttribute="trailing" id="a2T-zd-MLs"/>
                             <constraint firstItem="Rup-tH-x6c" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="dcG-e4-4pj"/>
                             <constraint firstItem="WdI-iT-L9b" firstAttribute="top" secondItem="okb-CK-0Pc" secondAttribute="bottom" constant="60" id="i12-S3-iOG"/>
                             <constraint firstItem="WdI-iT-L9b" firstAttribute="leading" secondItem="wci-jS-DCj" secondAttribute="leading" constant="24" id="qdN-9h-imP"/>
+                            <constraint firstItem="GwD-HR-CCu" firstAttribute="top" secondItem="Rup-tH-x6c" secondAttribute="bottom" constant="186.33000000000001" id="qk8-ve-Haz"/>
                             <constraint firstItem="okb-CK-0Pc" firstAttribute="top" secondItem="Rup-tH-x6c" secondAttribute="bottom" constant="50" id="tN1-jH-5PH"/>
                             <constraint firstItem="opv-u2-3tr" firstAttribute="top" secondItem="wci-jS-DCj" secondAttribute="top" id="wGc-oD-rqg"/>
                         </constraints>
@@ -1813,6 +1826,7 @@
                         <outlet property="emailTextField" destination="GQZ-dK-ZoG" id="tG9-q1-k1q"/>
                         <outlet property="emailUnderline" destination="M8I-DW-sIl" id="AGG-AX-2cn"/>
                         <outlet property="forgotPasswordButton" destination="WdI-iT-L9b" id="ToM-aD-Pcv"/>
+                        <outlet property="loadingActivityIndicator" destination="GwD-HR-CCu" id="w3M-b2-JBB"/>
                         <outlet property="loginButton" destination="iNL-tL-ygc" id="u0q-Gm-asP"/>
                         <outlet property="passwordLabel" destination="5Se-ag-S6A" id="zHN-8E-ajW"/>
                         <outlet property="passwordTextField" destination="V1A-7l-KRd" id="Ac7-o4-Vki"/>
