@@ -73,8 +73,6 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
         travelsTable.dataSource = self
         travelsTable.separatorStyle = .none
         travelsTable.layer.cornerRadius = 15
-    
-        DatabaseManager.shared.addFirestoreUserToRealm(action: nil)
         
         let travelsFromDatabase = DatabaseManager.shared.getRealmTravels()
 
