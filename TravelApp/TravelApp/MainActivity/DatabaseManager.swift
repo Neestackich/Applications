@@ -67,6 +67,7 @@ class DatabaseManager {
                 AnimationManager.shared.slowedColorChange(objects: emailUnderline, passwordUnderline, color: .systemGreen, duration: 0.1)
                 
                 DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: signInResult!.user.uid)
+                DatabaseManager.shared.addFirestoreUserToRealm(action: nil)
                 DatabaseManager.shared.addFirestoreTravelsToRealm(action: action)
                 
                 print("Successful sign in")
@@ -111,6 +112,8 @@ class DatabaseManager {
                     ]) { error in
                         if error != nil {
                              // обработать ошибку
+                        } else {
+                            DatabaseManager.shared.addFirestoreUserToRealm(action: nil)
                         }
                 }
             }
@@ -175,10 +178,10 @@ class DatabaseManager {
                         try! realmDatabase.write {
                             realmDatabase.add(Travel(travelid: dataDescription["travelId"] as! String, raiting: dataDescription["raiting"] as! Int, country: dataDescription["country"] as! String, travelDescription: dataDescription["travelDescription"] as! String, stops: List<Stop>()))
                         }
-                        
-                        if action != nil {
-                            action()
-                        }
+                    }
+                    
+                    if action != nil {
+                        action()
                     }
                 }
             }
@@ -198,10 +201,10 @@ class DatabaseManager {
                         try! realmDatabase.write {
                             realmDatabase.add(Stop(geolocation: dataDescription["geolocation"] as! String, raiting: dataDescription["raiting"] as! Int, spentMoneyValue: dataDescription["spentMoneyValue"] as! String, stopCityName: dataDescription["stopCityName"] as! String, stopDescription: dataDescription["stopDescription"] as! String, transport: dataDescription["transport"] as! Int, stopid: dataDescription["stopid"] as! String))
                         }
-                        
-                        if action != nil {
-                            action()
-                        }
+                    }
+                    
+                    if action != nil {
+                        action()
                     }
                 }
             }
