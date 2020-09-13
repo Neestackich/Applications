@@ -12,6 +12,7 @@ import RealmSwift
 class Stop: Object {
     @objc dynamic var raiting: Int = 0
     @objc dynamic var transport: Int = 0
+    @objc dynamic var stopid: String = ""
     @objc dynamic var geolocation: String = ""
     @objc dynamic var stopCityName: String = ""
     @objc dynamic var stopDescription: String = ""
@@ -19,7 +20,8 @@ class Stop: Object {
     
     override required init() {}
     
-    init(geolocation: String, raiting: Int, spentMoneyValue: String, stopCityName: String, stopDescription: String, transport: Int) {
+    init(geolocation: String, raiting: Int, spentMoneyValue: String, stopCityName: String, stopDescription: String, transport: Int, stopid: String) {
+        self.stopid = stopid
         self.raiting = raiting
         self.transport = transport
         self.geolocation = geolocation

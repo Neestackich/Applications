@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum firebaseDataBaseException: Error {
+enum FirebaseDataBaseException: Error {
     case createAccountError
 }

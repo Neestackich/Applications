@@ -18,6 +18,8 @@ class TravelCell: UITableViewCell {
     @IBOutlet weak var raitingStack: UIStackView!
     @IBOutlet weak var countryDescription: UILabel!
     
+    var tarvelId: String?
+    
     
     // MARK: Methods
     

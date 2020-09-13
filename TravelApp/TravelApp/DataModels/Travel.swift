@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Travel: Object {
-    @objc dynamic var travelId: String = ""
+    @objc dynamic var travelid: String = ""
     @objc dynamic var raiting: Int = 0
     @objc dynamic var country: String = ""
     @objc dynamic var travelDescription: String = ""
@@ -18,10 +18,11 @@ class Travel: Object {
     
     override required init() {}
     
-    init(raiting: Int, country: String, travelDescription: String, stops: List<Stop>) {
+    init(travelid: String, raiting: Int, country: String, travelDescription: String, stops: List<Stop>) {
         self.stops = stops
         self.country = country
         self.raiting = raiting
+        self.travelid = travelid
         self.travelDescription = travelDescription
     }
 }

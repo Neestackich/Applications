@@ -43,27 +43,30 @@ class DatabaseManager {
         self.uid = uid
     }
     
-    func signInFirebaseUser(email: String, password: String, emailUnderline: UIView, passwordUnderline: UIView, colorChangeAnimation: @escaping (UIView, UIColor, TimeInterval) -> Void, action: (() -> Void)!) {
-        var errorCode: AuthErrorCode?
-        
+    func signInFirebaseUser(email: String, password: String, emailUnderline: UIView, passwordUnderline: UIView, loginButton: UIButton, activityIndicator: UIActivityIndicatorView, action: (() -> Void)!) {
         Auth.auth().signIn(withEmail: email, password: password) { signInResult, error in
             if error != nil {
-                errorCode = AuthErrorCode(rawValue: error!._code)
+                let errorCode = AuthErrorCode(rawValue: error!._code)
                 
                 switch errorCode {
                 case .invalidEmail:
-                    colorChangeAnimation(emailUnderline, .systemRed, 0.1)
+                    AnimationManager.shared.slowedColorChange(object: emailUnderline, color: .systemRed, duration: 0.1)
                 case .wrongPassword:
-                    colorChangeAnimation(passwordUnderline, .systemRed, 0.1)
+                    AnimationManager.shared.slowedColorChange(object: passwordUnderline, color: .systemRed, duration: 0.1)
                 default:
-                    colorChangeAnimation(emailUnderline, .systemRed, 0.1)
-                    colorChangeAnimation(passwordUnderline, .systemRed, 0.1)
+                    AnimationManager.shared.slowedColorChange(objects: emailUnderline, passwordUnderline, color: .systemRed, duration: 0.1)
                 }
-            } else {
-                DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: signInResult!.user.uid)
-                // DatabaseManager.shared.addFirestoreTravelsToRealm()
-                // DatabaseManager.shared.addFirebaseStopsToRealm()
+                
+               
+                loginButton.isHidden = false
+                activityIndicator.isHidden = true
+                activityIndicator.stopAnimating()
 
+                AnimationManager.shared.slowedAppearance(objects: loginButton, duration: 0.5)
+            } else {
+                AnimationManager.shared.slowedColorChange(objects: emailUnderline, passwordUnderline, color: .systemGreen, duration: 0.1)
+                
+                DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: signInResult!.user.uid)
                 DatabaseManager.shared.addFirestoreTravelsToRealm(action: action)
                 
                 print("Successful sign in")
@@ -71,14 +74,31 @@ class DatabaseManager {
         }
     }
     
-    func createFirebaseUser(email: String, password: String, firstName: String, lastName: String, nickName: String) -> AuthErrorCode? {
-        var errorCode: AuthErrorCode?
-        
+    func createFirebaseUser(email: String, password: String, firstName: String, lastName: String, nickName: String, emailUnderline: UIView, createAccButton: UIButton, activityIndicator: UIActivityIndicatorView, passwordUnderline: UIView, action: (() -> Void)!) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if error != nil {
-                errorCode = AuthErrorCode(rawValue: error!._code)
+                let errorCode = AuthErrorCode(rawValue: error!._code)
+                
+                switch errorCode {
+                case .invalidEmail:
+                    AnimationManager.shared.slowedColorChange(object: emailUnderline, color: .systemRed, duration: 0.1)
+                case .weakPassword:
+                    AnimationManager.shared.slowedColorChange(object: passwordUnderline, color: .systemRed, duration: 0.1)
+                default:
+                    AnimationManager.shared.slowedColorChange(objects: emailUnderline, passwordUnderline, color: .systemRed, duration: 0.1)
+                }
+                
+                createAccButton.isHidden = false
+                activityIndicator.isHidden = true
+                activityIndicator.stopAnimating()
+
+                AnimationManager.shared.slowedAppearance(objects: createAccButton, duration: 0.5)
             } else {
                 DatabaseManager.shared.setupRealmDatabase(dbPath: self.databasePath, uid: authResult!.user.uid)
+                
+                if let action = action {
+                    action()
+                }
                 
                 let firesoreDatabase = Firestore.firestore()
                 firesoreDatabase.collection("users").document(authResult!.user.uid).setData([
@@ -95,8 +115,6 @@ class DatabaseManager {
                 }
             }
         }
-        
-        return errorCode
     }
     
     func createFirebaseTravel(userId: String, raiting: Int, country: String, travelDescription: String) {

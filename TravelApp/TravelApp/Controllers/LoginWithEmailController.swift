@@ -15,7 +15,7 @@ import UIKit
 import RealmSwift
 import Firebase
 
-class LoginWithEmailController: UIViewController, UITextFieldDelegate {
+class LoginWithEmailController: UIViewController, UITextFieldDelegate, ViewControllerDelegate {
     
     
     // MARK: Properties
@@ -30,7 +30,8 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var stackWithLabelsAndBtn: UIStackView!
-
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    
     var databasePath: String = "usersDatabase"
     
     
@@ -43,14 +44,30 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     }
     
     func setup() {
+        loadingActivityIndicator.alpha = 0
         loginButton.layer.cornerRadius = 5
-        emailTextField.keyboardType = .emailAddress
+        loadingActivityIndicator.isHidden = true
         passwordTextField.isSecureTextEntry = true
+        emailTextField.keyboardType = .emailAddress
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboardByTap)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    
+    // MARK: -delegate pattern method
+    
+    func updateInterfaceElements() {
+        loginButton.isHidden = false
+        loadingActivityIndicator.isHidden = true
+        loadingActivityIndicator.stopAnimating()
+        
+        textFieldsCleaner(textFields: emailTextField, passwordTextField)
+        
+        AnimationManager.shared.slowedAppearance(objects: loginButton, duration: 0.1)
+        AnimationManager.shared.slowedColorChange(objects: emailUnderline, passwordUnderline, color: .systemGray4, duration: 0.1)
     }
     
     
@@ -64,65 +81,30 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginClick(_ sender: Any) {
-        buttonPressAnimatio(objects: loginButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
+        AnimationManager.shared.buttonPressAnimatio(objects: loginButton, duration: 0.1, resizeDuration: 0.4, x: 0.7, y: 0.9, resizeX: 1, resizeY: 1)
+        AnimationManager.shared.slowedDisappearance(objects: loginButton, duration: 0.5)
+        AnimationManager.shared.slowedAppearance(objects: loadingActivityIndicator, duration: 1.5)
+        
+        hideKeyboardByTap()
+        loadingActivityIndicator.isHidden = false
+        loadingActivityIndicator.startAnimating()
         
         if areTextFieldsValid() {
             if let email = emailTextField.text, let password = passwordTextField.text {
-                DatabaseManager.shared.signInFirebaseUser(email: email, password: password, emailUnderline: emailUnderline, passwordUnderline: passwordUnderline, colorChangeAnimation: slowedColorChange(object:color:duration:)) {
+                DatabaseManager.shared.signInFirebaseUser(email: email, password: password, emailUnderline: emailUnderline, passwordUnderline: passwordUnderline, loginButton: loginButton, activityIndicator: loadingActivityIndicator) {
                     let travelListVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelListViewController") as! TravelListViewController
                     travelListVC.modalPresentationStyle = .fullScreen
+                    travelListVC.viewControllerDelegate = self
+                    
                     self.present(travelListVC, animated: true)
                 }
             }
+        } else {
+            loginButton.isHidden = false
+            loadingActivityIndicator.isHidden = true
+            loadingActivityIndicator.stopAnimating()
             
-//            let travelListVC = storyboard?.instantiateViewController(withIdentifier: "TravelListViewController") as! TravelListViewController
-//            travelListVC.modalPresentationStyle = .fullScreen
-//            present(travelListVC, animated: true)
-            
-           // DatabaseManager.shared.getStops()
-            
-            
-//            var config = Realm.Configuration()
-//            config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent(databasePath)
-//            config.readOnly = false
-//
-//            let usersList = try! Realm(configuration: config)
-//
-//            if usersList.objects(User.self).filter("email = '\(email)'").count != 0 {
-//                let user = usersList.objects(User.self).filter("email = '\(email)'").first
-//
-//                if (user?.password)! == password {
-//                slowedColorChange(objects: emailUnderline, color: UIColor.systemGreen, duration: 0.2)
-//                slowedColorChange(objects: passwordUnderline, color: UIColor.systemGreen, duration: 0.2)
-//
-//                if let userObject = user {
-//                    let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
-//                    travelListVC.modalPresentationStyle = .fullScreen
-//                    travelListVC.user = userObject
-//
-//                    present(travelListVC, animated: true)
-//                    }
-//                } else {
-//                    //wrong password
-//                    slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 1)
-//                }
-//            } else {
-//                //no account with such email
-//                slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
-//                slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
-//            }
-            
-            
-            
-//            switch errorCode {
-//            case .wrongPassword:
-//                self.slowedColorChange(objects: self.passwordUnderline, color: UIColor.red, duration: 0.5)
-//            case .invalidEmail:
-//                self.slowedColorChange(objects: self.emailUnderline, color: UIColor.red, duration: 0.5)
-//            default:
-//                break
-//            }
-            
+            AnimationManager.shared.slowedAppearance(objects: loginButton, duration: 0.5)
         }
     }
     
@@ -135,11 +117,11 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     func areTextFieldsValid() -> Bool {
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" && passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             if (emailTextField.text?.isEmpty)! {
-                slowedColorChange(objects: emailUnderline, color: UIColor.red, duration: 0.5)
+                AnimationManager.shared.slowedColorChange(objects: emailUnderline, color: .systemRed, duration: 0.5)
             }
             
             if (passwordTextField.text?.isEmpty)! {
-                slowedColorChange(objects: passwordUnderline, color: UIColor.red, duration: 0.5)
+                AnimationManager.shared.slowedColorChange(objects: passwordUnderline, color: .systemRed, duration: 0.5)
             }
             
             return false
@@ -151,12 +133,12 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     @IBAction func showPasswordClick(_ sender: Any) {
         if passwordTextField.isSecureTextEntry {
             passwordTextField.isSecureTextEntry = false
-            slowedColorChange(objects: showPasswordBtn, color: UIColor.systemBlue, duration: 0.5)
-            slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye"), duration: 0.5)
+            AnimationManager.shared.slowedColorChange(objects: showPasswordBtn, color: UIColor.systemBlue, duration: 0.5)
+            AnimationManager.shared.slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye"), duration: 0.5)
         } else {
             passwordTextField.isSecureTextEntry = true
-            slowedColorChange(objects: showPasswordBtn, color: UIColor.systemGray, duration: 0.5)
-            slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye.slash"), duration: 0.5)
+            AnimationManager.shared.slowedColorChange(objects: showPasswordBtn, color: UIColor.systemGray, duration: 0.5)
+            AnimationManager.shared.slowedImageChange(objects: showPasswordBtn, image: UIImage(systemName: "eye.slash"), duration: 0.5)
         }
     }
     
@@ -172,9 +154,9 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if emailTextField.isEditing {
-            slowedColorChange(objects: emailUnderline, color: .systemGray4, duration: 1.3)
+            AnimationManager.shared.slowedColorChange(objects: emailUnderline, color: .systemGray4, duration: 0.5)
         }  else if passwordTextField.isEditing {
-            slowedColorChange(objects: passwordUnderline, color: .systemGray4, duration: 1.3)
+            AnimationManager.shared.slowedColorChange(objects: passwordUnderline, color: .systemGray4, duration: 0.5)
         }
     }
     
@@ -196,50 +178,9 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    
-    // MARK: -color and other props changing generic functions
-    
-    func slowedColorChange(object: UIView, color: UIColor, duration: TimeInterval) {
-        UIView.animate(withDuration: duration, animations: {
-            if object is UIButton {
-                object.tintColor = color
-            } else {
-                object.backgroundColor = color
-            }
-        })
-    }
-    
-    func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
-        UIView.animate(withDuration: duration, animations: {
-            for object in objects {
-                if object is UIButton {
-                    object.tintColor = color
-                } else {
-                    object.backgroundColor = color
-                }
-            }
-        })
-    }
-    
-    func slowedImageChange<T: UIButton>(objects: T..., image: UIImage?, duration: TimeInterval) {
-        UIView.animate(withDuration: duration, animations: {
-            for object in objects {
-                object.setImage(image, for: .normal)
-            }
-        })
-    }
-    
-    func buttonPressAnimatio<T: UIButton>(objects: T..., duration: TimeInterval, resizeDuration: TimeInterval, x: CGFloat, y: CGFloat, resizeX: CGFloat, resizeY: CGFloat) {
-        UIView.animate(withDuration: duration, animations: {
-            for object in objects {
-                object.transform = CGAffineTransform(scaleX: x, y: y)
-            }
-        }, completion: { _ in
-            UIView.animate(withDuration: resizeDuration, animations: {
-                for object in objects {
-                    object.transform = CGAffineTransform(scaleX: resizeX, y: resizeY)
-                }
-            })
-        })
+    func textFieldsCleaner(textFields: UITextField...) {
+        for textField in textFields {
+            textField.text?.removeAll()
+        }
     }
 }
