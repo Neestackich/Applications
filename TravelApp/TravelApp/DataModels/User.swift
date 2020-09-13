@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class User: Object {
+    @objc dynamic var uid: String = ""
     @objc dynamic var email: String = ""
     @objc dynamic var lastName: String = ""
     @objc dynamic var nickName: String = ""
@@ -18,7 +19,8 @@ class User: Object {
     
     override required init() {}
     
-    init(firstName: String, lastName: String, email: String, nickName: String, password: String) {
+    init(firstName: String, lastName: String, email: String, nickName: String, password: String, uid: String) {
+        self.uid = uid
         self.email = email
         self.lastName = lastName
         self.nickName = nickName
