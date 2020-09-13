@@ -7,26 +7,21 @@
 //
 
 
-//добавить кнопку добавления трэвел в реалм
-//просто пихаем объект в реалм по нажатию кнопки и все
-//потом кнопка, которая достает нужный объект(ы) из базы
-
 import UIKit
 import RealmSwift
+
 
 class TravelListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    
     // MARK: - Properties
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var noTravelsLabel: UILabel!
     @IBOutlet weak var travelsTable: UITableView!
     
-    var user: User!
+    weak var viewControllerDelegate: ViewControllerDelegate!
+    
     var travelsList: [Travel] = []
     let travelAddID: String = "TravelAdd"
     
@@ -37,35 +32,40 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     // размеры элементов будут еще как в сториборде
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+
         setup()
     }
-    
-    // перед тем, как вьюшка появится
-    // тоже не сверстано
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
     }
-    
-    // когда вьюшка уже появилась
-    // уже сверстано
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
-    // сработает перед тем, как закроется экран
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    // сработает, когда закроется экран полностью
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
+//    // перед тем, как вьюшка появится
+//    // тоже не сверстано
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
+//
+//    // когда вьюшка уже появилась
+//    // уже сверстано
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//    }
+//
+//    // сработает перед тем, как закроется экран
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//    }
+//
+//    // сработает, когда закроется экран полностью
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//    }
+//
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//    }
     
     
     func setup() {
@@ -73,14 +73,15 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
         travelsTable.dataSource = self
         travelsTable.separatorStyle = .none
         travelsTable.layer.cornerRadius = 15
+    
+        DatabaseManager.shared.addFirestoreUserToRealm(action: nil)
         
-        var config = Realm.Configuration()
-        config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(user.email).realm")
-        let usersTravels = try! Realm(configuration: config)
-        let travelsFromDB = usersTravels.objects(Travel.self)
-        
-        for singleTravel in travelsFromDB {
-            travelsList.append(singleTravel)
+        let travelsFromDatabase = DatabaseManager.shared.getRealmTravels()
+
+        if let travelsFromDatabase = travelsFromDatabase {
+            for singleTravel in travelsFromDatabase {
+                travelsList.append(singleTravel)
+            }
         }
         
         if travelsList.count == 0 {
@@ -96,26 +97,25 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func addTravelClick(_ sender: Any) {
         let createTravelVC = storyboard?.instantiateViewController(withIdentifier: travelAddID) as! CreateTravelController
         createTravelVC.modalPresentationStyle = .fullScreen
-        createTravelVC.user = user
-        
         present(createTravelVC, animated: true)
     }
     
     @IBAction func quitClick(_ sender: Any) {
-        let welcomeScreenVC = storyboard?.instantiateViewController(identifier: "WelcomeScreen") as! WelcomePageController
-        welcomeScreenVC.modalPresentationStyle = .fullScreen
+        DatabaseManager.shared.clearObjects()
+        viewControllerDelegate.updateInterfaceElements()
         
-        present(welcomeScreenVC, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     
-    // MARK: - table view methods
+    // MARK: - tableview methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travelsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         var counter = 1
         let travel = travelsList[indexPath.row]
         let travelCell = tableView.dequeueReusableCell(withIdentifier: "TravelCell") as! TravelCell
@@ -136,12 +136,14 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let stopsVC = storyboard?.instantiateViewController(identifier: "StopsList") as! StopsListController
         stopsVC.modalPresentationStyle = .fullScreen
-        stopsVC.travel = travelsList[indexPath.row]
         stopsVC.travelIndex = indexPath.row
-        stopsVC.user = user
+        stopsVC.travelid = travelsList[indexPath.row].travelid
         
         present(stopsVC, animated: true)
     }
+    
+    
+    // MARK: - animation methods
     
     func slowedColorChange<T: UIView>(objects: T..., color: UIColor, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
