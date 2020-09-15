@@ -11,8 +11,7 @@ import UIKit
 import RealmSwift
 
 
-class TravelListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class TravelListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ViewControllerDelegate {
     
     
     // MARK: - Properties
@@ -35,12 +34,23 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
 
         setup()
     }
+    
+    func getRealmTravel() {
+        let travelsFromDatabase = DatabaseManager.shared.getRealmTravels()
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
+        if let travelsFromDatabase = travelsFromDatabase {
+            for singleTravel in travelsFromDatabase {
+                travelsList.append(singleTravel)
+            }
+        }
+
+        if travelsList.count == 0 {
+            noTravelsLabel.text = "У вас не создано ни одной точки маршрута. \nНажмите \"+\", чтобы добавить."
+        } else {
+            noTravelsLabel.text?.removeAll()
+        }
     }
+    
 //    // перед тем, как вьюшка появится
 //    // тоже не сверстано
 //    override func viewWillAppear(_ animated: Bool) {
@@ -69,24 +79,17 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func setup() {
+        getRealmTravel()
         travelsTable.delegate = self
         travelsTable.dataSource = self
         travelsTable.separatorStyle = .none
         travelsTable.layer.cornerRadius = 15
-        
-        let travelsFromDatabase = DatabaseManager.shared.getRealmTravels()
-
-        if let travelsFromDatabase = travelsFromDatabase {
-            for singleTravel in travelsFromDatabase {
-                travelsList.append(singleTravel)
-            }
-        }
-        
-        if travelsList.count == 0 {
-            noTravelsLabel.text = "У вас не создано ни одной точки маршрута. \nНажмите \"+\", чтобы добавить."
-        } else {
-            noTravelsLabel.text?.removeAll()
-        }
+    }
+    
+    func updateInterfaceElements() {
+        travelsList.removeAll()
+        getRealmTravel()
+        travelsTable.reloadData()
     }
     
     
@@ -115,6 +118,7 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var counter = 1
+        
         let travel = travelsList[indexPath.row]
         let travelCell = tableView.dequeueReusableCell(withIdentifier: "TravelCell") as! TravelCell
         travelCell.countryName.text = travel.country
@@ -136,6 +140,7 @@ class TravelListViewController: UIViewController, UITableViewDataSource, UITable
         stopsVC.modalPresentationStyle = .fullScreen
         stopsVC.travelIndex = indexPath.row
         stopsVC.travelid = travelsList[indexPath.row].travelid
+        stopsVC.travelsListDelegate = self
         
         present(stopsVC, animated: true)
     }
