@@ -47,8 +47,8 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate, ViewContr
         loadingActivityIndicator.alpha = 0
         loginButton.layer.cornerRadius = 5
         loadingActivityIndicator.isHidden = true
-        passwordTextField.isSecureTextEntry = true
-        emailTextField.keyboardType = .emailAddress
+        // passwordTextField.isSecureTextEntry = true
+        // emailTextField.keyboardType = .emailAddress
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboardByTap)))
         
