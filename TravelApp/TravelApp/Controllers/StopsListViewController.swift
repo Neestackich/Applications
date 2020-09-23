@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class StopsListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class StopsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     // MARK: Properties
@@ -17,11 +17,13 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var noStopsLabel: UILabel!
     @IBOutlet weak var stopsTableList: UITableView!
     
-    var user: User!
-    var travel: Travel!
     var travelIndex: Int!
+    var travelid: String!
+    var stopsList: [Stop] = []
     let addStopVCID: String = "AddStop"
     let travelListVCID: String = "Travels list"
+    
+    weak var travelsListDelegate: ViewControllerDelegate!
     
     
     // MARK: Methods
@@ -38,7 +40,15 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
         stopsTableList.separatorStyle = .none
         stopsTableList.layer.cornerRadius = 15
         
-        if travel.stops.count == 0 {
+        let stopsFromDatabase = DatabaseManager.shared.getRealmStops()
+        
+        if let unwrappedStopsFromDatabase = stopsFromDatabase {
+            for singleStop in unwrappedStopsFromDatabase {
+                stopsList.append(singleStop)
+            }
+        }
+        
+        if stopsList.count == 0 {
             noStopsLabel.text = "У вас не создано ни одной точки маршрута. \nНажмите \"+\", чтобы добавить."
         } else {
             noStopsLabel.text?.removeAll()
@@ -49,18 +59,15 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: -buttons' handlers
     
     @IBAction func backToTravelsListControllerClick(_ sender: Any) {
-        let travelsListVC = storyboard?.instantiateViewController(withIdentifier: travelListVCID) as! TravelListViewController
-        travelsListVC.modalPresentationStyle = .fullScreen
-        travelsListVC.user = user
+        travelsListDelegate.updateInterfaceElements()
+        DatabaseManager.shared.clearExactObject()
         
-        present(travelsListVC, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addStopClick(_ sender: Any) {
         let addStopVC = storyboard?.instantiateViewController(withIdentifier: addStopVCID) as! AddStopController
         addStopVC.modalPresentationStyle = .fullScreen
-        addStopVC.user = user
-        addStopVC.travel = travel
         addStopVC.travelIndex = travelIndex
         
         present(addStopVC, animated: true)
@@ -70,12 +77,12 @@ class StopsListController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: -tableView functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travel.stops.count
+        return stopsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var counter = 1
-        let stop = travel.stops[indexPath.row]
+        let stop = stopsList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StopCell") as! StopCell
         cell.cityName.text = stop.stopCityName
         cell.moneySpend.text = stop.spentMoneyValue

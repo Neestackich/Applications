@@ -18,7 +18,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 
-class CreateAccountController: UIViewController, UITextFieldDelegate, ViewControllerDelegate {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate, ViewControllerDelegate {
         
     
     // MARK: Properties
@@ -79,7 +79,7 @@ class CreateAccountController: UIViewController, UITextFieldDelegate, ViewContro
     // MARK: -event handlers
     
     @IBAction func backToWelcomeScreenClick(_ sender: Any) {
-        let welcomeScreenVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeScreen") as! WelcomePageController
+        let welcomeScreenVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeScreen") as! WelcomePageViewController
         welcomeScreenVC.modalPresentationStyle = .fullScreen
         
         present(welcomeScreenVC, animated: true)

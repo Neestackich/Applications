@@ -15,7 +15,7 @@ import UIKit
 import RealmSwift
 import Firebase
 
-class LoginWithEmailController: UIViewController, UITextFieldDelegate, ViewControllerDelegate {
+class LoginWithEmailViewController: UIViewController, UITextFieldDelegate, ViewControllerDelegate {
     
     
     // MARK: Properties
@@ -74,7 +74,7 @@ class LoginWithEmailController: UIViewController, UITextFieldDelegate, ViewContr
     // MARK: -event handlers
     
     @IBAction func backToWelcomeScreenClick(_ sender: Any) {
-        let welcomeScreenVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeScreen") as! WelcomePageController
+        let welcomeScreenVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeScreen") as! WelcomePageViewController
         welcomeScreenVC.modalPresentationStyle = .fullScreen
         
         present(welcomeScreenVC, animated: true)

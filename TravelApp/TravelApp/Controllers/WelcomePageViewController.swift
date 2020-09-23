@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomePageController: UIViewController {
+class WelcomePageViewController: UIViewController {
     
     
     // MARK: Properties

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPasswordController: UIViewController {
+class ForgotPasswordViewController: UIViewController {
     
     
     // MARK: Properties
