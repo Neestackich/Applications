@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPasswordController: UIViewController {
+class ForgotPasswordViewController: UIViewController {
     
     
     // MARK: Properties
@@ -27,9 +27,6 @@ class ForgotPasswordController: UIViewController {
     }
     
     @IBAction func backToLoginWithEmailClick(_ sender: Any) {
-        let loginWithEmailVC = storyboard?.instantiateViewController(identifier: "LoginWithEmail") as! LoginWithEmailController
-        loginWithEmailVC.modalPresentationStyle = .fullScreen
-        
-        present(loginWithEmailVC, animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }

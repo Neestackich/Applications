@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AddStopController: UIViewController {
+class AddStopViewController: UIViewController {
     
     
     // MARK: properties
@@ -42,10 +42,8 @@ class AddStopController: UIViewController {
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        let stopsListVC = storyboard?.instantiateViewController(identifier: stopsListVCID) as! StopsListController
+        let stopsListVC = storyboard?.instantiateViewController(identifier: stopsListVCID) as! StopsListViewController
         stopsListVC.modalPresentationStyle = .fullScreen
-        stopsListVC.user = user
-        stopsListVC.travel = travel
         stopsListVC.travelIndex = travelIndex
         
         present(stopsListVC, animated: true)
@@ -76,14 +74,10 @@ class AddStopController: UIViewController {
                 } else if transport.selectedSegmentIndex == 2 {
                     stop.transport = 2
                 }
-                
-                travels[travelIndex].stops.append(stop)
             }
             
-            let stopsListVC = storyboard?.instantiateViewController(identifier: stopsListVCID) as! StopsListController
+            let stopsListVC = storyboard?.instantiateViewController(identifier: stopsListVCID) as! StopsListViewController
             stopsListVC.modalPresentationStyle = .fullScreen
-            stopsListVC.user = user
-            stopsListVC.travel = travel
             stopsListVC.travelIndex = travelIndex
             
             present(stopsListVC, animated: true)

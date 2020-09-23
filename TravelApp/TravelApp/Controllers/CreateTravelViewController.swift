@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CreateTravelController: UIViewController {
+class CreateTravelViewController: UIViewController {
 
     
     // MARK: Properties
@@ -39,7 +39,7 @@ class CreateTravelController: UIViewController {
     @IBAction func cancelClick(_ sender: Any) {
         let travelListVC = storyboard?.instantiateViewController(identifier: tarvelsListVCID) as! TravelListViewController
         travelListVC.modalPresentationStyle = .fullScreen
-        travelListVC.user = user
+        //travelListVC.user = user
         
         present(travelListVC, animated: true)
     }
@@ -55,16 +55,20 @@ class CreateTravelController: UIViewController {
             //print(travelList.configuration.fileURL)
             
             try! travelList.write {
-                travelList.add(Travel(raiting: Int(raitingStepper.value), country: name, travelDescription: description, stops: List<Stop>()))
+                travelList.add(Travel(travelid: UUID().uuidString, raiting: Int(raitingStepper.value), country: name, travelDescription: description))
             }
+            
+            
+            // добавить добавление в файербейз
+            
             
             let travelListVC = storyboard?.instantiateViewController(identifier: "Travels list") as! TravelListViewController
             travelListVC.modalPresentationStyle = .fullScreen
-            travelListVC.user = user
+            //travelListVC.user = user
             
             present(travelListVC, animated: true)
         } else {
-            if (nameField.text?.isEmpty)! {
+            if nameField.text?.isEmpty == true {
                 slowedColorChange(objects: nameUnderline, color: .red, duration: 1.3)
             }
             

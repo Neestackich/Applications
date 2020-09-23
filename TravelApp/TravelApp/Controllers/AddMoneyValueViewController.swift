@@ -8,12 +8,12 @@
 
 import UIKit
 
-class AddMoneyValueController: UIViewController {
+class AddMoneyValueViewController: UIViewController {
 
     
     // MARK: Properties
     
-    @IBOutlet weak var currencyType: UIStackView!
+    @IBOutlet weak var currencyType: UISegmentedControl!
     
     
     // MARK: Methods
@@ -21,11 +21,11 @@ class AddMoneyValueController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         setup()
     }
     
     func setup() {
-        currencyType.layer.borderColor = UIColor(red: 126, green: 140, blue: 229, alpha: 1) as! CGColor
+        currencyType.layer.borderWidth = 1
+        currencyType.layer.borderColor = CGColor(srgbRed: 126/255, green: 140/255, blue: 229/255, alpha: 1)
     }
 }
